@@ -1,0 +1,1640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="db622f0c-c39b-4040-9ae7-1c5a3ecc97c4" name="Changes" comment="Nowcast">
+      <change afterPath="$PROJECT_DIR$/.idea/Nowcasting.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_new.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20161003.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20170103.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20170403.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20170703.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20171002.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20180102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20180402.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20180702.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20181001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20190102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20190401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20190701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20191001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20200102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20200401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20200701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20201001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20210101.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20210401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20210701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20211001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20220103.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20220401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20220701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20221003.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20230103.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20230403.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20230703.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20231002.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20240102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20240401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20240701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20241001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20250102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param/ResDFM_20250401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20161003.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20170103.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20170403.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20170703.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20171002.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20180102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20180402.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20180702.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20181001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20190102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20190401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20190701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20191001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20200102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20200401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20200701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20201001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20210101.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20210401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20210701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20211001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20220103.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20220401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20220701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20221003.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20230103.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20230403.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20230703.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20231002.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20240102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20240401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20240701.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20241001.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20250102.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DFM_quarter_param_fiscal/ResDFM_fiscal_20250401.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/decompose_common_factor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/dfm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/extract_common_residual.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/load_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/load_spec.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/remNaNs_spline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/summarize.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/update_Nowcast.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Functions/update_Nowcast2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spec_US_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spec_US_new.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard_nowcast_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard_nowcast_new.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-10-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-12-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-12-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-12-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-12-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-12-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2016-12-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-01-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-01-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-01-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-01-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-02-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-02-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-02-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-02-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-03-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-03-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-03-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-03-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-03-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-04-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-04-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-04-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-04-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-04-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-05-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-05-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-05-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-05-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-06-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-06-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-06-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-06-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-06-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-07-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-07-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-07-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-07-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-07-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-08-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-08-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-08-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-08-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-09-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-09-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-09-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-09-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-09-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-10-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-10-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-10-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-10-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-10-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-11-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-11-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-11-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-11-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-12-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-12-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-12-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-12-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2017-12-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-01-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-01-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-01-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-01-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-02-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-02-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-02-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-02-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-03-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-03-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-03-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-03-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-03-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-04-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-04-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-04-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-04-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-04-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-05-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-05-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-05-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-05-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-06-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-06-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-06-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-06-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-06-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-07-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-07-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-07-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-07-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-07-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-08-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-08-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-08-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-08-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-08-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-09-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-09-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-09-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-09-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-10-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-10-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-10-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-10-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-11-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-11-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-11-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-11-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-11-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-12-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-12-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-12-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2018-12-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-01-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-01-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-01-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-01-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-02-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-02-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-02-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-02-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-03-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-03-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-03-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-03-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-03-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-04-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-04-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-04-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-04-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-05-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-05-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-05-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-05-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-05-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-06-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-06-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-06-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-06-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-07-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-07-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-07-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-07-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-08-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-08-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-08-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-08-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-08-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-09-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-09-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-09-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-09-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-10-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-10-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-10-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-10-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-11-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-11-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-11-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-11-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-11-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-12-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-12-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-12-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2019-12-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-01-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-01-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-01-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-01-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-02-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-02-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-02-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-02-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-03-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-03-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-03-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-03-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-04-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-04-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-04-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-04-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-05-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-05-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-05-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-05-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-05-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-06-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-06-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-06-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-06-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-07-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-07-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-07-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-07-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-07-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-08-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-08-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-08-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-08-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-09-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-09-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-09-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-09-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-10-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-10-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-10-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-10-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-10-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-11-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-11-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-11-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-11-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-12-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-12-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-12-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2020-12-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-01-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-01-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-01-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-01-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-01-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-02-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-02-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-02-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-02-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-03-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-03-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-03-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-03-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-04-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-04-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-04-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-04-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-04-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-05-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-05-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-05-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-05-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-06-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-06-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-06-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-06-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-07-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-07-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-07-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-07-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-07-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-08-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-08-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-08-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-08-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-09-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-09-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-09-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-09-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-10-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-10-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-10-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-10-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-11-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-11-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-11-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-11-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-12-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-12-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-12-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-12-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2021-12-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-01-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-01-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-01-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-01-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-02-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-02-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-02-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-02-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-03-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-03-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-03-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-03-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-04-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-04-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-04-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-04-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-05-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-05-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-05-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-05-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-06-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-06-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-06-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-06-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-07-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-07-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-07-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-07-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-08-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-08-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-08-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-08-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-09-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-09-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-09-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-09-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-09-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-10-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-10-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-10-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-10-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-10-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-11-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-11-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-11-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-11-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-12-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-12-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-12-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-12-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2022-12-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-01-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-01-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-01-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-01-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-02-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-02-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-02-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-02-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-03-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-03-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-03-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-03-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-03-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-04-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-04-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-04-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-04-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-04-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-05-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-05-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-05-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-05-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-06-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-06-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-06-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-06-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-06-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-07-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-07-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-07-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-07-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-07-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-08-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-08-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-08-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-08-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-09-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-09-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-09-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-09-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-09-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-10-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-10-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-10-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-10-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-10-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-11-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-11-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-11-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-11-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-12-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-12-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-12-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-12-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2023-12-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-01-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-01-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-01-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-01-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-02-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-02-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-02-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-02-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-03-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-03-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-03-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-03-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-03-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-04-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-04-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-04-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-04-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-05-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-05-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-05-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-05-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-05-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-06-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-06-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-06-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-06-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-07-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-07-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-07-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-07-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-08-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-08-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-08-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-08-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-08-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-09-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-09-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-09-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-09-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-10-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-10-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-10-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-10-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-11-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-11-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-11-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-11-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-11-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-12-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-12-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-12-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2024-12-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-01-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-01-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-01-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-01-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-02-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-02-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-02-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-02-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-03-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-03-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-03-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-03-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-04-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-04-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-04-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-04-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-05-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-05-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-05-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-05-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-05-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-06-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-06-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-06-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-06-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-07-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-07-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-07-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_fiscal/2025-07-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-10-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-12-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-12-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-12-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-12-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-12-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2016-12-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-01-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-01-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-01-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-01-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-02-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-02-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-02-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-02-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-03-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-03-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-03-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-03-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-03-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-04-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-04-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-04-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-04-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-04-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-05-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-05-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-05-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-05-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-06-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-06-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-06-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-06-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-06-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-07-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-07-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-07-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-07-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-07-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-08-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-08-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-08-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-08-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-09-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-09-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-09-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-09-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-09-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-10-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-10-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-10-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-10-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-10-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-11-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-11-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-11-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-11-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-12-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-12-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-12-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-12-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2017-12-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-01-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-01-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-01-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-01-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-02-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-02-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-02-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-02-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-03-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-03-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-03-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-03-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-03-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-04-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-04-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-04-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-04-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-04-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-05-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-05-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-05-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-05-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-06-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-06-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-06-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-06-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-06-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-07-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-07-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-07-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-07-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-07-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-08-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-08-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-08-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-08-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-08-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-09-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-09-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-09-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-09-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-10-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-10-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-10-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-10-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-11-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-11-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-11-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-11-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-11-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-12-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-12-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-12-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2018-12-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-01-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-01-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-01-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-01-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-02-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-02-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-02-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-02-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-03-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-03-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-03-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-03-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-03-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-04-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-04-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-04-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-04-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-05-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-05-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-05-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-05-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-05-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-06-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-06-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-06-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-06-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-07-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-07-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-07-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-07-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-08-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-08-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-08-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-08-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-08-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-09-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-09-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-09-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-09-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-10-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-10-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-10-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-10-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-11-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-11-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-11-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-11-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-11-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-12-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-12-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-12-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2019-12-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-01-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-01-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-01-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-01-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-02-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-02-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-02-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-02-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-03-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-03-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-03-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-03-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-04-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-04-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-04-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-04-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-05-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-05-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-05-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-05-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-05-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-06-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-06-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-06-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-06-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-07-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-07-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-07-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-07-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-07-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-08-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-08-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-08-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-08-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-09-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-09-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-09-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-09-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-10-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-10-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-10-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-10-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-10-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-11-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-11-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-11-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-11-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-12-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-12-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-12-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2020-12-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-01-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-01-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-01-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-01-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-01-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-01-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-02-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-02-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-02-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-02-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-03-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-03-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-03-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-03-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-04-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-04-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-04-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-04-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-04-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-05-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-05-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-05-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-05-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-06-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-06-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-06-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-06-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-07-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-07-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-07-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-07-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-07-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-08-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-08-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-08-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-08-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-09-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-09-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-09-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-09-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-10-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-10-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-10-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-10-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-11-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-11-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-11-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-11-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-12-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-12-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-12-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-12-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2021-12-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-01-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-01-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-01-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-01-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-02-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-02-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-02-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-02-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-03-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-03-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-03-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-03-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-04-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-04-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-04-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-04-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-05-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-05-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-05-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-05-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-06-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-06-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-06-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-06-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-07-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-07-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-07-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-07-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-08-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-08-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-08-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-08-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-09-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-09-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-09-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-09-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-09-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-10-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-10-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-10-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-10-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-10-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-11-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-11-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-11-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-11-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-12-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-12-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-12-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-12-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2022-12-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-01-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-01-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-01-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-01-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-02-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-02-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-02-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-02-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-03-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-03-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-03-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-03-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-03-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-04-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-04-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-04-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-04-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-04-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-05-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-05-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-05-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-05-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-06-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-06-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-06-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-06-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-06-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-07-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-07-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-07-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-07-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-07-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-08-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-08-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-08-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-08-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-09-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-09-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-09-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-09-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-09-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-10-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-10-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-10-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-10-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-10-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-11-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-11-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-11-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-11-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-12-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-12-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-12-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-12-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2023-12-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-01-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-01-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-01-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-01-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-02-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-02-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-02-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-02-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-03-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-03-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-03-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-03-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-03-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-04-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-04-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-04-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-04-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-05-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-05-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-05-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-05-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-05-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-06-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-06-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-06-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-06-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-07-05.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-07-12.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-07-19.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-07-26.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-08-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-08-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-08-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-08-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-08-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-09-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-09-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-09-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-09-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-10-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-10-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-10-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-10-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-10-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-11-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-11-08.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-11-15.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-11-22.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-11-29.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-12-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-12-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-12-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2024-12-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-01-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-01-03.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-01-10.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-01-17.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-01-24.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-01-31.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-02-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-02-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-02-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-02-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-03-07.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-03-14.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-03-21.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-03-28.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-04-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-04-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-04-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-04-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-04-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-05-02.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-05-09.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-05-16.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-05-23.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-05-30.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-06-06.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-06-13.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-06-20.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-06-27.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-07-01.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-07-04.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-07-11.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-07-18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/US_new/2025-07-25.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/yyyy-mm-dd.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2017_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2017_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2017_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2017_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2018_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2018_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2018_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2018_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2019_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2019_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2019_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2019_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2020_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2020_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2020_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2020_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2021_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2021_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2021_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2021_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2022_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2022_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2022_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2022_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2023_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2023_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2023_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2023_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2024_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2024_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2024_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2024_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2025_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q/metrics_2025_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2017_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2017_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2017_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2017_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2018_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2018_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2018_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2018_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2019_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2019_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2019_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2019_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2020_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2020_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2020_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2020_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2021_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2021_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2021_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2021_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2022_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2022_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2022_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2022_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2023_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2023_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2023_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2023_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2024_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2024_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2024_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2024_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2025_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metrics_Q_fiscal/metrics_2025_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2017_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2017_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2017_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2017_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2018_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2018_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2018_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2018_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2019_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2019_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2019_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2019_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2020_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2020_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2020_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2020_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2021_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2021_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2021_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2021_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2022_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2022_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2022_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2022_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2023_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2023_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2023_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2023_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2024_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2024_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2024_q3.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2024_q4.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2025_q1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q/news_2025_q2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2017_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2017_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2017_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2017_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2018_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2018_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2018_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2018_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2019_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2019_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2019_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2019_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2020_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2020_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2020_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2020_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2021_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2021_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2021_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2021_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2022_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2022_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2022_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2022_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2023_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2023_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2023_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2023_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2024_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2024_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2024_q3_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2024_q4_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2025_q1_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/news_Q_fiscal/news_2025_q2_fiscal.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2017.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2017_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2018.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2018_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2019.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2019_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2020.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2020_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2021.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2021_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2022.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2022_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2023.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2023_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2024.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2024_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2025.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_2025_fiscal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2017_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2017_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2017_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2017_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2018_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2018_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2018_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2018_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2019_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2019_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2019_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2019_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2020_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2020_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2020_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2020_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2021_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2021_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2021_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2021_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2022_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2022_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2022_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2022_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2023_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2023_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2023_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2023_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2024_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2024_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2024_q3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2024_q4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2025_q1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q/nowcast_2025_q2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2017_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2017_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2017_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2017_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2018_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2018_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2018_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2018_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2019_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2019_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2019_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2019_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2020_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2020_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2020_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2020_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2021_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2021_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2021_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2021_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2022_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2022_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2022_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2022_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2023_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2023_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2023_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2023_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2024_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2024_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2024_q3_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2024_q4_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2025_q1_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nowcast_Q_fiscal/nowcast_2025_q2_fiscal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/variables_creation.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Matteo Castaldo" />
+        <option value="mattecasta17" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "mattecasta17"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/mattecasta17/GDPnowcast-fiscal.git",
+    "accountId": "7145c3b7-fae0-44d6-859e-b4b924b52378"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="31NEvAdGRWo0oZ8dHM7niiiP8SP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.CompoundDoc.executor": "Run",
+    "Python.DFM_construction.executor": "Run",
+    "Python.Statistics.executor": "Run",
+    "Python.Test.executor": "Run",
+    "Python.build_vintage.executor": "Run",
+    "Python.build_vintages.executor": "Run",
+    "Python.building dfm parameters.executor": "Run",
+    "Python.change.executor": "Run",
+    "Python.ciao.executor": "Run",
+    "Python.comparison.executor": "Run",
+    "Python.convert.executor": "Run",
+    "Python.correlaz.executor": "Run",
+    "Python.dashboard_nowcast.executor": "Run",
+    "Python.dashboard_nowcast_fiscal.executor": "Run",
+    "Python.dati.executor": "Run",
+    "Python.decompose_all_vintages.executor": "Run",
+    "Python.dfm.executor": "Run",
+    "Python.example_DFM.executor": "Debug",
+    "Python.example_DFM_fiscal.executor": "Run",
+    "Python.example_Nowcast.executor": "Run",
+    "Python.example_Nowcast_fiscal.executor": "Run",
+    "Python.extract_common_residual.executor": "Debug",
+    "Python.fiscal_creation.executor": "Run",
+    "Python.gdp_decomposition.executor": "Run",
+    "Python.grafico.executor": "Run",
+    "Python.grafico2.executor": "Run",
+    "Python.grafico3.executor": "Run",
+    "Python.load_data.executor": "Run",
+    "Python.modify.executor": "Run",
+    "Python.new_dfm.executor": "Run",
+    "Python.nowcast2025right.executor": "Run",
+    "Python.nowcast_2017.executor": "Run",
+    "Python.nowcast_2017_2.executor": "Run",
+    "Python.nowcast_2017_fiscal.executor": "Run",
+    "Python.nowcast_2018.executor": "Run",
+    "Python.nowcast_2018_2.executor": "Run",
+    "Python.nowcast_2018_fiscal.executor": "Run",
+    "Python.nowcast_2019.executor": "Run",
+    "Python.nowcast_2019_2.executor": "Run",
+    "Python.nowcast_2019_fiscal.executor": "Run",
+    "Python.nowcast_2020.executor": "Run",
+    "Python.nowcast_2020_2.executor": "Run",
+    "Python.nowcast_2020_fiscal.executor": "Run",
+    "Python.nowcast_2021.executor": "Run",
+    "Python.nowcast_2021_2.executor": "Run",
+    "Python.nowcast_2021_fiscal.executor": "Run",
+    "Python.nowcast_2022.executor": "Run",
+    "Python.nowcast_2022_2.executor": "Run",
+    "Python.nowcast_2022_fiscal.executor": "Run",
+    "Python.nowcast_2023.executor": "Run",
+    "Python.nowcast_2023_2.executor": "Run",
+    "Python.nowcast_2023_fiscal.executor": "Run",
+    "Python.nowcast_2024.executor": "Run",
+    "Python.nowcast_2024_2.executor": "Run",
+    "Python.nowcast_2024_fiscal.executor": "Run",
+    "Python.nowcast_2025.executor": "Run",
+    "Python.nowcast_2025_2.executor": "Run",
+    "Python.nowcast_2025_fiscal.executor": "Run",
+    "Python.nowcast_temp.executor": "Run",
+    "Python.regressione.executor": "Run",
+    "Python.remove.executor": "Run",
+    "Python.shifting.executor": "Run",
+    "Python.summarize.executor": "Run",
+    "Python.test variabili.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.try.executor": "Run",
+    "Python.update_Nowcast.executor": "Run",
+    "Python.update_Nowcast2.executor": "Run",
+    "Python.variables_creation.executor": "Run",
+    "Python.xls_change.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Matteo17/OneDrive/Desktop/Nova SBE/Tesi/Nowcasting",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Matteo17\OneDrive\Desktop\Nova SBE\Tesi\Nowcasting\old" />
+      <recent name="C:\Users\Matteo17\OneDrive\Desktop\Nova SBE\Tesi\Nowcasting\DFM_quarter_param_fiscal" />
+      <recent name="C:\Users\Matteo17\OneDrive\Desktop\Nova SBE\Tesi\Nowcasting" />
+      <recent name="C:\Users\Matteo17\OneDrive\Desktop\Nova SBE\Tesi\Nowcasting\data\US_new" />
+      <recent name="C:\Users\Matteo17\OneDrive\Desktop\Nova SBE\Tesi\Nowcasting\" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="example_DFM" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nowcasting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example_DFM.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="example_Nowcast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nowcasting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example_Nowcast.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="shifting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nowcasting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Functions/shifting.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="summarize" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nowcasting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Functions/summarize.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="update_Nowcast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nowcasting" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Functions/update_Nowcast.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.example_DFM" />
+        <item itemvalue="Python.example_Nowcast" />
+        <item itemvalue="Python.shifting" />
+        <item itemvalue="Python.update_Nowcast" />
+        <item itemvalue="Python.summarize" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-1bde30d8e611-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.130" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db622f0c-c39b-4040-9ae7-1c5a3ecc97c4" name="Changes" comment="" />
+      <created>1755356357810</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755356357810</updated>
+      <workItem from="1755356359059" duration="1171000" />
+      <workItem from="1755357550089" duration="913000" />
+      <workItem from="1755359348888" duration="481000" />
+      <workItem from="1755510337531" duration="4773000" />
+      <workItem from="1755516364152" duration="277000" />
+      <workItem from="1755526685921" duration="1885000" />
+      <workItem from="1756113110477" duration="25661000" />
+      <workItem from="1756826460712" duration="17000" />
+    </task>
+    <task id="LOCAL-00001" summary="Nowcast">
+      <option name="closed" value="true" />
+      <created>1764781241355</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764781241355</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Nowcast" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nowcast" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Nowcasting$test.coverage" NAME="test Coverage Results" MODIFIED="1756205981016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/US" />
+    <SUITE FILE_PATH="coverage/Nowcasting$build_vintages.coverage" NAME="build_vintages Coverage Results" MODIFIED="1756320274977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nowcasting$example_DFM.coverage" NAME="example_DFM Coverage Results" MODIFIED="1756320265491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nowcasting$update_Nowcast.coverage" NAME="update_Nowcast Coverage Results" MODIFIED="1756320270180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Functions" />
+    <SUITE FILE_PATH="coverage/Nowcasting$summarize.coverage" NAME="summarize Coverage Results" MODIFIED="1756313260571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Functions" />
+    <SUITE FILE_PATH="coverage/Nowcasting$xls_change.coverage" NAME="xls_change Coverage Results" MODIFIED="1756309597013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
+    <SUITE FILE_PATH="coverage/Nowcasting$example_Nowcast.coverage" NAME="example_Nowcast Coverage Results" MODIFIED="1756204252640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
