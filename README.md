@@ -1,12 +1,11 @@
 # Overview
 
-This repository contains a Python translation of the original Dynamic Factor Model (DFM) and GDP Nowcast framework developed by the Federal Reserve Bank of New York (FRBNY).
-The original MATLAB code belongs to Eric Qian and Brandyn Bok and is available here:
+This repository is built on the original Dynamic Factor Model (DFM) and GDP Nowcast framework developed by the Federal Reserve Bank of New York (FRBNY). The foundational MATLAB implementation was created by Eric Qian and Brandyn Bok, and forms the basis of the forecasting architecture used in this work.
 
 Original NY Fed MATLAB code:
 https://github.com/FRBNY-TimeSeriesAnalysis/Nowcasting
 
-The Python translation and all adaptations belong to MK, available here:
+The present Python codebase is developed on top of the Python translation by MK, which served as the baseline reference for porting the FRBNY model into Python and for extending it with additional functionality—most notably, the integration of fiscal variables into the DFM.
 
 Python translation by MK:
 https://github.com/MajesticKhan/Nowcasting-Python
@@ -33,6 +32,11 @@ Files without _fiscal correspond to the baseline model without fiscal data (most
 - nowcast_Q/: Saves the nowcast output for each quarter.
 
 
-## NOTICE:
+## Disclaimer
 
-# GDPnowcast-fiscal
+This repository includes code that was partially developed, debugged, or refined with the assistance of AI-powered tools. While every effort has been made to ensure correctness, transparency, and reproducibility, the model and its extensions may still contain inaccuracies or aspects that can be improved.
+
+Contributions, suggestions, or corrections are warmly welcomed.
+If you notice any issue or have ideas for improvement, please feel free to contact me or open an issue on GitHub.
+
+Matteo Castaldo
