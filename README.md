@@ -31,6 +31,9 @@ Files without _fiscal correspond to the baseline model without fiscal data (most
 - news_Q/: Includes the news decomposition showing each variable’s contribution to weekly nowcast revisions.
 - nowcast_Q/: Saves the nowcast output for each quarter.
 
+GDP Nowcast Dashboard: https://gdpnowcast-fiscal-hfktqcuvctridprnu66rh3.streamlit.app/
+GDP Nowcast Dashboard w/ fiscal variables: https://gdpnowcast-fiscal-4hjcd5clicthp5wh6rngws.streamlit.app/
+
 
 ## Disclaimer
 
