@@ -1197,7 +1197,6 @@ else:
         st.subheader("Top 10 Variables by Absolute Impact – Comparison")
         fig, ax = plt.subplots(figsize=(16, 6))
         sns.barplot(data=df_compare, x="Variable", y="Impact", hue="Group", ax=ax, width=0.4)
-        ax.set_xlabel("Variable")
         ax.set_ylabel("Average Absolute Impact")
         ax.set_title("Top 10 Variables by Absolute Impact – Excluding 2020 vs All Years")
         ax.tick_params(axis="x", rotation=45)
