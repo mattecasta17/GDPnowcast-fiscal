@@ -18,6 +18,10 @@ The objective is to evaluate whether the introduction of fiscal variables can im
 Files ending with _fiscal correspond to the version of the model that includes fiscal variables.
 Files without _fiscal correspond to the baseline model without fiscal data (most, but not all, include the suffix _new).
 
+GDP Nowcast Dashboard: https://gdpnowcast-fiscal-hfktqcuvctridprnu66rh3.streamlit.app/
+
+GDP Nowcast Dashboard w/ fiscal variables: https://gdpnowcast-fiscal-4hjcd5clicthp5wh6rngws.streamlit.app/
+
 ## Folders and Files
 - nowcast_yyyy.py: Generates the GDP nowcast for each year (baseline and fiscal versions).
 - variables_creation.py: Creates and adds new variables to the dataset for testing alternative specifications.
@@ -30,6 +34,8 @@ Files without _fiscal correspond to the baseline model without fiscal data (most
 - metrics_Q/: Contains quarterly accuracy metrics (including RMSE, MAE, Bias).
 - news_Q/: Includes the news decomposition showing each variable’s contribution to weekly nowcast revisions.
 - nowcast_Q/: Saves the nowcast output for each quarter.
+
+
 
 
 ## Disclaimer
