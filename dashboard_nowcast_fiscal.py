@@ -1410,6 +1410,9 @@ else:
         })
 
     results_df = pd.DataFrame(results)
+    cols = ["Period", "Observations"] + [c for c in results_df.columns if c not in ["Period", "Observations"]]
+    results_df = results_df[cols]
+
     st.subheader("Diebold–Mariano Test Results Table")
     st.dataframe(results_df, use_container_width=True)
 
