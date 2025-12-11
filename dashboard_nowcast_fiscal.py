@@ -1393,12 +1393,14 @@ else:
     results = []
 
     for label, df in periods.items():
+        n_obs = len(df)
         stat_rmse, p_rmse = dm_test(df["d_rmse"])
         stat_mae, p_mae = dm_test(df["d_mae"])
         stat_bias, p_bias = dm_test(df["d_bias"])
 
         results.append({
             "Period": label,
+            "Observations": n_obs,
             "DM_RMSE_stat": stat_rmse,
             "DM_RMSE_p": p_rmse,
             "DM_MAE_stat": stat_mae,
