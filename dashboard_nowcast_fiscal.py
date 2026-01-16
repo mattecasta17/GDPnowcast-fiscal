@@ -1455,7 +1455,7 @@ else:
     ax.set_xticks(x)
     ax.set_xticklabels(periods, rotation=25)
     ax.set_ylabel("DM Statistic")
-    ax.set_title("Diebold–Mariano Test – RMSE vs MAE vs Bias (Fiscal – Baseline)")
+    ax.set_title("Diebold–Mariano Test – RMSE vs MAE vs Bias (Baseline – Fiscal)")
     ax.legend()
 
     st.pyplot(fig)
