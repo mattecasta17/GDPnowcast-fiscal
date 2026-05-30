@@ -2,9 +2,26 @@
 
 **Last touched:** 2026-05-11 (Phase 1 plan ready, execution paused for time)
 **Branch:** `refactor/v2` (off main `d50a2bc`, **not yet pushed**)
-**Status:** ⏸️ **Paused — ready to execute Phase 1.** Design approved + revised after verification, Phase 1 plan written + reviewed + fixed. Next session: pick Subagent-Driven vs Inline execution, then run the plan. Nothing in this repo has been changed by Phase 1 yet — only `docs/` files have been added/edited.
+**Status:** ⏸️ **Paused — plan revisions recommended before executing.** Design approved + revised after verification, Phase 1 plan written + reviewed + fixed. On 2026-05-30 a 64-agent red-team of the go-forward plan ran (see below) and surfaced **5 critical blockers** that should be folded into the design doc / Phase 1-3 plans before executing. Next session: decide which backlog items to action, revise the plan, then pick Subagent-Driven vs Inline execution. Nothing in this repo has been changed by Phase 1 yet — only `docs/` files.
 
-**Working-tree state at pause:** clean tree on `refactor/v2`. Uncommitted v2 work so far (audit verification + design-doc revisions + Phase 1 plan) is committed inside `docs/`. Branch has not been pushed to GitHub.
+**Working-tree state at pause:** docs committed on `refactor/v2` (commits `e81ba45`, plus the backlog commit). Untracked: `.idea/`, `Functions/__pycache__/`, `.claude/` (left out deliberately — no `.gitignore` yet). Branch has not been pushed to GitHub.
+
+---
+
+## 🔴 NEW (2026-05-30): red-team backlog — READ BEFORE EXECUTING
+
+A 64-agent workflow (`v2-improvement-redteam`) red-teamed the **go-forward** plan (not v1), reading all prior audit/verification reports as input. Output: **`docs/audit/v2-improvement-backlog.md`** (28 prioritized items, 42 findings raised / 37 survived / 5 refuted). **Read it before executing Phase 1.**
+
+**5 critical blockers (would stop the MVP backtest from running at all):**
+1. **`fridays_between()` drops the 33 quarter-start vintages** the DFM re-estimates params on → Phase 4 can't reproduce `Results.pdf`. Fix the vintage list + change Phase 2 exit criterion to a superset assertion (≥485 filenames, all present). *(Phase 2/4)*
+2. **Phase 2 is mis-scoped:** there is **no v1 fetcher for 32 of 35 series** (`variables_creation.py` only patches the 3 fiscal ones). Re-scope as *building* a new ALFRED fetcher, re-budget 4-6 d, add a pre-Phase-2 go/no-go ALFRED-coverage spike. *(Phase 2)*
+3. **Golden baseline must be frozen from UNMODIFIED v1 before de-MATLAB.** Split Phase 3 → 3a (freeze, commit `golden/` + SHA) / 3b (refactor), hard gate between. *(Phase 3)*
+4. **Headline "non-redundant but not significant" is an underpowered failure-to-reject** (T≈10-30) with zero power/MDE analysis. Make sample size THE framing device (MDE / equivalence / TOST). *(Phase 4/6/8)*
+5. **Phase 7a "COVID factor + outlier vector" is severed from the SV/Bayesian machinery that identifies it** (the plan excludes both). Re-spec as an identifiable outlier/dummy device with identification-aware exit criteria. *(Phase 7a, partial)*
+
+**Nearly-free high-leverage sequencing fixes:** move the backtest runner Phase 5 → Phase 3 so Phase 4's re-run is executable (rank 4); don't deploy the public Streamlit MVP with no GDPNow/ARMA benchmark — pull benchmarks forward or unlist (rank 7); commit recovered `update_Nowcast.py` in Phase 1 so the repo runs on clone (rank 24).
+
+**Notable refutations (verification protected the plan):** the "DM loss-differential sign mixup" and "must add HAC" findings were both **refuted** — verifiers checked Appendix C + code and confirmed the plan's quarterly-HLN approach is correct and HAC is a ~no-op at h=1. Don't re-open those.
 
 ---
 
