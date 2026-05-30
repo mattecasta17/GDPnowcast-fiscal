@@ -57,14 +57,23 @@ A complete revision (v2) of the master thesis project `GDPnowcast-fiscal`. Goal:
   - Reproducibility: CONFIRMED + `update_Nowcast.py` **recoverable from git `729b40b`**
 - [x] **Design doc revised + reviewed (2026-05-11)** — reviewer agent found 4 Critical + 3 Important contradictions left over from the pre-verification draft; all fixed in `docs/plans/2026-05-11-v2-design.md`. Review report at `docs/audit/v1-verified/06_design_doc_review.md`.
 - [x] **Phase 1 implementation plan written + reviewed + fixed (2026-05-11)** — at `docs/plans/2026-05-11-phase1-implementation.md`. 13 tasks. Reviewer agent (`docs/audit/v1-verified/07_phase1_plan_review.md`) found 2 Critical bugs (indentation in the FRED-key patch; incomplete grep filter in exit criterion E) and 1 wording issue — all three fixed.
+- [x] **Go-forward plan red-team (2026-05-30)** — 64-agent workflow `v2-improvement-redteam`. 42 findings raised / 37 survived / 5 refuted → **`docs/audit/v2-improvement-backlog.md`** (28 prioritized items). Found 5 critical blockers the v1 audit missed (see the 🔴 section near the top of this file). Backlog + RESUME committed in `87ae1ef`.
 
 ---
 
 ## What's next (in order)
 
-### Immediate (next session):
+### Immediate (next session) — ⚠️ CHANGED 2026-05-30:
 
-**Execute Phase 1** — `docs/plans/2026-05-11-phase1-implementation.md`. 13 tasks, ~10-15 commits, TDD on the smoke test. Tooling: `uv`, `ruff`, `mypy`, `pytest`, `pre-commit`, `just`, GitHub Actions.
+**Do NOT jump straight to executing Phase 1.** The red-team backlog surfaced 5 critical blockers (see 🔴 section above) that change Phase 2-3 scope/budget. Next action is to **triage the backlog and revise the plan first**:
+
+1. **Triage `docs/audit/v2-improvement-backlog.md`** with Matteo — voce per voce for the confirmed/high items: accept / defer / drop. The 5 critical + the 3 "nearly-free sequencing" items (ranks 4, 7, 24) are the priority.
+2. **Revise the docs** to fold accepted items in: `docs/plans/2026-05-11-v2-design.md` (re-scope Phase 2 fetcher, split Phase 3 → 3a/3b, move runner into Phase 3, Phase 7a COVID re-spec, power/MDE narrative) and `docs/plans/2026-05-11-phase1-implementation.md` (e.g. rank 24: commit recovered `update_Nowcast.py` in Phase 1; README/CI items). Re-budget the roadmap ETAs.
+3. **THEN execute Phase 1** on the revised plan.
+
+Open question for Matteo at resume: does he want me to revise the plan docs directly, or triage item-by-item together first? (He leaned step-by-step; I recommended revising the confirmed criticals and triaging the partials #5/#7 together.)
+
+**Then — Execute Phase 1** — `docs/plans/2026-05-11-phase1-implementation.md` (as revised). 13 tasks, ~10-15 commits, TDD on the smoke test. Tooling: `uv`, `ruff`, `mypy`, `pytest`, `pre-commit`, `just`, GitHub Actions.
 
 Two execution paths to choose from:
 - **Subagent-Driven (recommended)** — dispatch one subagent per task with review between. Use `superpowers:subagent-driven-development`. Faster iteration, isolated context per task.
@@ -109,9 +118,11 @@ claude
 
 Then say something like:
 
-> "I'm resuming the GDPnowcast-fiscal v2 refactor. Read RESUME.md to see where we paused, then read `docs/plans/2026-05-11-phase1-implementation.md` and execute Phase 1 via `superpowers:subagent-driven-development` (one subagent per task, review between). I'll do Task 3 Step 1 (FRED-key rotation in the browser) manually when you reach it."
+> "I'm resuming the GDPnowcast-fiscal v2 refactor. Read RESUME.md (especially the 🔴 red-team section at the top) and `docs/audit/v2-improvement-backlog.md`. Before executing Phase 1 we need to triage the backlog and revise the design doc + Phase 1 plan to fold in the 5 critical blockers. Let's start by triaging the confirmed/high items together, then revise the plan, then execute."
 
-Claude will pick up from there. Do NOT skip the design-doc and verification reading — they explain why specific tasks exist.
+Claude will pick up from there. Do NOT skip the design-doc, verification, and red-team-backlog reading — they explain why specific tasks exist and what must change before execution.
+
+**Current branch tip:** `87ae1ef` on `refactor/v2` (not pushed). Working tree clean except deliberately-untracked `.idea/`, `Functions/__pycache__/`, `.claude/`.
 
 ---
 
