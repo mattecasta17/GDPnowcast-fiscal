@@ -112,7 +112,7 @@ Then say something like:
 
 Claude will pick up from there. Do NOT skip the design-doc, verification, and red-team-backlog reading — they explain why specific tasks exist and what must change before execution.
 
-**Current branch tip:** `87ae1ef` on `refactor/v2` (not pushed). Working tree clean except deliberately-untracked `.idea/`, `Functions/__pycache__/`, `.claude/`.
+**Current branch tip:** Phase 1 foundation committed + pushed on `refactor/v2` (14 commits `ad9a129`…`0145fd7`; this line may trail by one commit). `main` untouched at `d50a2bc` and never merged into. Working tree clean except deliberately-untracked `.claude/` (`.idea/`, `__pycache__/`, `data/`, `outputs/` now gitignored).
 
 ---
 
