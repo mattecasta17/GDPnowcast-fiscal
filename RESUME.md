@@ -1,10 +1,12 @@
 # RESUME — where we left off
 
-**Last touched:** 2026-05-11 (Phase 1 plan ready, execution paused for time)
-**Branch:** `refactor/v2` (off main `d50a2bc`, **not yet pushed**)
-**Status:** ⏸️ **Paused — plan revisions recommended before executing.** Design approved + revised after verification, Phase 1 plan written + reviewed + fixed. On 2026-05-30 a 64-agent red-team of the go-forward plan ran (see below) and surfaced **5 critical blockers** that should be folded into the design doc / Phase 1-3 plans before executing. Next session: decide which backlog items to action, revise the plan, then pick Subagent-Driven vs Inline execution. Nothing in this repo has been changed by Phase 1 yet — only `docs/` files.
+**Last touched:** 2026-05-31 (backlog triaged → docs revised → **Phase 1 executed + pushed**)
+**Branch:** `refactor/v2` (off main `d50a2bc`). ⛔ **NEVER merge into `main`** — v2 lives permanently on this branch (Matteo's hard rule).
+**Status:** ✅ **Phase 1 (Foundation) complete and pushed.** On 2026-05-31 the red-team backlog was triaged (5 critical + 3 sequencing accepted), folded into the design doc + Phase 1 plan, then Phase 1 was executed inline: src-layout skeleton, `uv`/`ruff`/`mypy`/`pytest`/`pre-commit`/`just`/GitHub-Actions tooling, `.gitignore`, data untracked (1300→54 tracked files, 1.65 MB), FRED-key fallback patched + `.env.example`, README (confidence-framed + CI badge), `update_Nowcast.py` recovered from git. `just ci` green (lint + mypy + 2 smoke tests). Three environment deviations applied (justfile `windows-shell`, CI uv `0.11.x`, pyproject `[tool.uv] link-mode = "copy"` for OneDrive) — see the Phase 1 plan's "Executed 2026-05-31" note.
 
-**Working-tree state at pause:** docs committed on `refactor/v2` (commits `e81ba45`, plus the backlog commit). Untracked: `.idea/`, `Functions/__pycache__/`, `.claude/` (left out deliberately — no `.gitignore` yet). Branch has not been pushed to GitHub.
+**⚠️ Pending human step:** Matteo must still **rotate the FRED API key** in the browser (revoke `64b47ef…`, generate new, store in local `.env`) before any Phase 2 fetch. Source is already patched to `raise` without it.
+
+**⚠️ Environment caveat:** `.venv` (and the repo) sit inside OneDrive, which locks venv files during `uv` reinstalls. Recommend excluding the repo (or at least `.venv`/`data/`) from OneDrive sync before Phase 2's large fetch.
 
 ---
 
@@ -58,32 +60,20 @@ A complete revision (v2) of the master thesis project `GDPnowcast-fiscal`. Goal:
 - [x] **Design doc revised + reviewed (2026-05-11)** — reviewer agent found 4 Critical + 3 Important contradictions left over from the pre-verification draft; all fixed in `docs/plans/2026-05-11-v2-design.md`. Review report at `docs/audit/v1-verified/06_design_doc_review.md`.
 - [x] **Phase 1 implementation plan written + reviewed + fixed (2026-05-11)** — at `docs/plans/2026-05-11-phase1-implementation.md`. 13 tasks. Reviewer agent (`docs/audit/v1-verified/07_phase1_plan_review.md`) found 2 Critical bugs (indentation in the FRED-key patch; incomplete grep filter in exit criterion E) and 1 wording issue — all three fixed.
 - [x] **Go-forward plan red-team (2026-05-30)** — 64-agent workflow `v2-improvement-redteam`. 42 findings raised / 37 survived / 5 refuted → **`docs/audit/v2-improvement-backlog.md`** (28 prioritized items). Found 5 critical blockers the v1 audit missed (see the 🔴 section near the top of this file). Backlog + RESUME committed in `87ae1ef`.
+- [x] **Backlog triaged + docs revised (2026-05-31)** — 5 critical + 3 sequencing accepted; folded into the design doc + Phase 1 plan; roadmap re-budgeted to ~14-21 d for the portfolio MVP.
+- [x] **Phase 1 (Foundation) executed + pushed (2026-05-31)** — src-layout skeleton + `uv`/`ruff`/`mypy`/`pytest`/`pre-commit`/`just`/CI tooling + `.gitignore` + data untracked + FRED-key patch + `.env.example` + README (badge/confidence) + `update_Nowcast.py` recovered. `just ci` green. Plan: `docs/plans/2026-05-11-phase1-implementation.md`.
 
 ---
 
 ## What's next (in order)
 
-### Immediate (next session) — ⚠️ CHANGED 2026-05-30:
+### Immediate — ✅ triage + revision + Phase 1 all DONE 2026-05-31:
 
-**Do NOT jump straight to executing Phase 1.** The red-team backlog surfaced 5 critical blockers (see 🔴 section above) that change Phase 2-3 scope/budget. Next action is to **triage the backlog and revise the plan first**:
+1. ✅ **Backlog triaged** — 5 critical (ranks 1-3, 5, 6) + 3 sequencing (ranks 4, 7, 24) accepted; COVID re-spec'd as an identifiable outlier/dummy (rank 6); benchmarks pulled into a new **Phase 4.5** (rank 7). Deferred to a later pass: ranks 9-12 + medium polish 13-28.
+2. ✅ **Docs revised** — folded into `docs/plans/2026-05-11-v2-design.md` (Phase 2 fetcher re-scoped 4-6 d; Phase 3 → 3a/3b; runner → Phase 3; Phase 7a COVID re-spec; power/MDE narrative; budget 14-21 d) and the Phase 1 plan (rank 24 + execution deviations).
+3. ✅ **Phase 1 executed + pushed** — inline on `refactor/v2`, `just ci` green. Tooling installed this machine: `uv` 0.11.17, `just` 1.51.0.
 
-1. **Triage `docs/audit/v2-improvement-backlog.md`** with Matteo — voce per voce for the confirmed/high items: accept / defer / drop. The 5 critical + the 3 "nearly-free sequencing" items (ranks 4, 7, 24) are the priority.
-2. **Revise the docs** to fold accepted items in: `docs/plans/2026-05-11-v2-design.md` (re-scope Phase 2 fetcher, split Phase 3 → 3a/3b, move runner into Phase 3, Phase 7a COVID re-spec, power/MDE narrative) and `docs/plans/2026-05-11-phase1-implementation.md` (e.g. rank 24: commit recovered `update_Nowcast.py` in Phase 1; README/CI items). Re-budget the roadmap ETAs.
-3. **THEN execute Phase 1** on the revised plan.
-
-Open question for Matteo at resume: does he want me to revise the plan docs directly, or triage item-by-item together first? (He leaned step-by-step; I recommended revising the confirmed criticals and triaging the partials #5/#7 together.)
-
-**Then — Execute Phase 1** — `docs/plans/2026-05-11-phase1-implementation.md` (as revised). 13 tasks, ~10-15 commits, TDD on the smoke test. Tooling: `uv`, `ruff`, `mypy`, `pytest`, `pre-commit`, `just`, GitHub Actions.
-
-Two execution paths to choose from:
-- **Subagent-Driven (recommended)** — dispatch one subagent per task with review between. Use `superpowers:subagent-driven-development`. Faster iteration, isolated context per task.
-- **Inline** — work tasks sequentially in the active session. Use `superpowers:executing-plans`. Natural checkpoints at Task 3 (FRED-key rotation = security-critical, manual browser step) and Task 13 (final exit-criteria verification).
-
-**Prerequisites the engineer must install before starting** (per plan header):
-- Python 3.13 (`python --version` → `3.13.x`)
-- `uv` ≥ 0.5 (`uv --version`)
-- `just` (`just --version`)
-- A signed-in FRED account at fred.stlouisfed.org (the OLD key `64b47ef…` must be revoked in Task 3 Step 1 — manual browser step).
+**▶ NEXT: write + execute the Phase 2 plan** — `docs/plans/<date>-phase2-implementation.md` (use `superpowers:writing-plans`). Phase 2 = **build a NEW 32-series ALFRED fetcher** (NOT a port of `variables_creation.py`, which only patches the 3 fiscal series), gated by a **pre-Phase-2 ALFRED-coverage go/no-go spike** (design doc §8 open-q #2). Key constraints from the backlog: the vintage list must include the 33 quarter-start vintages (not Fridays-only — see `fridays_between` in `variables_creation.py`); Phase 2 exit = **superset assertion** (≥485 filenames, all present). Before the large fetch: get `.venv`/`data/` out of OneDrive sync, and **rotate the FRED key**.
 
 ### Design-doc decisions captured 2026-05-11 (post-verification):
 - Bug #1 (GCEC1 shift) — **dropped from Phase 4.** Replaced by a unit test on `pca(GDPC1)` vs BEA growth.
