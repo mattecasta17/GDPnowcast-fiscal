@@ -1,0 +1,57 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Generated artifacts (v1 + v2)
+data/
+outputs/
+DFM_quarter_param/
+DFM_quarter_param_fiscal/
+metrics_Q/
+metrics_Q_fiscal/
+news_Q/
+news_Q_fiscal/
+nowcast_Q/
+nowcast_Q_fiscal/
+*.pickle
+*.pkl
+*.npz
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
