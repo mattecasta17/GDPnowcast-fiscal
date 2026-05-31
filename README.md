@@ -80,7 +80,7 @@ docs/                  # design docs, audits, plans, paper sources
   └── README_v1.md     # original v1 README (historical)
 ```
 
-v1 files (`DFM_new.py`, `dashboard_nowcast_*.py`, `nowcast_YYYY*.py`, `Functions/`, `Spec_US_*.xlsx`, `variables_creation.py`) stay at the repo root for now and will be migrated/deleted in Phase 3.
+v1 files (`DFM_new.py`, `dashboard_nowcast_*.py`, `nowcast_YYYY*.py`, `Functions/`, `Spec_US_*.xlsx`, `variables_creation.py`) stay at the repo root for now: their logic is migrated into `src/` across Phases 2-3, and the redundant root files are removed in the **Phase 5b cleanup** — only after the unified CLI/dashboard reproduce v1 (git history preserves them regardless).
 
 ---
 
