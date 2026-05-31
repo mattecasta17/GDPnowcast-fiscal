@@ -22,7 +22,12 @@ BACKOFF_START_SEC    = 2.0
 TARGET_SERIES = ["GCEC1", "MTSDS133FMS", "W875RX1"]
 
 def get_fred():
-    api_key = os.environ.get("FRED_API_KEY") or "64b47ef802cce7ec9c8b65d476e9a8ea"
+    api_key = os.environ.get("FRED_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "FRED_API_KEY is not set. Copy .env.example to .env, fill in your "
+            "FRED API key, then re-run."
+        )
     return Fred(api_key=api_key)
 
 def fridays_between(start_d: date, end_d: date):
@@ -113,6 +118,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
