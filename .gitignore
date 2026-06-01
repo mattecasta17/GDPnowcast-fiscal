@@ -36,7 +36,8 @@ dist/
 *.egg
 
 # Generated artifacts (v1 + v2)
-data/
+# Anchored to repo root so it does NOT match the src/gdpnowcast/data/ package.
+/data/
 outputs/
 DFM_quarter_param/
 DFM_quarter_param_fiscal/
