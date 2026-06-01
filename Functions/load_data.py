@@ -74,7 +74,7 @@ def sortData(Z,Mnem,Spec):
     # sortData Sort series by order of model specification
 
     # Drop series not in Spec
-    inSpec = np.in1d(Mnem,Spec.SeriesID)
+    inSpec = np.isin(Mnem,Spec.SeriesID)
     Mnem   = Mnem[inSpec]
     Z      = Z[:,inSpec]
 

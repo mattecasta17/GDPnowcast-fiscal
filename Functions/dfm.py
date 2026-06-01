@@ -401,8 +401,8 @@ def InitCond(x,r,p,blocks,optNaN,Rcon,q,nQ,i_idio):
         res_i = res_i[leadZero:].reshape((-1,1),order="F")
 
         # Linear regression: AR 1 process for monthly series residuals
-        BM[i,i] = np.matmul(np.matmul(np.linalg.inv(np.matmul(res_i[:-1].T,res_i[:-1])),res_i[:-1].T),res_i[1:])
-        SM[i,i] = np.cov(res_i[1:] - (res_i[:-1]*BM[i,i]),rowvar=False)
+        BM[i,i] = np.matmul(np.matmul(np.linalg.inv(np.matmul(res_i[:-1].T,res_i[:-1])),res_i[:-1].T),res_i[1:]).item()
+        SM[i,i] = np.cov(res_i[1:] - (res_i[:-1]*BM[i,i]),rowvar=False).item()
 
     Rdiag       = np.diag(R).copy()
     sig_e       = (Rdiag[nM:]/19)
