@@ -15,7 +15,7 @@ repos:
       - id: trailing-whitespace
         exclude: ^(Functions/|Results\.pdf)
       - id: end-of-file-fixer
-        exclude: ^(Results\.pdf|.*\.xlsx)
+        exclude: ^(Functions/|Results\.pdf|.*\.xlsx)
       - id: check-merge-conflict
       - id: check-added-large-files
         args: [--maxkb=1000]
