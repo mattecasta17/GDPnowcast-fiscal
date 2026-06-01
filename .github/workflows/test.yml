@@ -32,5 +32,5 @@ jobs:
       - name: Type check (mypy)
         run: uv run mypy src/gdpnowcast/ tests/
 
-      - name: Tests (pytest)
-        run: uv run pytest -v --cov=gdpnowcast --cov-fail-under=0
+      - name: Tests (pytest, offline lane — slow/network tests excluded)
+        run: uv run pytest -m "not slow" -v --cov=gdpnowcast --cov-fail-under=0

@@ -1,12 +1,18 @@
 # RESUME — where we left off
 
-**Last touched:** 2026-05-31 (backlog triaged → docs revised → **Phase 1 executed + pushed**)
+**Last touched:** 2026-06-01 (**Phase 2 data layer built, tested, committed** — only the gated full fetch (Task 9) remains)
 **Branch:** `refactor/v2` (off main `d50a2bc`). ⛔ **NEVER merge into `main`** — v2 lives permanently on this branch (Matteo's hard rule).
 **Status:** ✅ **Phase 1 (Foundation) complete and pushed.** On 2026-05-31 the red-team backlog was triaged (5 critical + 3 sequencing accepted), folded into the design doc + Phase 1 plan, then Phase 1 was executed inline: src-layout skeleton, `uv`/`ruff`/`mypy`/`pytest`/`pre-commit`/`just`/GitHub-Actions tooling, `.gitignore`, data untracked (1300→54 tracked files, 1.65 MB), FRED-key fallback patched + `.env.example`, README (confidence-framed + CI badge), `update_Nowcast.py` recovered from git. `just ci` green (lint + mypy + 2 smoke tests). Three environment deviations applied (justfile `windows-shell`, CI uv `0.11.x`, pyproject `[tool.uv] link-mode = "copy"` for OneDrive) — see the Phase 1 plan's "Executed 2026-05-31" note.
 
-**⚠️ Pending human step:** Matteo must still **rotate the FRED API key** in the browser (revoke `64b47ef…`, generate new, store in local `.env`) before any Phase 2 fetch. Source is already patched to `raise` without it.
+**✅ FRED key rotated (2026-06-01).** New key generated on the existing FRED account, stored in local `.env` only, and confirmed working (`get_series_info("GDPC1")` → OK). Gotcha for next time: a stale `FRED_API_KEY` Windows **User** env var (`3b80…`) shadowed `.env` because `load_dotenv` doesn't override existing env vars — fixed by removing the User var + using `load_dotenv(override=True)` in data-layer loaders. See napkin Tooling #3.
+
+**✅ Pre-Phase-2 ALFRED-coverage spike PASSED (2026-06-01) — GO 35/35.** `tools/alfred_coverage_spike.py` confirmed all 35 series (32 baseline + 3 fiscal) resolve on FRED, return a non-empty point-in-time as-of series, and have ALFRED vintage history back well before 2016-12-09 (tightest = `MTSDS133FMS` earliest 2015-09-11). **No fallback branch needed** — every series rebuilds directly from ALFRED point-in-time; the design doc §8 risk "some series may lack vintages back to 2016-12" did not materialize.
 
 **⚠️ Environment caveat:** `.venv` (and the repo) sit inside OneDrive, which locks venv files during `uv` reinstalls. Recommend excluding the repo (or at least `.venv`/`data/`) from OneDrive sync before Phase 2's large fetch.
+
+**✅ Phase 2 data layer BUILT + committed (2026-06-01).** New 35-series ALFRED point-in-time fetcher implemented and committed on `refactor/v2` (Tasks 1-8 of `docs/plans/2026-06-01-phase2-implementation.md`): `src/gdpnowcast/data/{spec,vintages,fred,builder}.py` + `gdpnowcast fetch` (CLI) + committed manifests (`configs/vintages_{baseline,fiscal}.csv`, 486 each) + 19 offline tests + 12 network no-leakage cross-validation tests (`reconstruct_asof` vs point-in-time API, `rtol=0/atol=0`) + `docs/data_sources.md` + 3 tools (coverage spike, manifest generator, v1 diagnostic). `just ci` green (19 passed, 2 superset SKIPPED pending fetch, 12 slow deselected). **Two collateral bugs found + fixed while committing:** (a) `.gitignore`'s unanchored `data/` was silently ignoring the whole `src/gdpnowcast/data/` package → anchored to `/data/`; (b) an accidental `.env.example`→`.env` find-replace had corrupted `.env.example`, `variables_creation.py`, `README.md`, and the Phase 1 plan → all reverted.
+
+**⏳ ONLY Task 9 remains (GATED — Matteo deferred it).** Full fetch run + Phase 2 exit verification, in order: (1) get `data/`/`.venv` out of OneDrive sync (or just pause OneDrive for the run — fetch writes *new* files so it does NOT hit the venv-reinstall lock); (2) backup v1 dirs `data/US_fiscal`→`_v1`, `data/US_new`→`_v1` (the superset test gates on these backups existing); (3) `gdpnowcast fetch --variant baseline` then `--variant fiscal` (~67 API calls, ~972 xlsx, ~5-8 min, resumable — re-running skips existing files); (4) superset test must pass (`uv run pytest tests/test_superset.py`); (5) `tools/compare_to_v1.py` value diagnostic (reported honestly, NOT a gate — D3); (6) `just ci` green; (7) update this file.
 
 ---
 
@@ -73,7 +79,14 @@ A complete revision (v2) of the master thesis project `GDPnowcast-fiscal`. Goal:
 2. ✅ **Docs revised** — folded into `docs/plans/2026-05-11-v2-design.md` (Phase 2 fetcher re-scoped 4-6 d; Phase 3 → 3a/3b; runner → Phase 3; Phase 7a COVID re-spec; power/MDE narrative; budget 14-21 d) and the Phase 1 plan (rank 24 + execution deviations).
 3. ✅ **Phase 1 executed + pushed** — inline on `refactor/v2`, `just ci` green. Tooling installed this machine: `uv` 0.11.17, `just` 1.51.0.
 
-**▶ NEXT: write + execute the Phase 2 plan** — `docs/plans/<date>-phase2-implementation.md` (use `superpowers:writing-plans`). Phase 2 = **build a NEW 32-series ALFRED fetcher** (NOT a port of `variables_creation.py`, which only patches the 3 fiscal series), gated by a **pre-Phase-2 ALFRED-coverage go/no-go spike** (design doc §8 open-q #2). Key constraints from the backlog: the vintage list must include the 33 quarter-start vintages (not Fridays-only — see `fridays_between` in `variables_creation.py`); Phase 2 exit = **superset assertion** (≥485 filenames, all present). Before the large fetch: get `.venv`/`data/` out of OneDrive sync, and **rotate the FRED key**.
+**▶ Phase 2 plan written + Tasks 1-8 executed (2026-06-01)** — see the ✅/⏳ blocks near the top. Plan at `docs/plans/2026-06-01-phase2-implementation.md`. Only the gated **Task 9** (full fetch) remains. The constraints below were baked into the build and are kept here as the design record:
+- **Forward-looking-bias guardrail (Matteo's standing concern):** strict point-in-time `realtime_start=realtime_end=D`; never ffill/interpolate/backfill an empty as-of cell (leave NaN); truncate observations to `<= D`; ship a leakage test. See napkin Domain #4.
+- **Vintage manifest must include the 33 quarter-start re-estimation vintages**, not Fridays-only (`fridays_between` in `variables_creation.py` drops them).
+- **Phase 2 exit = superset assertion** (≥485 filenames, all present) — not a 5-random sample.
+- All 35 series GO ⇒ no fallback branch needed.
+- Quarterly handling for the 4 q-series (`GDPC1`, `ULCNFB`, `A261RX1Q020SBEA`, `GCEC1`); preserve the v1 "last-month-of-quarter" stamping convention (napkin Domain #1).
+- Use `load_dotenv(override=True)` in `get_fred()` (napkin Tooling #3).
+- **Before the LARGE fetch** (not the spike): get `.venv`/`data/` out of OneDrive sync.
 
 ### Design-doc decisions captured 2026-05-11 (post-verification):
 - Bug #1 (GCEC1 shift) — **dropped from Phase 4.** Replaced by a unit test on `pca(GDPC1)` vs BEA growth.
@@ -112,7 +125,7 @@ Then say something like:
 
 Claude will pick up from there. Do NOT skip the design-doc, verification, and red-team-backlog reading — they explain why specific tasks exist and what must change before execution.
 
-**Current branch tip:** Phase 1 foundation committed + pushed on `refactor/v2` (14 commits `ad9a129`…`0145fd7`; this line may trail by one commit). `main` untouched at `d50a2bc` and never merged into. Working tree clean except deliberately-untracked `.claude/` (`.idea/`, `__pycache__/`, `data/`, `outputs/` now gitignored).
+**Current branch tip:** `refactor/v2` — Phase 2 data layer committed 2026-06-01 in 8 commits (gitignore anchor fix → data layer → ruff config → CLI → tests → tooling → docs → CI/RESUME). **Committed locally, NOT yet pushed.** `main` untouched at `d50a2bc` and never merged into. Working tree clean except `.claude/` (deliberately untracked). Next action = gated Task 9 full fetch (see ⏳ block near the top).
 
 ---
 
