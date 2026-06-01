@@ -7,9 +7,13 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 default:
     @just --list
 
-# Run unit tests (smoke for now; grows in Phase 3).
+# Run the fast offline unit tests (excludes network-bound `slow` tests).
 test:
-    uv run pytest -v --cov=gdpnowcast --cov-report=term-missing --cov-fail-under=0
+    uv run pytest -m "not slow" -v --cov=gdpnowcast --cov-report=term-missing --cov-fail-under=0
+
+# Run the slow/network tests (ALFRED point-in-time cross-validation; needs FRED_API_KEY in .env).
+test-slow:
+    uv run pytest -m slow -v
 
 # Run ruff lint + format check (no fixes; CI parity).
 lint:
@@ -29,10 +33,9 @@ typecheck:
 sync:
     uv sync --all-extras
 
-# Phase 2 deliverable — placeholder.
-fetch:
-    @echo "gdpnowcast fetch is not implemented yet (Phase 2)."
-    @exit 1
+# Phase 2 — rebuild ALFRED vintage files. `just fetch fiscal` or `just fetch baseline`.
+fetch variant="fiscal":
+    uv run gdpnowcast fetch --variant {{variant}}
 
 # Phase 5 deliverable — placeholder.
 run:
