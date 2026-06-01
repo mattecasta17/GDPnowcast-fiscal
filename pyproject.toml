@@ -60,6 +60,10 @@ link-mode = "copy"
 [tool.ruff]
 line-length = 100
 target-version = "py313"
+# force-exclude so the excludes below also apply when pre-commit passes files
+# explicitly on the CLI (otherwise ruff lints/formats explicitly-named legacy
+# files regardless of exclude). Keeps the v1 Functions/ + root scripts untouched.
+force-exclude = true
 extend-exclude = [
     "Functions/",
     "DFM_new.py",
