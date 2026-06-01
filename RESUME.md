@@ -1,6 +1,6 @@
 # RESUME — where we left off
 
-**Last touched:** 2026-06-01 (**Phase 2 COMPLETE** — full fetch run, ~972 vintages built, exact v1 match verified across 11.3M cells, all gates green)
+**Last touched:** 2026-06-01 (**Phase 2 COMPLETE** — full fetch run, ~972 vintages built; shared cells match v1, but v2 carries more early history + fixes a v1 quarterly-stamping quirk — see Task 9 block)
 **Branch:** `refactor/v2` (off main `d50a2bc`). ⛔ **NEVER merge into `main`** — v2 lives permanently on this branch (Matteo's hard rule).
 **Status:** ✅ **Phase 1 (Foundation) complete and pushed.** On 2026-05-31 the red-team backlog was triaged (5 critical + 3 sequencing accepted), folded into the design doc + Phase 1 plan, then Phase 1 was executed inline: src-layout skeleton, `uv`/`ruff`/`mypy`/`pytest`/`pre-commit`/`just`/GitHub-Actions tooling, `.gitignore`, data untracked (1300→54 tracked files, 1.65 MB), FRED-key fallback patched + `.env.example`, README (confidence-framed + CI badge), `update_Nowcast.py` recovered from git. `just ci` green (lint + mypy + 2 smoke tests). Three environment deviations applied (justfile `windows-shell`, CI uv `0.11.x`, pyproject `[tool.uv] link-mode = "copy"` for OneDrive) — see the Phase 1 plan's "Executed 2026-05-31" note.
 
@@ -14,9 +14,10 @@
 
 **✅ Task 9 DONE (2026-06-01) — Phase 2 COMPLETE.** Ran the full fetch: backed up v1 dirs (`data/US_new_v1` 486, `data/US_fiscal_v1` 485), then `gdpnowcast fetch --variant baseline` (486 files) + `--variant fiscal` (486 files) — both built cleanly into `data/US_new` / `data/US_fiscal` (gitignored). Exit verification all green:
 - **Superset gate PASSED** for both variants (`tests/test_superset.py`): generated ⊇ manifest.
-- **Value match EXACT vs v1:** `tools/compare_to_v1.py` over **all** vintages = **0 difference across 11.3M cells** (baseline 5,428,161 + fiscal 5,906,348; global max abs delta 0, no diverging series). The 32 baseline series — which v1 sourced from the FRBNY pipeline, not its own fetcher — reproduce bit-for-bit, so they too were ALFRED point-in-time underneath. Documented in `docs/data_sources.md`.
-- **Only structural diff (cosmetic):** 4 early vintages (`2016-10-03`, `2016-12-02`, `2016-12-07`, `2017-02-03`) carry one extra trailing **all-NaN** month (the vintage's own month, no data published yet) that v1 trimmed. No value differs, not look-ahead (it's the vintage month, and it's empty).
 - **`just ci` green:** 21 passed (incl. both superset tests), 12 slow deselected, ruff + mypy clean.
+- **Value comparison vs v1 (Decision D3 — diagnostic, not a gate; `tools/compare_to_v1.py`):** ⚠️ my first report ("0 diff across 11.3M cells, reproduces v1 exactly") was **WRONG** — it only checked cells populated on *both* sides. The symmetric check (Matteo flagged it) found: (a) **shared cells identical** (0 diff); (b) **v2 has ~194.5k more cells of early history** per variant (`PCEC96` 1985 vs v1's 2002; `DGORDER`/`BUSINV` 1985 vs 1992) — contiguous, point-in-time valid, v2 more complete; (c) **v1 mis-stamps the 3 quarterly series in ~10 year-end vintages** (May/Aug/Nov instead of Mar/Jun/Sep) → ~4.3k "v1-only" cells, v2 is the correct/consistent one. Upgraded `compare_to_v1.py` to report the asymmetric directions so this can't re-mask. Full writeup in `docs/data_sources.md`.
+- **Cosmetic:** 4 early vintages (`2016-10-03`, `2016-12-02`, `2016-12-07`, `2017-02-03`) carry one extra trailing all-NaN month (the vintage's own empty month v1 trimmed) — no value differs, not look-ahead.
+- **⚑ Phase-3 input decision (open):** the longer v2 history WILL move the v2 DFM vs the v1 golden — decide whether to truncate to v1's series starts (isolate methodology from data) or keep the fuller panel.
 
 **▶ NEXT: Phase 3** (library migration + tests: de-MATLAB, fix v1 bugs; split 3a freeze golden / 3b refactor; move backtest runner into Phase 3). The data layer is done and verified — Phase 3 consumes `data/US_new` / `data/US_fiscal`.
 
