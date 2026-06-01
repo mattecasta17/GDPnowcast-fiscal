@@ -74,6 +74,11 @@ extend-exclude = [
 select = ["E", "F", "I", "B", "UP", "N", "RUF"]
 ignore = ["E501"]  # line-length handled by formatter
 
+[tool.ruff.lint.flake8-bugbear]
+# Typer's dependency-injection defaults (typer.Option/Argument) are the idiomatic
+# pattern; they are not the mutable-default footgun B008 targets.
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
+
 [tool.ruff.format]
 quote-style = "double"
 
