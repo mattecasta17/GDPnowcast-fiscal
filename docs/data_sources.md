@@ -102,12 +102,23 @@ the shift would silently NaN-out the series, not just misalign it.
   missing the `2021-01-04` quarter-start vintage that the baseline set had. v2 completes the
   fiscal manifest to 486 (Decision D2). Consequence for Phase 3a/4: the fiscal backtest now has
   one re-estimation vintage that v1's `Results.pdf` did not — flag this when comparing to v1.
-- **Baseline-series provenance.** v1 had **no fetcher** for the 32 baseline series
-  (`variables_creation.py` only patched the 3 fiscal ones); their v1 vintage files came from a
-  different source (FRBNY pipeline). The v2 ALFRED fetcher may therefore not byte-match v1's
-  baseline values. The **Phase 2 exit gate is the filename superset** (`tests/test_superset.py`);
-  value differences vs v1 are a diagnostic (`tools/compare_to_v1.py`), reported honestly, not a
-  gate (Decision D3).
+- **Baseline-series provenance — verified to reproduce v1 exactly.** v1 had **no fetcher** for the
+  32 baseline series (`variables_creation.py` only patched the 3 fiscal ones); their v1 vintage
+  files came from a different source (FRBNY pipeline), so we expected the v2 ALFRED fetcher might
+  not match. **It does — exactly.** The full Task 9 fetch (2026-06-01) reproduces every v1 file:
+  `tools/compare_to_v1.py` over **all** vintages found **0 difference across 11.3M cells**
+  (baseline 5,428,161 + fiscal 5,906,348; global max abs delta = 0, no diverging series). The
+  FRBNY-pipeline baseline values were themselves ALFRED point-in-time data, and the v2
+  reconstruction recovers them bit-for-bit. The **Phase 2 exit gate is the filename superset**
+  (`tests/test_superset.py`, PASSED for both variants); the value match is the diagnostic
+  (Decision D3 — reported, not gated).
+- **4 vintages carry one extra trailing all-NaN month vs v1 (cosmetic).** `2016-10-03`,
+  `2016-12-02`, `2016-12-07`, `2017-02-03` (both variants): v2's monthly index runs through the
+  vintage's own month, which at those early-in-the-month as-of dates has **no** published data yet
+  (the whole row is NaN), so v1 trimmed that empty trailing month. No observed value differs, and
+  it is the vintage's own month (not the future) so it is not look-ahead; the DFM treats an
+  all-NaN trailing month as no information. `data/US_*_v1/` is a strict subset of the v2 rows here
+  (`only_in_v1` is empty in every case).
 - **FRED API key** was committed in plaintext in v1 (`variables_creation.py:25`), now rotated;
   `.env` is the single source of truth (`load_dotenv(override=True)` so a stale OS env var can't
   shadow it).

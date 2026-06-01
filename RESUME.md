@@ -1,6 +1,6 @@
 # RESUME — where we left off
 
-**Last touched:** 2026-06-01 (**Phase 2 data layer built, tested, committed** — only the gated full fetch (Task 9) remains)
+**Last touched:** 2026-06-01 (**Phase 2 COMPLETE** — full fetch run, ~972 vintages built, exact v1 match verified across 11.3M cells, all gates green)
 **Branch:** `refactor/v2` (off main `d50a2bc`). ⛔ **NEVER merge into `main`** — v2 lives permanently on this branch (Matteo's hard rule).
 **Status:** ✅ **Phase 1 (Foundation) complete and pushed.** On 2026-05-31 the red-team backlog was triaged (5 critical + 3 sequencing accepted), folded into the design doc + Phase 1 plan, then Phase 1 was executed inline: src-layout skeleton, `uv`/`ruff`/`mypy`/`pytest`/`pre-commit`/`just`/GitHub-Actions tooling, `.gitignore`, data untracked (1300→54 tracked files, 1.65 MB), FRED-key fallback patched + `.env.example`, README (confidence-framed + CI badge), `update_Nowcast.py` recovered from git. `just ci` green (lint + mypy + 2 smoke tests). Three environment deviations applied (justfile `windows-shell`, CI uv `0.11.x`, pyproject `[tool.uv] link-mode = "copy"` for OneDrive) — see the Phase 1 plan's "Executed 2026-05-31" note.
 
@@ -12,7 +12,13 @@
 
 **✅ Phase 2 data layer BUILT + committed (2026-06-01).** New 35-series ALFRED point-in-time fetcher implemented and committed on `refactor/v2` (Tasks 1-8 of `docs/plans/2026-06-01-phase2-implementation.md`): `src/gdpnowcast/data/{spec,vintages,fred,builder}.py` + `gdpnowcast fetch` (CLI) + committed manifests (`configs/vintages_{baseline,fiscal}.csv`, 486 each) + 19 offline tests + 12 network no-leakage cross-validation tests (`reconstruct_asof` vs point-in-time API, `rtol=0/atol=0`) + `docs/data_sources.md` + 3 tools (coverage spike, manifest generator, v1 diagnostic). `just ci` green (19 passed, 2 superset SKIPPED pending fetch, 12 slow deselected). **Two collateral bugs found + fixed while committing:** (a) `.gitignore`'s unanchored `data/` was silently ignoring the whole `src/gdpnowcast/data/` package → anchored to `/data/`; (b) an accidental `.env.example`→`.env` find-replace had corrupted `.env.example`, `variables_creation.py`, `README.md`, and the Phase 1 plan → all reverted.
 
-**⏳ ONLY Task 9 remains (GATED — Matteo deferred it).** Full fetch run + Phase 2 exit verification, in order: (1) get `data/`/`.venv` out of OneDrive sync (or just pause OneDrive for the run — fetch writes *new* files so it does NOT hit the venv-reinstall lock); (2) backup v1 dirs `data/US_fiscal`→`_v1`, `data/US_new`→`_v1` (the superset test gates on these backups existing); (3) `gdpnowcast fetch --variant baseline` then `--variant fiscal` (~67 API calls, ~972 xlsx, ~5-8 min, resumable — re-running skips existing files); (4) superset test must pass (`uv run pytest tests/test_superset.py`); (5) `tools/compare_to_v1.py` value diagnostic (reported honestly, NOT a gate — D3); (6) `just ci` green; (7) update this file.
+**✅ Task 9 DONE (2026-06-01) — Phase 2 COMPLETE.** Ran the full fetch: backed up v1 dirs (`data/US_new_v1` 486, `data/US_fiscal_v1` 485), then `gdpnowcast fetch --variant baseline` (486 files) + `--variant fiscal` (486 files) — both built cleanly into `data/US_new` / `data/US_fiscal` (gitignored). Exit verification all green:
+- **Superset gate PASSED** for both variants (`tests/test_superset.py`): generated ⊇ manifest.
+- **Value match EXACT vs v1:** `tools/compare_to_v1.py` over **all** vintages = **0 difference across 11.3M cells** (baseline 5,428,161 + fiscal 5,906,348; global max abs delta 0, no diverging series). The 32 baseline series — which v1 sourced from the FRBNY pipeline, not its own fetcher — reproduce bit-for-bit, so they too were ALFRED point-in-time underneath. Documented in `docs/data_sources.md`.
+- **Only structural diff (cosmetic):** 4 early vintages (`2016-10-03`, `2016-12-02`, `2016-12-07`, `2017-02-03`) carry one extra trailing **all-NaN** month (the vintage's own month, no data published yet) that v1 trimmed. No value differs, not look-ahead (it's the vintage month, and it's empty).
+- **`just ci` green:** 21 passed (incl. both superset tests), 12 slow deselected, ruff + mypy clean.
+
+**▶ NEXT: Phase 3** (library migration + tests: de-MATLAB, fix v1 bugs; split 3a freeze golden / 3b refactor; move backtest runner into Phase 3). The data layer is done and verified — Phase 3 consumes `data/US_new` / `data/US_fiscal`.
 
 ---
 
@@ -125,7 +131,7 @@ Then say something like:
 
 Claude will pick up from there. Do NOT skip the design-doc, verification, and red-team-backlog reading — they explain why specific tasks exist and what must change before execution.
 
-**Current branch tip:** `refactor/v2` — Phase 2 data layer committed 2026-06-01 in 8 commits (gitignore anchor fix → data layer → ruff config → CLI → tests → tooling → docs → CI/RESUME). **Committed locally, NOT yet pushed.** `main` untouched at `d50a2bc` and never merged into. Working tree clean except `.claude/` (deliberately untracked). Next action = gated Task 9 full fetch (see ⏳ block near the top).
+**Current branch tip:** `refactor/v2` — Phase 2 committed + **pushed** to `origin/refactor/v2` (8 commits 2026-06-01: gitignore anchor → data layer → ruff config → CLI → tests → tooling → docs → CI/RESUME), plus a Task-9 wrap-up commit (`data_sources.md` + RESUME). `main` untouched at `d50a2bc`, never merged into. `data/` now holds the freshly-fetched vintages (`US_new` 486, `US_fiscal` 486) + v1 backups (`US_new_v1` 486, `US_fiscal_v1` 485) — all gitignored, never committed. Working tree clean except `.claude/` (deliberately untracked). Next action = **Phase 3**.
 
 ---
 
