@@ -78,6 +78,14 @@ extend-exclude = [
 select = ["E", "F", "I", "B", "UP", "N", "RUF"]
 ignore = ["E501"]  # line-length handled by formatter
 
+[tool.ruff.lint.per-file-ignores]
+# Estimator math modules use econometric matrix notation: uppercase X (data
+# matrix), T/N (dimensions), x_MA (moving average), block matrices, etc.
+# Allow non-lowercase argument/variable names here rather than rewriting the
+# verbatim ports of the v1 DFM math (which would obscure the golden-parity
+# review and risk transcription errors). Extended by dfm.py / news.py in B4/B5.
+"src/gdpnowcast/_dfm_support.py" = ["N803", "N806"]
+
 [tool.ruff.lint.flake8-bugbear]
 # Typer's dependency-injection defaults (typer.Option/Argument) are the idiomatic
 # pattern; they are not the mutable-default footgun B008 targets.
