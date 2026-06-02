@@ -85,6 +85,8 @@ ignore = ["E501"]  # line-length handled by formatter
 # verbatim ports of the v1 DFM math (which would obscure the golden-parity
 # review and risk transcription errors). Extended by dfm.py / news.py in B4/B5.
 "src/gdpnowcast/_dfm_support.py" = ["N803", "N806"]
+# dfm.py also keeps v1 PascalCase function names (InitCond/EMstep/SKF/FIS/...).
+"src/gdpnowcast/dfm.py" = ["N802", "N803", "N806"]
 
 [tool.ruff.lint.flake8-bugbear]
 # Typer's dependency-injection defaults (typer.Option/Argument) are the idiomatic
