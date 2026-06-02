@@ -101,6 +101,16 @@ exclude = [
     "variables_creation\\.py",
 ]
 
+# The legacy v1 `Functions/` tree is intentionally untyped (slated for Phase-5b
+# deletion). `exclude` above keeps it off the discovery list, but the Phase-3
+# golden/parity tests `import Functions` for v1-equivalence checks and mypy
+# follows those imports. Skip-following treats the module as `Any` so the
+# untyped legacy defs do not trip `disallow_untyped_defs`.
+[[tool.mypy.overrides]]
+module = "Functions.*"
+follow_imports = "skip"
+ignore_errors = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers --strict-config"
