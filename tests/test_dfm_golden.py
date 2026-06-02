@@ -15,6 +15,7 @@ SAMPLE_START = pd.Timestamp("2000-01-01")
 
 pytestmark = [
     pytest.mark.golden,
+    pytest.mark.slow,  # full EM estimation on 2 vintages (~70s); run via `pytest -m golden`
     pytest.mark.skipif(not Path("data/US_new_v1").exists(), reason="v1 data backup absent"),
 ]
 
