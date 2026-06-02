@@ -24,3 +24,10 @@ def test_common_share_is_nontrivial_when_gdp_observed() -> None:
     assert np.isfinite(d["gdp_common"])
     assert d["share_common"] != pytest.approx(1.0)  # would fail on the v1 resid=0 bug
     assert 0.0 < d["share_common"] < 1.5  # plausible magnitude, not degenerate
+    # Regression guard against the two failure modes this module exists to avoid --
+    # both land ~1.0: dropping standardisation, or using the Kalman posterior (ZmU,
+    # which re-absorbs the GDP obs -> ~0.99992) instead of the prior (Zm). The
+    # corrected value is ~0.598; the loose abs tol absorbs floating-point drift.
+    assert d["share_common"] == pytest.approx(0.598, abs=0.01)
+    # de-standardisation identity: both terms share one affine map (Wx, Mx).
+    assert d["gdp_proj_residual"] == pytest.approx(d["gdp_total"] - d["gdp_common"])
