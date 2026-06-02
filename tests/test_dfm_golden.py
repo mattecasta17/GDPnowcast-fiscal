@@ -10,7 +10,7 @@ from gdpnowcast.dfm_spec import load_dfm_spec
 from gdpnowcast.transform import load_vintage
 
 GOLDEN = json.loads(Path("tests/golden/dfm_legacy_estimator.json").read_text())
-RTOL = ATOL = 1e-6  # A2 pickle_max_abs_dC ~= 5e-15 justified the tight default
+RTOL = ATOL = 1e-6  # parity tol; A2 showed estimator vs production pickle ~= 5e-15, so kept tight
 SAMPLE_START = pd.Timestamp("2000-01-01")
 
 pytestmark = [
