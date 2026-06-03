@@ -36,7 +36,11 @@ def _vfile(subdir: str, v: str) -> str:
 
 
 def run_quarter(
-    cfg: QuarterCfg, data_subdir: str, spec_file: str, series: str = "GDPC1"
+    cfg: QuarterCfg,
+    data_subdir: str,
+    spec_file: str,
+    series: str = "GDPC1",
+    mask_target: bool = False,
 ) -> pd.DataFrame:
     spec = load_dfm_spec(spec_file)
     res_prev = dfm(
@@ -56,7 +60,16 @@ def run_quarter(
             x_old, _, _ = load_vintage(_vfile(data_subdir, v_old), spec)  # news step: FULL sample
             x_new, time, _ = load_vintage(_vfile(data_subdir, v_new), spec)
             out = update_nowcast(
-                x_old, x_new, time, spec, res_use, series, cfg.period, v_old, v_new
+                x_old,
+                x_new,
+                time,
+                spec,
+                res_use,
+                series,
+                cfg.period,
+                v_old,
+                v_new,
+                mask_target=mask_target,
             )
         except (TypeError, ValueError):
             # v1-parity skip. Two verified causes (running the shimmed v1 stack):

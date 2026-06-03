@@ -42,6 +42,7 @@ def update_nowcast(
     vintage_old: str | pd.Timestamp,
     vintage_new: str | pd.Timestamp,
     verbose: bool = False,
+    mask_target: bool = False,
 ) -> dict:
     # Keep vintages as Timestamps (no MATLAB ordinal); used for display/return only.
     if not isinstance(vintage_old, pd.Timestamp):
@@ -87,6 +88,18 @@ def update_nowcast(
 
     if t_nowcast.size == 0:
         raise ValueError("Period is out of nowcasting horizon (up to one year ahead).")
+
+    if mask_target:
+        # NY-Fed real-time discipline: the value being nowcast must never be in the
+        # information set. NaN-out the single target cell (t_nowcast, i_series) in
+        # BOTH datasets before the smoother runs, so the release-week vintage forecasts
+        # the target instead of hitting the NO-FORECAST branch and reading back the
+        # just-released advance. t_nowcast/i_series are 1-element arrays -> one cell.
+        # X_old/X_new here are local (np.vstack-extended) copies, so the caller's
+        # arrays are untouched. Masking X_old is inert within a single quarter (v_old
+        # is always pre-release) but kept for quarters whose loop runs past the release.
+        X_new[t_nowcast, i_series] = np.nan
+        X_old[t_nowcast, i_series] = np.nan
 
     # Create revised dataset (new values restricted to the old data's NaN pattern)
     X_rev = X_new.copy()
