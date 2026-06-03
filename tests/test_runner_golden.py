@@ -27,15 +27,14 @@ def test_run_quarter_reproduces_legacy_2017q1_nowcast() -> None:
     # The runner must skip the SAME 3 vintages v1's blanket try/except dropped
     # (2016-12-30, 2017-02-24 = no-news weeks; 2017-04-28 = GDP-release week),
     # leaving exactly the 18 golden rows, in order.
+    skipped_golden = [s["vintage"] for s in GOLDEN["skipped"]]
     assert list(df["vintage"]) == [r["vintage"] for r in golden_rows]
-    assert [v for v in CONFIG_2017Q1.vintages[1:] if v not in set(df["vintage"])] == [
-        s["vintage"] for s in GOLDEN["skipped"]
-    ]
+    # Indirect check (absent from rows) AND the runner's own df.attrs record.
+    assert [v for v in CONFIG_2017Q1.vintages[1:] if v not in set(df["vintage"])] == skipped_golden
+    assert df.attrs["skipped"] == skipped_golden
 
     for got, want in zip(df.to_dict("records"), golden_rows, strict=True):
-        np.testing.assert_allclose(
-            got["y_new"], want["y_new"], rtol=RTOL, atol=ATOL, err_msg=f"y_new @ {want['vintage']}"
-        )
-        np.testing.assert_allclose(
-            got["y_old"], want["y_old"], rtol=RTOL, atol=ATOL, err_msg=f"y_old @ {want['vintage']}"
-        )
+        for key in ("y_old", "y_new", "impact_revisions", "impact_releases"):
+            np.testing.assert_allclose(
+                got[key], want[key], rtol=RTOL, atol=ATOL, err_msg=f"{key} @ {want['vintage']}"
+            )
