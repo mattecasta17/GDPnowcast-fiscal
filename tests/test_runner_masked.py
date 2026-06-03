@@ -39,3 +39,13 @@ def test_run_quarter_masked_2017q1_recovers_release_week() -> None:
     # Genuine forecast, NOT the advance read-back (gdp_actual = 0.7).
     assert np.isfinite(y_new)
     assert abs(y_new - CONFIG_2017Q1.gdp_actual) > 0.1
+
+    # Characterization pin: lock the genuine masked forecast so future refactors
+    # can't silently shift it. Value reproduced here (and independently in the design
+    # review) to 7 sig figs = the resolution of the 1e-6 tolerance band (+-3.3e-6);
+    # numpy rounds the actual to 2.246138, consistent with this pin.
+    np.testing.assert_allclose(y_new, 2.2461378, rtol=RTOL, atol=ATOL)
+    # The runner's error column is gdp_actual - y_new for the recovered row.
+    np.testing.assert_allclose(
+        float(final["error"]), CONFIG_2017Q1.gdp_actual - y_new, rtol=RTOL, atol=ATOL
+    )
