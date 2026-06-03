@@ -15,6 +15,13 @@ test:
 test-slow:
     uv run pytest -m slow -v
 
+# Run the heavy port-verification tests: golden parity (dfm/news/runner) + the B6
+# decomposition sanity check. Need the local v1 data backup (data/US_new_v1); CI
+# skips them. The goldens are also `slow`, so this selects `golden or slow` and
+# excludes the network ALFRED tests (those live in `test-slow`).
+test-golden:
+    uv run pytest -m "golden or slow" --ignore=tests/test_fetch_integration.py -v
+
 # Run ruff lint + format check (no fixes; CI parity).
 lint:
     uv run ruff check src/ tests/
