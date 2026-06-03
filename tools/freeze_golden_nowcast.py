@@ -63,10 +63,19 @@ def main() -> None:
 
     # v1's nowcast_2017.py wraps each update_nowcast2 call in try/except and does
     # `print("Skipping ..."); continue` on ANY error. This silently drops vintage
-    # pairs where News_DFM returns no news (no new releases that week, or the GDP
-    # target is already observed -> update_nowcast2 hits `None - None`). That is a
-    # version-independent v1 behaviour (pure-Python TypeError), so the golden must
-    # replicate it: record only the pairs v1 actually produced + the skips.
+    # pairs via TWO distinct, version-independent failure modes (both verified by
+    # running the A0-shimmed v1 stack on these vintages):
+    #   (A) NO-NEWS WEEKS (2016-12-30, 2017-02-24): no indicator was released that
+    #       week, so News_DFM hits FORECAST SUBCASE (A) and returns actual/forecast
+    #       = None; update_nowcast2 then does `None - None` -> TypeError
+    #       (update_Nowcast2.py:68).
+    #   (B) GDP-RELEASE WEEK (2017-04-28): the Q1 advance GDP print lands, so the
+    #       target is observed and News_DFM takes the NO-FORECAST branch -- which
+    #       has a latent shape bug: t_fcst is a 1-elem array, so
+    #       `y_old[0,i] = X_sm[t_fcst, v_news[i]]` assigns a (1,)-array into a
+    #       scalar slot -> ValueError (update_Nowcast.py:170), NOT `None - None`.
+    # The golden records whichever exception each pair actually raised, so it must
+    # replicate both: record only the pairs v1 actually produced + the skips.
     rows = []
     skipped = []
     for i in range(1, len(VINTAGES)):
