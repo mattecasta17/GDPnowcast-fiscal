@@ -29,12 +29,15 @@ y_new`) in the multi-quarter backtest.
 
 ## Why a standalone point nowcast (not a news pairing)
 
-In `news.py`, `y_new` is the smoothed nowcast of the target,
-`para_const(X_new, Res, 0)["X_sm"][t_nowcast, i_series]` — a function of the **new
-vintage and the params only**. The old vintage in `update_nowcast` affects only the
-news decomposition (`y_old`, `impact_*`), not `y_new`. So the headline level is
-fully determined by the `(advance−1)` vintage + the quarter's params; no old/new
-pairing is needed.
+In `news.py`, in the branch that fires for a pre-advance vintage — the FORECAST case
+*with new information* (`news.py:234-258`: `Res_new = para_const(X_new, Res, 0)`,
+`y_new = Res_new["X_sm"][t_fcst, v_news]`) and the already-observed case
+(`news.py:182-196`: `y_new = X_new[t_fcst, v_news]`) — `y_new` is a function of the
+**new vintage and the params only**. (The one exception is the FORECAST *no-new-info*
+sub-branch, `news.py:220-232`, which sets `y_new = y_old.copy()` off `X_old`; that
+path requires identical old/new NaN patterns and is unreachable for a single-vintage
+level nowcast.) So a standalone smooth of the `(advance−1)` vintage reproduces the
+`y_new` `update_nowcast` would compute for it; no old/new pairing is needed.
 
 Computing it standalone (rather than via `update_nowcast` paired against the last
 weekly Friday) has three advantages:
@@ -53,10 +56,14 @@ weekly Friday) has three advantages:
 ## Free regression oracle
 
 `tools/release_day_leak_scan.py run` already built the 2017-04-27 vintage (into
-`US_new_thu`, same `build_vintage`) and ran the Thursday arm: `y_new = 2.246138`.
-Because `y_new` is old-vintage-independent, the standalone headline on the same
-2017-04-27 data + same `res_curr` params **must** reproduce `2.246138`. That is the
-regression test for this step.
+`US_new_thu`, same `build_vintage`) and ran the Thursday arm, which goes through the
+FORECAST-with-new-info branch (`y_new = para_const(X_new)`) and reported
+`y_new = 2.246138`. Since the standalone `nowcast_point` computes exactly that same
+single-vintage smooth on the same 2017-04-27 data + same `res_curr` params, it **must**
+reproduce it. On this *clean* quarter the `(advance−1)` genuine forecast also equals
+the Friday+mask and Thursday arms (the cutoff-decision doc's 2017Q1 table: all three
+= `2.246138`), so it matches the value the masked test already pins,
+`2.2461378` (`test_runner_masked.py:47`). That equality is the regression test.
 
 ---
 
@@ -70,7 +77,12 @@ Add one field to `src/gdpnowcast/nowcast/config.py`:
 advance_date: str  # real BEA advance date (first ALFRED realtime_start of Q's GDP); ISO
 ```
 
-Set `CONFIG_2017Q1.advance_date = "2017-04-28"`. The cutoff vintage filename is
+`QuarterCfg` is `@dataclass(frozen=True)` (`config.py:18`), so this is a **constructor
+kwarg** on the `CONFIG_2017Q1(...)` call — `advance_date="2017-04-28"` — **not** a
+post-hoc `CONFIG_2017Q1.advance_date = ...` assignment (which would raise
+`FrozenInstanceError`). Add it as a required field (no default): `CONFIG_2017Q1` is
+the only constructor, and `replace(CONFIG_2017Q1, vintages=...)` in
+`release_day_leak_scan.py:115` preserves the new field. The cutoff vintage filename is
 derived in the runner as `advance_date − 1 day` (= `"2017-04-27"`), keeping the
 documented `−1` rule explicit in code rather than hard-coding the offset date.
 
@@ -79,7 +91,10 @@ documented `−1` rule explicit in code rather than hard-coding the offset date.
 A dev tool (not CLI-wired yet), mirroring `release_day_leak_scan`'s build pattern,
 reusing `fetch_release_history` / `build_vintage` / `write_vintage`:
 
-1. fetch the release histories for all baseline series once (cached in a dict, as in
+1. load the **data** spec — `gdpnowcast.data.spec.load_spec(SPEC_PATHS["baseline"])`
+   → `list[SeriesSpec]` (the one `build_vintage` consumes), **not** the DFM
+   `load_dfm_spec` → `DfmSpec`; the two are easy to confuse. Fetch the release
+   histories for all those series once (cached in a dict, as in
    `release_day_leak_scan.build`);
 2. from the GDP history compute `advance_date(Q)` =
    `gdp.groupby("date")["realtime_start"].min()` for `Q`'s observation (FRED-native
@@ -106,11 +121,17 @@ def nowcast_point(
     ...
 ```
 
-It replicates exactly the relevant lines of `update_nowcast`: append 12 months of
-NaN to `X_new`, extend `Time` by 12 `MonthBegin` steps, resolve `t_nowcast` and
-`i_series`, then return
-`float(para_const(X_new, Res, 0)["X_sm"][t_nowcast, i_series][0])`. No masking
-branch (target is NaN by construction), no old vintage, no news decomposition.
+It replicates exactly the relevant lines of `update_nowcast` (`news.py:65-90`):
+append the `(12, N)` NaN block to `X_new`, extend `Time` by 12 `MonthBegin` steps,
+resolve `i_series` (`np.where(series == Spec.SeriesID)[0]`) and `t_nowcast` (the freq
+branch, including the `t_nowcast.size == 0` raise), then return
+`float(para_const(X_new, Res, 0)["X_sm"][t_nowcast, i_series][0])`. The 12-month
+extension **must** happen *before* `para_const`: even though `2017-03-01` is already
+within the original `Time` (so `t_nowcast` is unchanged), `para_const` standardizes
+and smooths over `T = X.shape[0]` (`news.py:413,416,443`), so the appended rows are
+part of the path that produced the `2.246138` oracle — an implementer must not
+"optimize away" the inert-looking extension. No masking branch (target is NaN by
+construction), no old vintage, no `X_old` size-matching, no news decomposition.
 
 ### d) Runner — headline step on `df.attrs`
 
@@ -129,20 +150,48 @@ The weekly loop and its output `DataFrame` are unchanged → existing goldens
 unaffected. The headline rides on `df.attrs["headline"]`, consistent with how the
 runner already exposes `df.attrs["skipped"]`.
 
+`res_curr` is correct for 2017Q1 because `2017-04-27 ≥ switch_date (2017-01-01)` — the
+same branch `runner.py:58` takes. This holds for every quarter (an `(advance−1)` cutoff
+is always within its own quarter, hence past that quarter's `switch_date`), but when
+the later quarters are wired prefer reusing the switch expression
+(`res_prev if pd.Timestamp(adv_minus_1) < switch else res_curr`) over a hardcoded
+`res_curr`, to avoid a latent assumption.
+
 ### e) Tests — `tests/test_runner_headline.py` (marked `slow`)
 
-1. **Regression:** `run_quarter(CONFIG_2017Q1, "US_new", "Spec_US_new.xlsx", "GDPC1")`
-   then `df.attrs["headline"]["y_new"] == pytest.approx(2.246138, rel=1e-6)` and
-   `df.attrs["headline"]["vintage"] == "2017-04-27"`.
+Both tests read the gitignored, must-be-built `data/US_new/2017-04-27.xlsx`, so the
+module **must** carry a skip guard mirroring the existing heavy tests
+(`test_runner_masked.py:14-17`, `test_runner_golden.py:13-17`):
+
+```python
+pytestmark = [
+    pytest.mark.slow,
+    pytest.mark.skipif(
+        not Path("data/US_new/2017-04-27.xlsx").exists(),
+        reason="(advance-1) headline vintage not built (run tools/build_headline_vintages)",
+    ),
+]
+```
+
+Without it the test *fails* (FileNotFoundError) rather than *skips* wherever the
+vintage is absent (CI, every fresh clone) — the same gating the v1-data tests use.
+
+1. **Regression:** `run_quarter(CONFIG_2017Q1, "US_new", "Spec_US_new.xlsx", "GDPC1")`,
+   then `df.attrs["headline"]["vintage"] == "2017-04-27"` and
+   `np.testing.assert_allclose(df.attrs["headline"]["y_new"], 2.2461378, rtol=1e-6,
+   atol=1e-6)` — the **same literal and tolerance** as `test_runner_masked.py:47`
+   (single source of truth; they must coincide on this clean quarter, see the oracle
+   section). Note this is the first test to exercise the real `US_new` (v2 panel)
+   headline path; the masked/golden tests run on `US_new_v1`.
 2. **Look-ahead guard:** read `data/US_new/2017-04-27.xlsx`; assert the `GDPC1` cell
    at the 2017Q1 target row (`2017-03-01`, last-month-of-quarter stamping) is
    **NaN** — i.e. the headline is a genuine forecast, not a read-back of the advance.
    (Mirrors `release_day_leak_scan._gdp_at_q1`.)
 
-Both depend on `data/US_new/2017-04-27.xlsx` existing → the test is `slow` and lives
-in the `just test-golden` heavy lane (like `test_runner_masked`); document that the
-build tool must be run first to produce the vintage. `just ci` (fast lane) is
-unaffected.
+The test is `slow` and lives in the `just test-golden` heavy lane (like
+`test_runner_masked`); the build tool must be run first to produce the vintage. In CI
+(no built vintage) it skips, consistent with the v1-data-gated tests. `just ci` (fast
+lane) is unaffected.
 
 ---
 
@@ -162,6 +211,9 @@ unaffected.
   test runs offline.
 - **OneDrive venv lock** on `uv` editable rebuilds — self-heals on retry
   (napkin Tooling #1).
-- The `2.246138` oracle is pinned at 7 significant figures (the `rtol=1e-6`
+- The oracle is pinned to the committed `2.2461378` literal at `rtol=atol=1e-6` (the
   resolution limit, same rationale as the masking pin); chasing more digits is false
-  precision.
+  precision. The `US_new` (v2-panel) headline value rounds to `2.246138` per the
+  cutoff-decision table, comfortably inside that band — but the test is itself the
+  confirmation; if it ever lands outside `1e-6`, that is a finding to surface, not to
+  loosen away.
