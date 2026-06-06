@@ -25,6 +25,7 @@ class QuarterCfg:
     prev_vintage: str  # data vintage whose params are used before switch_date
     curr_vintage: str  # data vintage whose params are used from switch_date on
     switch_date: str  # quarter-start re-estimation boundary (ISO string)
+    advance_date: str  # real BEA advance date = first ALFRED realtime_start of Q's GDP (ISO)
 
 
 # Ported verbatim from nowcast_2017.py (vintages_dict["2017q1"], param_map_2017,
@@ -60,4 +61,5 @@ CONFIG_2017Q1 = QuarterCfg(
     prev_vintage="2016-10-03",
     curr_vintage="2017-01-03",
     switch_date="2017-01-01",
+    advance_date="2017-04-28",  # BEA 2017Q1 advance; cutoff vintage = advance-1 = 2017-04-27
 )

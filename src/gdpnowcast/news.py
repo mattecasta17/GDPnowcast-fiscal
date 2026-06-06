@@ -166,6 +166,61 @@ def update_nowcast(
     }
 
 
+def nowcast_point(
+    X_new: np.ndarray,
+    Time: pd.DatetimeIndex,
+    Spec: DfmSpec,
+    Res: dict,
+    series: str,
+    period: str,
+) -> float:
+    """Standalone level nowcast of ``series`` for ``period`` from a single vintage.
+
+    Reproduces the ``y_new`` that update_nowcast's FORECAST-with-new-information
+    branch would compute for ``X_new`` (``y_new = para_const(X_new, Res, 0)["X_sm"]
+    [t_nowcast, i_series]``) WITHOUT an old/new pairing. So it sidesteps the no-news
+    TypeError and the GDP-observed ValueError that make update_nowcast raise, and it
+    never touches update_nowcast -- the v1-parity goldens stay byte-identical.
+
+    Used for the Phase-4 ``(advance-1)`` pre-advance headline, where the target cell
+    is NaN by construction (the GDP advance has not been released) so we are squarely
+    in the genuine-FORECAST case. Mirrors the head of update_nowcast (the NaN/Time
+    extension + i_series/freq/t_nowcast resolution).
+    """
+    N = np.shape(X_new)[1]
+
+    # Append 1 year (12 months) of NaNs to allow forecasting at different horizons,
+    # then extend Time to match. NOT inert: para_const standardises and smooths over
+    # the full T = X.shape[0], so these rows are part of the path that produced the
+    # oracle -- keep them even when t_nowcast already sits inside the original Time.
+    temp = np.zeros((12, N))
+    temp[:] = np.nan
+    X_new = np.vstack([X_new, temp])
+    future = pd.DatetimeIndex([Time[-1] + pd.offsets.MonthBegin(i) for i in range(1, 13)])
+    Time = Time.append(future)
+
+    # Identify series index and frequency (verbatim from update_nowcast).
+    i_series = np.where(series == Spec.SeriesID)[0]
+    freq = Spec.Frequency[i_series][0]
+
+    if freq == "m":
+        y_str, m_str = period.split(freq)
+        yr, mo = int(y_str), int(m_str)
+        t_nowcast = np.where(Time == pd.Timestamp(yr, mo, 1))[0]
+    elif freq == "q":
+        y_str, q_str = period.split(freq)
+        yr, mo = int(y_str), 3 * int(q_str)
+        t_nowcast = np.where(Time == pd.Timestamp(yr, mo, 1))[0]
+    else:
+        raise ValueError("Frequency value is not appropriate")
+
+    if t_nowcast.size == 0:
+        raise ValueError("Period is out of nowcasting horizon (up to one year ahead).")
+
+    X_sm = para_const(X_new, Res, 0)["X_sm"]
+    return float(X_sm[t_nowcast, i_series][0])
+
+
 def News_DFM(
     X_old: np.ndarray, X_new: np.ndarray, Res: dict, t_fcst: np.ndarray, v_news: np.ndarray
 ) -> tuple:

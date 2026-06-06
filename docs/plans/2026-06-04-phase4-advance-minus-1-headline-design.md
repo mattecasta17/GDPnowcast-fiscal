@@ -1,6 +1,6 @@
 # Phase 4 — `(advance−1)` headline nowcast step (design, 2026-06-04)
 
-**Status:** design, approved for spec review (brainstorming → writing-plans).
+**Status:** IMPLEMENTED + verified + reviewed (SHIP) 2026-06-06 — was: design, approved for spec review (brainstorming → writing-plans).
 **Scope:** the FIRST Phase-4-body step — build the machinery for the headline
 pre-advance nowcast and wire it for **2017Q1 only** (regression against the
 already-measured oracle). The remaining `CONFIG_*` quarters, the fiscal variant,
@@ -141,9 +141,14 @@ the headline from the `(advance−1)` vintage reusing the already-estimated
 
 ```python
 adv_minus_1 = (pd.Timestamp(cfg.advance_date) - pd.Timedelta(days=1)).date().isoformat()
-xh, timeh, _ = load_vintage(_vfile(data_subdir, adv_minus_1), spec)  # full sample, like the news step
-y_head = nowcast_point(xh, timeh, spec, res_curr, series, cfg.period)
-df.attrs["headline"] = {"vintage": adv_minus_1, "y_new": y_head, "error": cfg.gdp_actual - y_head}
+headline_file = Path(_vfile(data_subdir, adv_minus_1))
+if headline_file.exists():
+    res_head = res_prev if pd.Timestamp(adv_minus_1) < switch else res_curr
+    xh, timeh, _ = load_vintage(str(headline_file), spec)  # full sample, like the news step
+    y_head = nowcast_point(xh, timeh, spec, res_head, series, cfg.period)
+    df.attrs["headline"] = {"vintage": adv_minus_1, "y_new": y_head, "error": cfg.gdp_actual - y_head}
+else:
+    df.attrs["headline"] = None  # panels without the cutoff vintage (e.g. US_new_v1 golden fixture)
 ```
 
 The weekly loop and its output `DataFrame` are unchanged → existing goldens
@@ -156,6 +161,20 @@ is always within its own quarter, hence past that quarter's `switch_date`), but 
 the later quarters are wired prefer reusing the switch expression
 (`res_prev if pd.Timestamp(adv_minus_1) < switch else res_curr`) over a hardcoded
 `res_curr`, to avoid a latent assumption.
+
+**As built (2026-06-06).** The switch expression above was adopted immediately (the
+code uses `res_head`, not a hardcoded `res_curr`). One deviation this draft lacked: the
+**`.exists()` guard** (shown in the code block). `run_quarter` is also called on
+`data/US_new_v1` by the golden/masked tests, and that v1 golden-parity fixture carries
+only the v1 Friday manifest — not the Thursday `(advance-1)` cutoff — so an
+unconditional `load_vintage` would raise `FileNotFoundError` and break those tests. The
+headline is a v2-panel concept; on a panel lacking the cutoff vintage we set
+`headline=None` rather than hard-failing the weekly backtest. Verified: all goldens stay
+byte-identical and the masked test stays green. **Follow-up (review finding M1):**
+`headline=None` means a forgotten `tools/build_headline_vintages` run on a real `US_new`
+backtest would *silently* yield no headline — safe today (only 2017Q1 is wired and its
+vintage exists), but when fanning out to more quarters assert `headline is not None` for
+known-wired quarters.
 
 ### e) Tests — `tests/test_runner_headline.py` (marked `slow`)
 

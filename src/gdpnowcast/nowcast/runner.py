@@ -23,7 +23,7 @@ import pandas as pd
 
 from ..dfm import dfm
 from ..dfm_spec import load_dfm_spec
-from ..news import update_nowcast
+from ..news import nowcast_point, update_nowcast
 from ..transform import load_vintage
 from .config import QuarterCfg
 
@@ -93,4 +93,31 @@ def run_quarter(
 
     df = pd.DataFrame(rows)
     df.attrs["skipped"] = skipped
+
+    # Headline nowcast: the as-of (advance_date - 1 day) PRE-ADVANCE forecast (Phase
+    # 4.0 gate decision) -- the tightest cutoff that provably excludes the BEA GDP
+    # advance AND its same-day co-releases. Computed standalone via nowcast_point (NOT
+    # update_nowcast) so the weekly loop and its goldens are untouched; the target GDP
+    # cell is NaN in this vintage by construction -> a genuine forecast. Full-sample
+    # load like the news step. res_head reuses the switch boundary (advance-1 is always
+    # within its own quarter, so == res_curr here, but kept general for later quarters).
+    #
+    # The headline is a v2-panel (US_new/US_fiscal) concept; its (advance-1) cutoff
+    # vintage is built by tools/build_headline_vintages. On panels that do not carry it
+    # -- notably the US_new_v1 golden-parity fixture, which holds only the v1 Friday
+    # manifest, not the Thursday cutoff -- expose headline=None rather than hard-failing
+    # the weekly backtest (keeps the golden/masked tests, which run on US_new_v1, green).
+    adv_minus_1 = (pd.Timestamp(cfg.advance_date) - pd.Timedelta(days=1)).date().isoformat()
+    headline_file = Path(_vfile(data_subdir, adv_minus_1))
+    if headline_file.exists():
+        res_head = res_prev if pd.Timestamp(adv_minus_1) < switch else res_curr
+        xh, timeh, _ = load_vintage(str(headline_file), spec)
+        y_head = nowcast_point(xh, timeh, spec, res_head, series, cfg.period)
+        df.attrs["headline"] = {
+            "vintage": adv_minus_1,
+            "y_new": y_head,
+            "error": cfg.gdp_actual - y_head,
+        }
+    else:
+        df.attrs["headline"] = None
     return df
