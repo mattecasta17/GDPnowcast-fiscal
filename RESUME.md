@@ -1,5 +1,26 @@
 # RESUME — where we left off
 
+## ▶ RESUME EXACTLY HERE — 2026-06-08 (autonomous /loop)
+
+**To resume: just say "riprendi"** (or "riprendi da dove siamo arrivati"). I re-launch the autonomous loop automatically from the state below — you never paste the prompt. (Trigger + loop prompt are recorded in memory `feedback-resume-trigger` / `feedback-autonomous-loop-mode`; the live next-step state is in memory `project-v2-refactor-state`.)
+
+**Where we are:** branch `refactor/v2`, HEAD pushed `b64424c`, tree clean (only untracked `.claude/`). Autonomous loop to the portfolio MVP. **Phase-4 body tasks #1-3 DONE + pushed:**
+- `537467b` #1 — 34-quarter registry (`configs/quarters.json` + `config.py` loader; `CONFIG_2017Q1` alias)
+- `09afcf6` #2 — (advance-1) headline vintages, all 34 quarters, both panels (`tools/build_headline_vintages`)
+- `a298957` — Diebold-Mariano + HLN module (quarterly) + tests; `6114d4d` — pca(GDPC1) convention test
+- `b64424c` #3 — baseline multi-quarter backtest + RMSE/MAE table (`docs/results.md`, `docs/dashboard_data/baseline.json`)
+
+**Baseline headline (honest, adversarial-reviewed 0 bugs): ex-2020 (n=30) RMSE 2.147 / MAE 1.520 / Bias −0.022; all-34 RMSE 5.587.** 2017q1=2.2461378 == golden oracle. Big ex-2020 misses (2022q1/q2, 2025q1) = genuine real-economy surprises.
+
+**EXACT NEXT STEP (task #4 methodology, in progress):** edit `Spec_US_fiscal.xlsx` row `SeriesID==MTSDS133FMS`, column `Transformation` `lin`→`ch1` (verified on v2 data: April seasonality +1.04σ → +0.10σ, ~10× cut; openpyxl, binary xlsx; baseline US_new has no MTSDS ⇒ golden-safe). Commit (task#4). THEN task#5: `uv run python -m tools.run_backtest --variant fiscal --workers 4` (BACKGROUND ~33 min) → fiscal.json + results.md fiscal section; baseline-vs-fiscal DM (`diebold_mariano`, per-quarter squared errors, h=1) + 2025q1 contaminated-quarter check (`tools/release_day_leak_scan`); then power/MDE. **Then:** #6 (4.5 GDPNow+ARMA benchmarks) → #7 (Phase-5 data-export + React/Next.js dashboard) → #8 deploy [CHECKPOINT-pause] → #9 5b decommission [CHECKPOINT-pause] → #10 complete 2025q1 weekly calendar before the dashboard.
+
+**Loop prompt (auto-launched on "riprendi"):**
+> self-paced (nessun intervallo fisso): porta il refactor v2 di GDPnowcast-fiscal fino al portfolio MVP (resto Fase 4 metodologia, 4.5 benchmark, 5 dashboard+deploy, 5b decommission), lavorando step-by-step con review avversariali in-loop a ogni confine di step/fase, usando agent concorrenti dove conviene. Fermati solo prima del deploy pubblico e della cancellazione file v1, e su blocker veri. Mai merge su main; rispetta look-ahead bias e honest research.
+
+_Everything below this line is the historical session log (pre-2026-06-08); the block above is authoritative._
+
+---
+
 **Last touched:** 2026-06-04 (**Phase 3 baseline-2017q1 COMPLETE, reviewed, PUSHED** — A4 + B1–B8 DONE: the full v1 chain `dfm_spec/transform/_dfm_support/dfm/news/decomposition` **plus** the parameterised `nowcast/runner` are ported, de-MATLAB-ized, golden parity `1e-6`. **Final sweep review passed (no Critical/Important)**; the 2 Minor coverage gaps fixed in `a1598f1`. All pushed to `origin/refactor/v2`. **Phase 4.0 gate item 1 (target masking) ✅ DONE 2026-06-03** — `mask_target` mode landed (commits `f50a353`+`e8b8258`, **pushed**) but **DEMOTED 2026-06-04** to an optional diagnostic. **Phase 4.0 GATE CLOSED 2026-06-04** — headline scored at the `(advance−1)` pre-advance cutoff (masking-only-GDP leaks BEA co-releases in 29/33 quarters; fixed-Thursday rejected); item 3 decided = headline runs on the fuller corrected v2 panel (`US_new`/`US_fiscal`), `sample_start` stays 2000. **Phase-4 body STEP 1 (the off-grid `(advance−1)` headline) — DESIGN SPEC written + agent-reviewed + self-verified + fixes applied** (`docs/plans/2026-06-04-phase4-advance-minus-1-headline-design.md`; commits `4067ab7`+`40f2c16`). ✅ IMPLEMENTED 2026-06-06 + verified (`just ci` + heavy 8/8) + agent-reviewed (SHIP) + docs aligned (guard + M1 follow-up); committed+pushed. See the 🟢 Phase-4-body block.)
 **Branch:** `refactor/v2` (off main `d50a2bc`). ⛔ **NEVER merge into `main`** — v2 lives permanently on this branch (Matteo's hard rule).
 **Status:** ✅ **Phase 1 (Foundation) complete and pushed.** On 2026-05-31 the red-team backlog was triaged (5 critical + 3 sequencing accepted), folded into the design doc + Phase 1 plan, then Phase 1 was executed inline: src-layout skeleton, `uv`/`ruff`/`mypy`/`pytest`/`pre-commit`/`just`/GitHub-Actions tooling, `.gitignore`, data untracked (1300→54 tracked files, 1.65 MB), FRED-key fallback patched + `.env.example`, README (confidence-framed + CI badge), `update_Nowcast.py` recovered from git. `just ci` green (lint + mypy + 2 smoke tests). Three environment deviations applied (justfile `windows-shell`, CI uv `0.11.x`, pyproject `[tool.uv] link-mode = "copy"` for OneDrive) — see the Phase 1 plan's "Executed 2026-05-31" note.
