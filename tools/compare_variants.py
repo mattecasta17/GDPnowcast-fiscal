@@ -139,6 +139,13 @@ def _write_md(out: dict) -> None:
         "fiscal variant is marginally worse there). No overclaim: **the fiscal block helps at the",
         "margin -- robustly under MAE, not decisively under RMSE.**",
         "",
+        "**Multiple-testing caveat.** Four DM tests are reported above; the single 5%-significant",
+        "cell (ex-2020 MAE) would not survive a family-wise correction across the four "
+        f"(Bonferroni: {dm['ex_2020']['absolute']['p_value']:.3f} x 4 = "
+        f"{min(1.0, dm['ex_2020']['absolute']['p_value'] * 4):.2f}), and the emphasis on MAE over",
+        "RMSE is in part a post-hoc loss-function choice. Read the fiscal gain as **suggestive,",
+        "not established** -- a larger out-of-sample window would be needed to settle it.",
+        "",
         "## Per-quarter accuracy delta (|fiscal error| - |baseline error|)",
         "",
         "Negative = fiscal closer to the advance that quarter.",
