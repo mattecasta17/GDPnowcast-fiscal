@@ -1,0 +1,300 @@
+{
+  "convention": "A=fiscal, B=baseline; loss_diff=loss_fiscal-loss_baseline; loss_diff<0 and dm_stat<0 => fiscal more accurate; horizon h=1",
+  "diebold_mariano": {
+    "all": {
+      "squared": {
+        "dm_stat": 0.4840025351266438,
+        "p_value": 0.6315806749297428,
+        "df": 33,
+        "n": 34,
+        "mean_loss_diff": 0.22445011402581527,
+        "horizon": 1
+      },
+      "absolute": {
+        "dm_stat": -0.9461621306495368,
+        "p_value": 0.3509429353318343,
+        "df": 33,
+        "n": 34,
+        "mean_loss_diff": -0.03458837360931179,
+        "horizon": 1
+      }
+    },
+    "ex_2020": {
+      "squared": {
+        "dm_stat": -1.5413049960344332,
+        "p_value": 0.13408495316842448,
+        "df": 29,
+        "n": 30,
+        "mean_loss_diff": -0.3830812191251073,
+        "horizon": 1
+      },
+      "absolute": {
+        "dm_stat": -2.2023289795899346,
+        "p_value": 0.03574525314921603,
+        "df": 29,
+        "n": 30,
+        "mean_loss_diff": -0.07108555357615229,
+        "horizon": 1
+      }
+    }
+  },
+  "per_quarter": [
+    {
+      "period": "2017q1",
+      "fiscal_error": -1.488274119329131,
+      "baseline_error": -1.5461378418030896,
+      "abs_error_delta": -0.057863722473958656,
+      "covid": false
+    },
+    {
+      "period": "2017q2",
+      "fiscal_error": 0.7242828138954875,
+      "baseline_error": 0.904621574118659,
+      "abs_error_delta": -0.1803387602231714,
+      "covid": false
+    },
+    {
+      "period": "2017q3",
+      "fiscal_error": 1.0198684382718513,
+      "baseline_error": 0.9332282540898467,
+      "abs_error_delta": 0.08664018418200459,
+      "covid": false
+    },
+    {
+      "period": "2017q4",
+      "fiscal_error": -0.9428643351714867,
+      "baseline_error": -0.9649035895898437,
+      "abs_error_delta": -0.02203925441835697,
+      "covid": false
+    },
+    {
+      "period": "2018q1",
+      "fiscal_error": -0.1979848227068195,
+      "baseline_error": -0.17500869497333937,
+      "abs_error_delta": 0.022976127733480123,
+      "covid": false
+    },
+    {
+      "period": "2018q2",
+      "fiscal_error": 1.5768653094039733,
+      "baseline_error": 1.5999118569796482,
+      "abs_error_delta": -0.023046547575674925,
+      "covid": false
+    },
+    {
+      "period": "2018q3",
+      "fiscal_error": 1.123572016359391,
+      "baseline_error": 1.1608693875382445,
+      "abs_error_delta": -0.03729737117885357,
+      "covid": false
+    },
+    {
+      "period": "2018q4",
+      "fiscal_error": 0.4605507269993878,
+      "baseline_error": 0.5269052170155928,
+      "abs_error_delta": -0.06635449001620497,
+      "covid": false
+    },
+    {
+      "period": "2019q1",
+      "fiscal_error": 1.7438799272821075,
+      "baseline_error": 1.7718322423689785,
+      "abs_error_delta": -0.027952315086871016,
+      "covid": false
+    },
+    {
+      "period": "2019q2",
+      "fiscal_error": -0.00763754524128446,
+      "baseline_error": -0.09731678028062118,
+      "abs_error_delta": -0.08967923503933672,
+      "covid": false
+    },
+    {
+      "period": "2019q3",
+      "fiscal_error": -0.10564287300107056,
+      "baseline_error": -0.13537721905821964,
+      "abs_error_delta": -0.029734346057149086,
+      "covid": false
+    },
+    {
+      "period": "2019q4",
+      "fiscal_error": 0.31586551242075567,
+      "baseline_error": 0.295073988798789,
+      "abs_error_delta": 0.02079152362196668,
+      "covid": false
+    },
+    {
+      "period": "2020q1",
+      "fiscal_error": -4.885164882253824,
+      "baseline_error": -4.873923146826548,
+      "abs_error_delta": 0.011241735427276467,
+      "covid": true
+    },
+    {
+      "period": "2020q2",
+      "fiscal_error": -20.315754966716337,
+      "baseline_error": -20.287110489423128,
+      "abs_error_delta": 0.02864447729320929,
+      "covid": true
+    },
+    {
+      "period": "2020q3",
+      "fiscal_error": 21.99941190818349,
+      "baseline_error": 21.71572772443515,
+      "abs_error_delta": 0.28368418374833837,
+      "covid": true
+    },
+    {
+      "period": "2020q4",
+      "fiscal_error": -4.6212057964007816,
+      "baseline_error": -3.988214288301638,
+      "abs_error_delta": 0.6329915080991437,
+      "covid": true
+    },
+    {
+      "period": "2021q1",
+      "fiscal_error": 0.0383056316023902,
+      "baseline_error": 0.14499717512111232,
+      "abs_error_delta": -0.10669154351872212,
+      "covid": false
+    },
+    {
+      "period": "2021q2",
+      "fiscal_error": 1.5525941019546075,
+      "baseline_error": 1.48379077417761,
+      "abs_error_delta": 0.06880332777699749,
+      "covid": false
+    },
+    {
+      "period": "2021q3",
+      "fiscal_error": -1.7984074278934,
+      "baseline_error": -2.0206827066318453,
+      "abs_error_delta": -0.22227527873844544,
+      "covid": false
+    },
+    {
+      "period": "2021q4",
+      "fiscal_error": 2.7108544863103106,
+      "baseline_error": 2.625695371188703,
+      "abs_error_delta": 0.08515911512160734,
+      "covid": false
+    },
+    {
+      "period": "2022q1",
+      "fiscal_error": -5.761114250544798,
+      "baseline_error": -6.027940829373442,
+      "abs_error_delta": -0.2668265788286437,
+      "covid": false
+    },
+    {
+      "period": "2022q2",
+      "fiscal_error": -5.054846015683953,
+      "baseline_error": -5.640173578934247,
+      "abs_error_delta": -0.5853275632502939,
+      "covid": false
+    },
+    {
+      "period": "2022q3",
+      "fiscal_error": 1.6731534960986212,
+      "baseline_error": 1.6333699322806357,
+      "abs_error_delta": 0.039783563817985534,
+      "covid": false
+    },
+    {
+      "period": "2022q4",
+      "fiscal_error": 2.1820011915511683,
+      "baseline_error": 2.5895819489424845,
+      "abs_error_delta": -0.40758075739131616,
+      "covid": false
+    },
+    {
+      "period": "2023q1",
+      "fiscal_error": -1.5135553950276752,
+      "baseline_error": -1.4296297763063697,
+      "abs_error_delta": 0.08392561872130555,
+      "covid": false
+    },
+    {
+      "period": "2023q2",
+      "fiscal_error": 0.13562084108475236,
+      "baseline_error": 0.5439835964550834,
+      "abs_error_delta": -0.40836275537033107,
+      "covid": false
+    },
+    {
+      "period": "2023q3",
+      "fiscal_error": 2.37058068688938,
+      "baseline_error": 2.17518493982311,
+      "abs_error_delta": 0.19539574706627016,
+      "covid": false
+    },
+    {
+      "period": "2023q4",
+      "fiscal_error": 2.5097470666808515,
+      "baseline_error": 2.2588145036156195,
+      "abs_error_delta": 0.25093256306523193,
+      "covid": false
+    },
+    {
+      "period": "2024q1",
+      "fiscal_error": 0.03860457437089293,
+      "baseline_error": -0.05795019610827401,
+      "abs_error_delta": -0.01934562173738108,
+      "covid": false
+    },
+    {
+      "period": "2024q2",
+      "fiscal_error": -0.25640235725123794,
+      "baseline_error": -0.4048516971768392,
+      "abs_error_delta": -0.14844933992560128,
+      "covid": false
+    },
+    {
+      "period": "2024q3",
+      "fiscal_error": 0.6938160320024553,
+      "baseline_error": 0.6810538490652025,
+      "abs_error_delta": 0.012762182937252842,
+      "covid": false
+    },
+    {
+      "period": "2024q4",
+      "fiscal_error": 0.11493132482392188,
+      "baseline_error": 0.27101603545373676,
+      "abs_error_delta": -0.15608471062981488,
+      "covid": false
+    },
+    {
+      "period": "2025q1",
+      "fiscal_error": -4.488855255875143,
+      "baseline_error": -4.633637883403133,
+      "abs_error_delta": -0.14478262752798976,
+      "covid": false
+    },
+    {
+      "period": "2025q2",
+      "fiscal_error": 0.8729056213390423,
+      "baseline_error": 0.8726093636795964,
+      "abs_error_delta": 0.00029625765944585325,
+      "covid": false
+    }
+  ],
+  "leak_scan": {
+    "source": "tools/release_day_leak_scan scan",
+    "quarters": 33,
+    "advance_day_leak_nonzero": 17,
+    "window_leak_nonzero": 29,
+    "clean_quarters": [
+      "2017q1",
+      "2018q1",
+      "2018q3",
+      "2019q1"
+    ],
+    "q2025q1_advance_day_coreleases": [
+      "DSPIC96",
+      "PCEC96",
+      "PCEPI",
+      "PCEPILFE"
+    ],
+    "q2025q1_window_coreleases": 11
+  }
+}
