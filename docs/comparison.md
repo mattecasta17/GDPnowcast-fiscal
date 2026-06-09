@@ -32,6 +32,37 @@ cell (ex-2020 MAE) would not survive a family-wise correction across the four (B
 RMSE is in part a post-hoc loss-function choice. Read the fiscal gain as **suggestive,
 not established** -- a larger out-of-sample window would be needed to settle it.
 
+## Statistical power: minimum detectable effect (MDE)
+
+Because the headline horizon is h=1, the DM-HLN statistic above is *identical* to an
+ordinary paired t-test on the per-quarter loss differential -- the HLN finite-sample
+factor exactly cancels the biased-variance divisor (the tool asserts `paired_t ==
+dm_stat`). That makes the textbook power calculation directly applicable: with `n`
+quarters and the observed loss-differential SD, the smallest accuracy gap detectable at
+5% significance and 80% power is **`MDE = (t_{.975,df} + t_{.80,df})·SE(d)`**, with
+`SE(d) = sd(d)/√n`. A ✓ marks a (sample, loss) cell whose *observed* |Δloss| already
+reaches that MDE.
+
+| sample | loss | n | observed Δloss | SE | sig. threshold (5%) | MDE (80% power) |
+|---|---|---|---|---|---|---|
+| all-34 | squared (MSE) | 34 | +0.224 | 0.464 | 0.943 | 1.339 |
+| all-34 | absolute (MAE) | 34 | -0.035 | 0.037 | 0.074 | 0.106 |
+| ex-2020 | squared (MSE) | 30 | -0.383 | 0.249 | 0.508 | 0.721 |
+| ex-2020 | absolute (MAE) | 30 | -0.071 | 0.032 | 0.066 | 0.094 |
+
+**Reading the power.** The ex-2020 **MAE** gap (|Δ| = 0.071)
+clears its 5% significance threshold (0.066 -- equivalently
+the DM p=0.036 < 0.05) but still falls short of the 80%-power
+MDE of 0.094, so even the one significant cell rests on an effect this sample
+is itself underpowered to certify. The ex-2020 **squared**-loss gap (|Δ| = 0.383 MSE) falls short of its MDE of 0.721 MSE -- a
+0.175pp move on the RMSE scale (baseline RMSE 2.147) -- so
+the non-significant RMSE verdict (p=0.134) is an
+**underpowered** outcome: with n=30 ex-COVID quarters the test cannot resolve an
+RMSE improvement below ~0.17pp, and the observed gain sits under that
+bar. Honest takeaway: the data are **consistent with** a real-but-modest fiscal-block
+benefit that this sample size is underpowered to certify -- exactly the **suggestive, not
+established** reading, now quantified.
+
 ## Per-quarter accuracy delta (|fiscal error| - |baseline error|)
 
 Negative = fiscal closer to the advance that quarter.

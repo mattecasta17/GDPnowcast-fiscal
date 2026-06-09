@@ -38,6 +38,81 @@
       }
     }
   },
+  "power_mde": {
+    "method": "For h=1 the DM-HLN statistic equals the ordinary paired t-test, so MDE = (t_{1-alpha/2,df} + t_{power,df}) * SE(d), df=n-1, SE(d)=sd(d)/sqrt(n) with sd(d) the unbiased sample SD. This central-t formula is the standard approximation to the exact noncentral-t MDE (here within ~0.02%, and if anything slightly conservative). Squared-loss effects are in MSE units; the RMSE-scale equivalent is RMSE_base - sqrt(MSE_base - effect).",
+    "alpha": 0.05,
+    "power": 0.8,
+    "by_sample": {
+      "all": {
+        "squared": {
+          "n": 34,
+          "df": 33,
+          "mean_loss_diff": 0.22445011402581527,
+          "sd_diff": 2.704030914496393,
+          "se": 0.4637374760177357,
+          "t_crit": 2.0345152974493383,
+          "t_power": 0.8526494236479887,
+          "sig_threshold_effect": 0.943480988958629,
+          "mde": 1.3388864806091243,
+          "powered": false,
+          "paired_t": 0.4840025351266438,
+          "dm_stat": 0.4840025351266438,
+          "mse_base": 31.209203777447048,
+          "rmse_base": 5.586519826998473,
+          "sig_threshold_effect_rmse": 0.0850906682717687,
+          "mde_rmse": 0.12114543023132018
+        },
+        "absolute": {
+          "n": 34,
+          "df": 33,
+          "mean_loss_diff": -0.03458837360931179,
+          "sd_diff": 0.21315917864772185,
+          "se": 0.03655649754822358,
+          "t_crit": 2.0345152974493383,
+          "t_power": 0.8526494236479887,
+          "sig_threshold_effect": 0.0743747534830301,
+          "mde": 0.10554463004811204,
+          "powered": false,
+          "paired_t": -0.9461621306495368,
+          "dm_stat": -0.9461621306495368
+        }
+      },
+      "ex_2020": {
+        "squared": {
+          "n": 30,
+          "df": 29,
+          "mean_loss_diff": -0.3830812191251073,
+          "sd_diff": 1.3613283912739178,
+          "se": 0.24854342269098123,
+          "t_crit": 2.045229642132704,
+          "t_power": 0.8541919858818557,
+          "sig_threshold_effect": 0.5083283754447129,
+          "mde": 0.7206321752509957,
+          "powered": false,
+          "paired_t": -1.5413049960344332,
+          "dm_stat": -1.5413049960344332,
+          "mse_base": 4.610408859025051,
+          "rmse_base": 2.1471862655636214,
+          "sig_threshold_effect_rmse": 0.12182691878578655,
+          "mde_rmse": 0.1749345869551191
+        },
+        "absolute": {
+          "n": 30,
+          "df": 29,
+          "mean_loss_diff": -0.07108555357615229,
+          "sd_diff": 0.17679084990131774,
+          "se": 0.03227744548382057,
+          "t_crit": 2.045229642132704,
+          "t_power": 0.8541919858818557,
+          "sig_threshold_effect": 0.0660147882758322,
+          "mde": 0.09358592353285024,
+          "powered": false,
+          "paired_t": -2.2023289795899346,
+          "dm_stat": -2.2023289795899346
+        }
+      }
+    }
+  },
   "per_quarter": [
     {
       "period": "2017q1",
