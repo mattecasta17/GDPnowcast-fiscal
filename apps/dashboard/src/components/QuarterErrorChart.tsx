@@ -8,12 +8,12 @@ import {
   Cell,
   Legend,
   ReferenceLine,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { COLORS, COVID, data, fmt, periodLabel, periodTick } from "@/lib/data";
+import { ChartFrame } from "./ChartFrame";
 
 export function QuarterErrorChart() {
   const [hideCovid, setHideCovid] = useState(true);
@@ -42,8 +42,9 @@ export function QuarterErrorChart() {
           {hideCovid ? "Show 2020 (COVID)" : "Hide 2020 (COVID)"}
         </button>
       </div>
-      <ResponsiveContainer width="100%" height={340}>
-        <BarChart data={rows} margin={{ top: 8, right: 12, left: -8, bottom: 4 }} barCategoryGap="18%">
+      <ChartFrame height={340}>
+        {(w) => (
+        <BarChart width={w} height={340} data={rows} margin={{ top: 8, right: 12, left: -8, bottom: 4 }} barCategoryGap="18%">
           <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" vertical={false} />
           <XAxis
             dataKey="period"
@@ -72,7 +73,8 @@ export function QuarterErrorChart() {
             ))}
           </Bar>
         </BarChart>
-      </ResponsiveContainer>
+        )}
+      </ChartFrame>
     </div>
   );
 }

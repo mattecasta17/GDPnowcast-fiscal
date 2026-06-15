@@ -7,13 +7,13 @@ import {
   Line,
   LineChart,
   ReferenceLine,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { COLORS, data, fmt, periodLabel } from "@/lib/data";
 import type { Variant } from "@/lib/types";
+import { ChartFrame } from "./ChartFrame";
 
 type Mode = Variant | "both";
 
@@ -76,8 +76,9 @@ export function WeeklyExplorer() {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height={360}>
-        <LineChart data={rows} margin={{ top: 8, right: 14, left: -8, bottom: 4 }}>
+      <ChartFrame height={360}>
+        {(w) => (
+        <LineChart width={w} height={360} data={rows} margin={{ top: 8, right: 14, left: -8, bottom: 4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" />
           <XAxis
             dataKey="vintage"
@@ -121,7 +122,8 @@ export function WeeklyExplorer() {
             />
           )}
         </LineChart>
-      </ResponsiveContainer>
+        )}
+      </ChartFrame>
 
       <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-slate-600 sm:grid-cols-4">
         <Fact label="BEA advance" value={`${fmt(head.target)} pp`} />

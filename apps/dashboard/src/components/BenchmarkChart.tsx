@@ -1,7 +1,8 @@
 "use client";
 
-import { Bar, BarChart, Cell, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, Cell, LabelList, Tooltip, XAxis, YAxis } from "recharts";
 import { COLORS, data, fmt } from "@/lib/data";
+import { ChartFrame } from "./ChartFrame";
 
 const ORDER = ["dfm", "mean", "rw", "ar1", "arma11"] as const;
 const SHORT: Record<string, string> = { dfm: "DFM", mean: "Mean", rw: "RW", ar1: "AR(1)", arma11: "ARMA" };
@@ -15,8 +16,9 @@ function Panel({ sample, title }: { sample: "ex_2020" | "all"; title: string }) 
   return (
     <div>
       <p className="mb-2 text-xs font-semibold text-slate-600">{title}</p>
-      <ResponsiveContainer width="100%" height={220}>
-        <BarChart data={rows} margin={{ top: 18, right: 8, left: -10, bottom: 0 }}>
+      <ChartFrame height={220}>
+        {(w) => (
+        <BarChart width={w} height={220} data={rows} margin={{ top: 18, right: 8, left: -10, bottom: 0 }}>
           <XAxis dataKey="model" tick={{ fontSize: 11, fill: "#64748b" }} axisLine={false} tickLine={false} />
           <YAxis tick={{ fontSize: 11, fill: "#64748b" }} width={40} axisLine={false} tickLine={false} />
           <Tooltip
@@ -31,7 +33,8 @@ function Panel({ sample, title }: { sample: "ex_2020" | "all"; title: string }) 
             ))}
           </Bar>
         </BarChart>
-      </ResponsiveContainer>
+        )}
+      </ChartFrame>
     </div>
   );
 }

@@ -7,12 +7,12 @@ import {
   Line,
   LineChart,
   ReferenceLine,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { COLORS, COVID, data, fmt, periodLabel, periodTick } from "@/lib/data";
+import { ChartFrame } from "./ChartFrame";
 
 export function HeadlineChart() {
   const [hideCovid, setHideCovid] = useState(true);
@@ -51,8 +51,9 @@ export function HeadlineChart() {
           -32 pp annualized; including it compresses every other quarter.
         </p>
       ) : null}
-      <ResponsiveContainer width="100%" height={380}>
-        <LineChart data={rows} margin={{ top: 8, right: 12, left: -8, bottom: 4 }}>
+      <ChartFrame height={380}>
+        {(w) => (
+        <LineChart width={w} height={380} data={rows} margin={{ top: 8, right: 12, left: -8, bottom: 4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" />
           <XAxis
             dataKey="period"
@@ -100,7 +101,8 @@ export function HeadlineChart() {
             dot={false}
           />
         </LineChart>
-      </ResponsiveContainer>
+        )}
+      </ChartFrame>
     </div>
   );
 }

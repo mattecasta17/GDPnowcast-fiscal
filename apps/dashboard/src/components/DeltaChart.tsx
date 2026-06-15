@@ -7,12 +7,12 @@ import {
   CartesianGrid,
   Cell,
   ReferenceLine,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { COLORS, COVID, data, fmt, periodLabel, periodTick } from "@/lib/data";
+import { ChartFrame } from "./ChartFrame";
 
 export function DeltaChart() {
   const [hideCovid, setHideCovid] = useState(true);
@@ -34,8 +34,9 @@ export function DeltaChart() {
           {hideCovid ? "Show 2020 (COVID)" : "Hide 2020 (COVID)"}
         </button>
       </div>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={rows} margin={{ top: 8, right: 12, left: -8, bottom: 4 }}>
+      <ChartFrame height={300}>
+        {(w) => (
+        <BarChart width={w} height={300} data={rows} margin={{ top: 8, right: 12, left: -8, bottom: 4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" vertical={false} />
           <XAxis
             dataKey="period"
@@ -58,7 +59,8 @@ export function DeltaChart() {
             ))}
           </Bar>
         </BarChart>
-      </ResponsiveContainer>
+        )}
+      </ChartFrame>
       <div className="mt-3 flex gap-4 text-xs text-slate-500">
         <span className="inline-flex items-center gap-1.5">
           <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: COLORS.good }} />
