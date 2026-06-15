@@ -55,13 +55,23 @@ Until Phase 5 ships, use the v1 scripts directly (e.g. `python nowcast_2024_fisc
 
 ## Dashboard
 
-> **Not yet implemented — coming in Phase 5.**
+A static **Next.js** dashboard lives in [`apps/dashboard/`](apps/dashboard/). It renders the
+pseudo-real-time backtest — headline nowcast vs the BEA advance, the within-quarter weekly path,
+DFM-vs-naive benchmarks, and the fiscal-vs-baseline comparison — from a committed JSON bundle, with
+no server or runtime data fetch.
 
 ```bash
-just dashboard                     # or: uv run streamlit run apps/dashboard.py
+npm install --prefix apps/dashboard
+npm run dev --prefix apps/dashboard      # http://localhost:3000
+npm run build --prefix apps/dashboard    # static export -> apps/dashboard/out
 ```
 
-v1 dashboards (`dashboard_nowcast_new.py`, `dashboard_nowcast_fiscal.py`) still exist at root for reference.
+The bundle is regenerated from the committed backtest artifacts with
+`uv run python -m tools.build_dashboard_data`; details in [`apps/dashboard/README.md`](apps/dashboard/README.md).
+
+<!-- live demo: add the deployed URL here once published -->
+
+v1 dashboards (`dashboard_nowcast_new.py`, `dashboard_nowcast_fiscal.py`) still exist at root for reference (removed in the Phase 5b cleanup).
 
 ---
 
@@ -71,7 +81,7 @@ v1 dashboards (`dashboard_nowcast_new.py`, `dashboard_nowcast_fiscal.py`) still 
 src/gdpnowcast/        # v2 importable package (Phase 1+ scaffold)
 tests/                 # pytest suite
 configs/               # spec_us_*.xlsx + runtime.toml (Phase 2+)
-apps/                  # Streamlit dashboard (Phase 5)
+apps/dashboard/        # Next.js static dashboard (Phase 5)
 data/                  # gitignored, built by `gdpnowcast fetch`
 docs/                  # design docs, audits, plans, paper sources
   ├── plans/           # v2 design + per-phase implementation plans
