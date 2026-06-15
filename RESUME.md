@@ -1,6 +1,22 @@
 # RESUME — where we left off
 
-## ▶ RESUME EXACTLY HERE — 2026-06-08 (autonomous /loop)
+## ▶ RESUME EXACTLY HERE — 2026-06-15 (Phase-5 dashboard DONE; paused at deploy gate)
+
+**To resume: say "riprendi"** (re-launches the autonomous /loop from the state below) **or "deploy"** (publish the dashboard) **or describe the UI changes you want.** The live next-step state is in memory `project-v2-refactor-state` (read its BOTTOM block); this is the in-repo mirror.
+
+**Where we are:** branch `refactor/v2`, HEAD pushed **`4f82dd1`**, tree clean (only untracked `.claude/`). **Phase-4 methodology + Phase-4.5 benchmarks DONE; Phase-5 dashboard DONE.** Commits this session, all pushed:
+- `11066bd` — **export layer** `tools/build_dashboard_data.py` (network-free; consolidates the 4 `docs/dashboard_data/*.json` → `apps/dashboard/src/data/dashboard.json` + 7 honest findings; `tests/test_dashboard_data.py`) + **static Next.js dashboard** in `apps/dashboard/` (Next 15 / React 18 / Tailwind / Recharts, `output:'export'`). Adversarial-reviewed; fixed 1 honesty wording bug.
+- `ad43eeb` — **fix: charts were blank.** Recharts 2.12.7 `minPointSize` bug + flaky `ResponsiveContainer` → bumped Recharts **2.15.4** + custom `ChartFrame` wrapper. Verified headless (Playwright): 13 chart surfaces, 0 errors, desktop + mobile.
+- `a5608a3` — **2025q1 weekly calendar completed** (4 Fridays added to `configs/quarters.json`; new `tools/refresh_period_weekly.py` splices weekly/skipped while pinning the (advance-1) headline unchanged = look-ahead-safety check).
+- `4f82dd1` — **deploy-prep**: `apps/dashboard/README.md`, favicon, social metadata, root-README dashboard section.
+
+**⏸️ PAUSED AT THE DEPLOY GATE BY MATTEO'S EXPLICIT CHOICE** (asked deploy/changes/wait on 2026-06-15, he picked **"wait, not yet"**). **On resume DO NOT deploy or re-prompt unprompted.** The dashboard is static, builds green, charts verified, 2025q1 complete — deployable as-is; nothing is blocked except his go/no-go. Preview: `npm run dev --prefix apps/dashboard` → http://localhost:3000.
+
+**Remaining roadmap (both human-gated — never autonomous):** #8 **deploy to Vercel** (his OK; `mcp__claude_ai_Vercel__deploy_to_vercel`, his connected account — then paste the URL into `apps/dashboard/README.md` + the root README `<!-- live demo -->` placeholder) → #9 **Phase-5b v1 decommission** (his OK; irreversible deletion of the 18 `nowcast_*` scripts / 2 v1 dashboards / `Functions/`, gated on golden committed + dashboard reproducing v1 — both true). Infra note: pre-commit ruff 0.7.4 vs uv 0.15.15 skew keeps `just ci` lint red on `tests/test_benchmark.py` + a couple tools — validate health via `uv run mypy src/gdpnowcast/ tests/` + `uv run pytest -m "not slow"`.
+
+---
+
+## ▶ (superseded) RESUME — 2026-06-08 (autonomous /loop)
 
 **To resume: just say "riprendi"** (or "riprendi da dove siamo arrivati"). I re-launch the autonomous loop automatically from the state below — you never paste the prompt. (Trigger + loop prompt are recorded in memory `feedback-resume-trigger` / `feedback-autonomous-loop-mode`; the live next-step state is in memory `project-v2-refactor-state`.)
 
