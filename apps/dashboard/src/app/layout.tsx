@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const TITLE = "GDP Nowcast - Fiscal | Real-time DFM backtest";
+const TITLE = "Fiscal-enhanced GDP nowcast | Does fiscal data help?";
 const DESCRIPTION =
-  "Pseudo-real-time backtest of a dynamic factor model nowcasting US GDP growth, with a fiscal-augmented variant and naive benchmarks. Honest, look-ahead-safe evaluation, 2017-2025.";
+  "A fiscal-enhanced dynamic factor model vs a macro-only Staff Nowcast for US GDP growth: does adding a fiscal block sharpen the real-time nowcast? Honest, look-ahead-safe pseudo-real-time backtest, 2017-2025.";
 
 export const metadata: Metadata = {
   title: TITLE,

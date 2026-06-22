@@ -28,9 +28,9 @@ export function MethodologyFooter() {
           <p className="mt-1.5">
             Point-in-time vintages from ALFRED/FRED, reconstructed as-of each Friday with{" "}
             <code className="rounded bg-slate-100 px-1 text-xs">realtime_start = realtime_end</code>{" "}
-            - no revisions, no fills, observations truncated to the vintage date. The baseline panel
-            (<span className="font-mono">{meta.panel_baseline}</span>) and the fiscal panel (
-            <span className="font-mono">{meta.panel_fiscal}</span>) share the same calendar and
+            - no revisions, no fills, observations truncated to the vintage date. The Staff Nowcast
+            panel (<span className="font-mono">{meta.panel_baseline}</span>) and the Fiscal-enhanced
+            panel (<span className="font-mono">{meta.panel_fiscal}</span>) share the same calendar and
             target; estimation starts in 2000.
           </p>
         </div>

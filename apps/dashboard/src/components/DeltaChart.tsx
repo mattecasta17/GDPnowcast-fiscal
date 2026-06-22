@@ -22,9 +22,10 @@ export function DeltaChart() {
     <div className="card">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="text-base font-semibold text-ink">Fiscal accuracy gain, by quarter</h3>
+          <h3 className="text-base font-semibold text-ink">Where the fiscal block helps, quarter by quarter</h3>
           <p className="text-xs text-muted">
-            |error| fiscal minus |error| baseline (pp). Below zero = fiscal more accurate.
+            |error| Fiscal-enhanced minus |error| Staff Nowcast (pp). Below zero = the fiscal block
+            is more accurate that quarter.
           </p>
         </div>
         <button
@@ -47,7 +48,7 @@ export function DeltaChart() {
           />
           <YAxis tick={{ fontSize: 11, fill: "#64748b" }} width={44} />
           <Tooltip
-            formatter={(v: number) => [`${fmt(v)} pp`, "|err| fiscal - |err| baseline"]}
+            formatter={(v: number) => [`${fmt(v)} pp`, "|err| Fiscal-enhanced - |err| Staff"]}
             labelFormatter={(p: string) => periodLabel(p)}
             contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid #e2e8f0" }}
             cursor={{ fill: "#f8fafc" }}
@@ -64,11 +65,11 @@ export function DeltaChart() {
       <div className="mt-3 flex gap-4 text-xs text-slate-500">
         <span className="inline-flex items-center gap-1.5">
           <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: COLORS.good }} />
-          fiscal better
+          Fiscal-enhanced better
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="inline-block h-2.5 w-2.5 rounded-sm" style={{ background: COLORS.bad }} />
-          baseline better
+          Staff Nowcast better
         </span>
       </div>
     </div>

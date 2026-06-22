@@ -86,7 +86,7 @@ export function HeadlineChart() {
           <Line
             type="monotone"
             dataKey="baseline"
-            name="DFM baseline"
+            name="Staff Nowcast"
             stroke={COLORS.baseline}
             strokeWidth={2}
             dot={false}
@@ -94,7 +94,7 @@ export function HeadlineChart() {
           <Line
             type="monotone"
             dataKey="fiscal"
-            name="DFM fiscal"
+            name="Fiscal-enhanced DFM"
             stroke={COLORS.fiscal}
             strokeWidth={2}
             strokeDasharray="5 3"

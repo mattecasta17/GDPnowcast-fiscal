@@ -62,12 +62,12 @@ export function QuarterErrorChart() {
           />
           <Legend wrapperStyle={{ fontSize: 12 }} />
           <ReferenceLine y={0} stroke="#94a3b8" />
-          <Bar dataKey="baseline" name="DFM baseline" fill={COLORS.baseline} radius={[2, 2, 0, 0]}>
+          <Bar dataKey="baseline" name="Staff Nowcast" fill={COLORS.baseline} radius={[2, 2, 0, 0]}>
             {rows.map((r) => (
               <Cell key={r.period} fillOpacity={r.covid ? 0.45 : 1} />
             ))}
           </Bar>
-          <Bar dataKey="fiscal" name="DFM fiscal" fill={COLORS.fiscal} radius={[2, 2, 0, 0]}>
+          <Bar dataKey="fiscal" name="Fiscal-enhanced DFM" fill={COLORS.fiscal} radius={[2, 2, 0, 0]}>
             {rows.map((r) => (
               <Cell key={r.period} fillOpacity={r.covid ? 0.45 : 1} />
             ))}

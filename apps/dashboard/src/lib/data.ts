@@ -45,10 +45,29 @@ export const COLORS = {
   bad: "#dc2626",
 } as const;
 
+// The two DFM variants. The macro-only DFM mirrors a central-bank "staff nowcast"
+// (a la FRBNY / Bok et al.); the fiscal-augmented DFM adds a fiscal block on top.
+export const STAFF = "Staff Nowcast";
+export const FISCAL = "Fiscal-enhanced DFM";
+
+// Benchmark-table labels. "dfm" is the macro-only Staff Nowcast (panel US_new);
+// mean/rw/ar1/arma11 are the traditional univariate benchmarks.
 export const MODEL_LABELS: Record<string, string> = {
-  dfm: "DFM (this model)",
+  dfm: STAFF,
   mean: "Historical mean",
   rw: "Random walk",
   ar1: "AR(1)",
   arma11: "ARMA(1,1)",
 };
+
+/** Count quarters the Fiscal-enhanced DFM beats the Staff Nowcast (non-COVID), overall + post-COVID. */
+export function fiscalWinCounts(): { wins: number; n: number; winsPost: number; nPost: number } {
+  const rows = data.fiscal_impact.per_quarter;
+  const post = rows.filter((r) => Number(r.period.slice(0, 4)) >= 2021);
+  return {
+    wins: rows.filter((r) => r.gain > 0).length,
+    n: rows.length,
+    winsPost: post.filter((r) => r.gain > 0).length,
+    nPost: post.length,
+  };
+}

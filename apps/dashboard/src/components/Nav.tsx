@@ -1,8 +1,9 @@
 const LINKS = [
-  { href: "#headline", label: "Headline" },
+  { href: "#fiscal", label: "Fiscal vs macro" },
+  { href: "#deficit", label: "Deficit signal" },
+  { href: "#headline", label: "Accuracy" },
   { href: "#weekly", label: "Weekly path" },
-  { href: "#benchmarks", label: "Benchmarks" },
-  { href: "#fiscal", label: "Fiscal vs baseline" },
+  { href: "#benchmarks", label: "Vs traditional" },
   { href: "#findings", label: "Findings" },
   { href: "#method", label: "Method" },
 ];

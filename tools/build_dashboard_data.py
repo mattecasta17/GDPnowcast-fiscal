@@ -37,11 +37,13 @@ OUT = REPO / "apps" / "dashboard" / "src" / "data" / "dashboard.json"
 COVID = ["2020q1", "2020q2", "2020q3", "2020q4"]
 
 TARGET_DEFINITION = (
-    "Each nowcast is the DFM's forecast of the BEA advance estimate of annualized real-GDP "
+    "Each nowcast is the model's forecast of the BEA advance estimate of annualized real-GDP "
     "growth, evaluated at the (advance_date - 1 day) pre-advance cutoff. At that cutoff the "
     "target quarter's GDP is still unobserved and BEA same-day co-releases (real PCE, income, "
     "PCE prices, durable goods) are excluded, so the score is a genuine pseudo-real-time "
-    "forecast error with no look-ahead leakage."
+    "forecast error with no look-ahead leakage. The macro-only dynamic factor model is the "
+    "'Staff Nowcast' (a standard central-bank-staff DFM); the 'Fiscal-enhanced DFM' adds a "
+    "fiscal block (federal deficit, government spending, transfer-cleaned income)."
 )
 
 
@@ -53,15 +55,24 @@ def _r(x: float, n: int = 2) -> float:
     return round(float(x), n)
 
 
-def _build_findings(baseline: dict, benchmarks: dict, comparison: dict) -> list[dict]:
-    """Honest, number-anchored narrative bullets for the dashboard.
+def _build_findings(
+    baseline: dict,
+    fiscal: dict,
+    benchmarks: dict,
+    comparison: dict,
+    fiscal_impact: dict,
+) -> list[dict]:
+    """Honest, number-anchored narrative bullets, ordered fiscal-first.
 
     Numbers are pulled from the loaded artifacts (never re-typed by hand) so the prose can
-    never drift from the metrics it describes.
+    never drift from the metrics it describes. The macro-only DFM is the "Staff Nowcast";
+    the fiscal-augmented DFM is the "Fiscal-enhanced DFM"; mean/RW/AR1/ARMA11 are the
+    "traditional benchmarks".
     """
+    staff_ex = baseline["metrics"]["ex_2020"]
+    staff_all = baseline["metrics"]["all"]
+    fisc_ex = fiscal["metrics"]["ex_2020"]
     bm = benchmarks["metrics"]
-    dfm_ex = bm["dfm"]["ex_2020"]
-    dfm_all = bm["dfm"]["all"]
     mean_ex = bm["mean"]["ex_2020"]
     ar1_ex = bm["ar1"]["ex_2020"]
     rw_all = bm["rw"]["all"]
@@ -71,6 +82,16 @@ def _build_findings(baseline: dict, benchmarks: dict, comparison: dict) -> list[
     mae_dm = dm_ex["absolute"]
     rmse_dm = dm_ex["squared"]
     mde_ex_abs = comparison["power_mde"]["by_sample"]["ex_2020"]["absolute"]
+
+    # Per-quarter wins of the Fiscal-enhanced DFM over the Staff Nowcast (non-COVID only).
+    rows = fiscal_impact["per_quarter"]
+    n = len(rows)
+    wins = sum(1 for r in rows if r["gain"] > 0)
+    post = [r for r in rows if int(r["period"][:4]) >= 2021]
+    n_post = len(post)
+    wins_post = sum(1 for r in post if r["gain"] > 0)
+    summ = fiscal_impact["summary"]
+    mtsds_corr = summ["corr_by_variable"]["MTSDS133FMS"]
 
     # Count benchmark DM cells (models x {all,ex_2020} x {squared,absolute}) and how many reject.
     cells = 0
@@ -84,89 +105,59 @@ def _build_findings(baseline: dict, benchmarks: dict, comparison: dict) -> list[
 
     return [
         {
-            "id": "target",
-            "title": "Honest pseudo-real-time target",
+            "id": "fiscal-vs-staff",
+            "title": "The fiscal block helps more often than not",
             "body": (
-                "Every nowcast is scored against the BEA advance growth estimate at a pre-advance "
-                "cutoff (advance day minus one). No target value and no same-day BEA co-release "
-                "leak into the forecast, so the errors below are genuine, not read-backs."
-            ),
-            "evidence": {"n_quarters": int(dfm_all["n"]), "n_ex_2020": int(dfm_ex["n"])},
-        },
-        {
-            "id": "headline",
-            "title": "DFM headline accuracy",
-            "body": (
-                f"On the 30 non-COVID quarters the DFM headline has RMSE {_r(dfm_ex['rmse'])} pp / "
-                f"MAE {_r(dfm_ex['mae'])} pp and is nearly unbiased "
-                f"(bias {_r(dfm_ex['bias'])} pp). Including the four 2020 quarters the RMSE jumps "
-                f"to {_r(dfm_all['rmse'])} pp -- the pandemic dominates any all-sample metric."
+                f"Ex-2020 the Fiscal-enhanced DFM edges the macro-only Staff Nowcast on both "
+                f"scores -- RMSE {_r(fisc_ex['rmse'])} vs {_r(staff_ex['rmse'])} pp, "
+                f"MAE {_r(fisc_ex['mae'])} vs {_r(staff_ex['mae'])} pp -- and is more accurate in "
+                f"{wins} of {n} non-COVID quarters ({wins_post}/{n_post} post-COVID). The edge is "
+                "modest and concentrated after 2020, not a clean sweep of every quarter."
             ),
             "evidence": {
-                "rmse_ex_2020": dfm_ex["rmse"],
-                "mae_ex_2020": dfm_ex["mae"],
-                "bias_ex_2020": dfm_ex["bias"],
-                "rmse_all": dfm_all["rmse"],
+                "rmse_fiscal_ex": fisc_ex["rmse"],
+                "rmse_staff_ex": staff_ex["rmse"],
+                "mae_fiscal_ex": fisc_ex["mae"],
+                "mae_staff_ex": staff_ex["mae"],
+                "wins": wins,
+                "n": n,
+                "wins_post": wins_post,
+                "n_post": n_post,
             },
         },
         {
-            "id": "no-edge-normal-times",
-            "title": "No RMSE edge over naive in normal times",
+            "id": "fiscal-deficit-signal",
+            "title": "The signal is the deficit, and it switches on post-COVID",
             "body": (
-                f"Ex-2020 the DFM does NOT beat the naive benchmarks on RMSE: "
-                f"DFM {_r(dfm_ex['rmse'])} vs historical-mean {_r(mean_ex['rmse'])} and "
-                f"AR(1) {_r(ar1_ex['rmse'])}. The naive models are tighter but biased "
-                f"(mean bias +{_r(mean_ex['bias'])}, AR1 bias +{_r(ar1_ex['bias'])}); the DFM "
-                f"trades a little noise for near-zero bias."
+                f"The fiscal block's news (Impact = actual - forecast, weighted) is "
+                f"{_r(summ['impact_ratio_post_pre'], 1)}x larger post-COVID than before, and where "
+                f"it is larger the Fiscal-enhanced DFM gains more accuracy over the Staff Nowcast "
+                f"(correlation {_r(summ['corr_post'])} post-COVID, {_r(summ['corr_partial_post'])} "
+                "after controlling for error size). The effect is carried almost entirely by the "
+                f"federal deficit (corr {_r(mtsds_corr)}); government spending and transfer-cleaned "
+                "income add essentially nothing. Pre-COVID the fiscal news was tiny and unrelated "
+                f"to accuracy (corr {_r(summ['corr_pre'])})."
             ),
             "evidence": {
-                "dfm_rmse_ex_2020": dfm_ex["rmse"],
-                "mean_rmse_ex_2020": mean_ex["rmse"],
-                "ar1_rmse_ex_2020": ar1_ex["rmse"],
-                "mean_bias_ex_2020": mean_ex["bias"],
-                "ar1_bias_ex_2020": ar1_ex["bias"],
+                "impact_ratio_post_pre": summ["impact_ratio_post_pre"],
+                "corr_post": summ["corr_post"],
+                "corr_partial_post": summ["corr_partial_post"],
+                "corr_pre": summ["corr_pre"],
+                "deficit_corr": mtsds_corr,
             },
-        },
-        {
-            "id": "robustness-tails",
-            "title": "Far more robust in the tails",
-            "body": (
-                f"Over all 34 quarters the DFM is dramatically more robust than the univariate "
-                f"benchmarks, which blow up on 2020: DFM RMSE {_r(dfm_all['rmse'])} vs "
-                f"random-walk {_r(rw_all['rmse'])} and AR(1) {_r(ar1_all['rmse'])}. The "
-                f"multivariate factor structure keeps the nowcast from chasing a single series "
-                f"off a cliff."
-            ),
-            "evidence": {
-                "dfm_rmse_all": dfm_all["rmse"],
-                "rw_rmse_all": rw_all["rmse"],
-                "ar1_rmse_all": ar1_all["rmse"],
-            },
-        },
-        {
-            "id": "dm-indistinguishable",
-            "title": "Differences not statistically significant",
-            "body": (
-                f"None of the {cells} DFM-vs-benchmark Diebold-Mariano tests "
-                f"({sig}/{cells} reject at 5%) are significant: by formal testing the DFM and the "
-                "naive models are statistically indistinguishable on this short 34-quarter sample. "
-                "The DFM's real value is robustness in the tails plus the weekly within-quarter "
-                "path it produces, not a headline-RMSE win in calm times."
-            ),
-            "evidence": {"dm_cells": cells, "dm_significant": sig},
         },
         {
             "id": "fiscal-suggestive",
-            "title": "Fiscal augmentation: suggestive, not established",
+            "title": "Suggestive, not yet statistically established",
             "body": (
-                f"Adding the fiscal block helps modestly ex-2020 and only on MAE "
-                f"(DM {_r(mae_dm['dm_stat'])}, p={_r(mae_dm['p_value'], 3)}), not RMSE "
-                f"(DM {_r(rmse_dm['dm_stat'])}, p={_r(rmse_dm['p_value'], 3)}); over all 34 "
-                "quarters the two are indistinguishable. Even the one significant cell sits below "
-                f"its minimum detectable effect (|effect| {_r(abs(mae_dm['mean_loss_diff']), 3)} < "
-                f"MDE {_r(mde_ex_abs['mde'], 3)}), and one p=0.036 across four tests does not "
-                "survive multiple-testing correction -- so the fiscal edge is suggestive, not "
-                "established."
+                f"On formal testing the fiscal edge is real-but-fragile: it is significant only on "
+                f"MAE ex-2020 (DM {_r(mae_dm['dm_stat'])}, p={_r(mae_dm['p_value'], 3)}), not RMSE "
+                f"(DM {_r(rmse_dm['dm_stat'])}, p={_r(rmse_dm['p_value'], 3)}); over all 34 quarters "
+                "the two are indistinguishable. That one significant cell sits below its minimum "
+                f"detectable effect (|effect| {_r(abs(mae_dm['mean_loss_diff']), 3)} < "
+                f"MDE {_r(mde_ex_abs['mde'], 3)}) and a single p=0.036 across four tests does not "
+                "survive multiple-testing correction. On 34 quarters the story is economically "
+                "coherent but underpowered."
             ),
             "evidence": {
                 "mae_dm_stat": mae_dm["dm_stat"],
@@ -176,6 +167,63 @@ def _build_findings(baseline: dict, benchmarks: dict, comparison: dict) -> list[
                 "mae_abs_effect": abs(mae_dm["mean_loss_diff"]),
                 "mae_mde": mde_ex_abs["mde"],
             },
+        },
+        {
+            "id": "robustness-tails",
+            "title": "Factor models are far more robust in the tails",
+            "body": (
+                f"Over all 34 quarters both DFMs are dramatically more robust than the traditional "
+                f"univariate benchmarks, which blow up on 2020: Staff Nowcast RMSE "
+                f"{_r(staff_all['rmse'])} vs random-walk {_r(rw_all['rmse'])} and "
+                f"AR(1) {_r(ar1_all['rmse'])}. The multivariate factor structure keeps the nowcast "
+                "from chasing a single series off a cliff -- the main edge of the DFM family over "
+                "traditional models."
+            ),
+            "evidence": {
+                "staff_rmse_all": staff_all["rmse"],
+                "rw_rmse_all": rw_all["rmse"],
+                "ar1_rmse_all": ar1_all["rmse"],
+            },
+        },
+        {
+            "id": "no-edge-normal-times",
+            "title": "No precision edge over naive models in calm times",
+            "body": (
+                f"Ex-2020 neither DFM beats the traditional benchmarks on RMSE: Staff Nowcast "
+                f"{_r(staff_ex['rmse'])} vs historical-mean {_r(mean_ex['rmse'])} and "
+                f"AR(1) {_r(ar1_ex['rmse'])}. The naive models are tighter but biased "
+                f"(mean bias +{_r(mean_ex['bias'])}, AR1 bias +{_r(ar1_ex['bias'])}); the DFMs "
+                "trade a little noise for near-zero bias."
+            ),
+            "evidence": {
+                "staff_rmse_ex_2020": staff_ex["rmse"],
+                "mean_rmse_ex_2020": mean_ex["rmse"],
+                "ar1_rmse_ex_2020": ar1_ex["rmse"],
+                "mean_bias_ex_2020": mean_ex["bias"],
+                "ar1_bias_ex_2020": ar1_ex["bias"],
+            },
+        },
+        {
+            "id": "dm-indistinguishable",
+            "title": "DFM vs traditional: a statistical tie on this sample",
+            "body": (
+                f"None of the {cells} DFM-vs-benchmark Diebold-Mariano tests "
+                f"({sig}/{cells} reject at 5%) are significant: by formal testing the factor models "
+                "and the traditional ones are statistically indistinguishable on this short "
+                "34-quarter sample. The DFM's real value is robustness in the tails plus the weekly "
+                "within-quarter path it produces, not a headline-RMSE win in calm times."
+            ),
+            "evidence": {"dm_cells": cells, "dm_significant": sig},
+        },
+        {
+            "id": "target",
+            "title": "Honest pseudo-real-time target",
+            "body": (
+                "Every nowcast is scored against the BEA advance growth estimate at a pre-advance "
+                "cutoff (advance day minus one). No target value and no same-day BEA co-release "
+                "leak into the forecast, so the errors below are genuine, not read-backs."
+            ),
+            "evidence": {"n_quarters": int(staff_all["n"]), "n_ex_2020": int(staff_ex["n"])},
         },
         {
             "id": "leak-2025q1",
@@ -201,6 +249,7 @@ def build() -> dict:
     fiscal = _load("fiscal")
     comparison = _load("comparison")
     benchmarks = _load("benchmarks")
+    fiscal_impact = _load("fiscal_impact")
 
     periods = [r["period"] for r in baseline["headline"]]
 
@@ -211,6 +260,7 @@ def build() -> dict:
                 "docs/dashboard_data/fiscal.json",
                 "docs/dashboard_data/comparison.json",
                 "docs/dashboard_data/benchmarks.json",
+                "docs/dashboard_data/fiscal_impact.json",
             ],
             "periods": periods,
             "covid_periods": COVID,
@@ -253,7 +303,8 @@ def build() -> dict:
             "per_quarter": benchmarks["per_quarter"],
             "gdpnow_note": benchmarks["gdpnow_note"],
         },
-        "findings": _build_findings(baseline, benchmarks, comparison),
+        "fiscal_impact": fiscal_impact,
+        "findings": _build_findings(baseline, fiscal, benchmarks, comparison, fiscal_impact),
     }
 
     # Sanity: headline periods must line up across variants and the benchmark table.

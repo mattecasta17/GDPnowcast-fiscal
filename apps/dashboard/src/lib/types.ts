@@ -119,6 +119,42 @@ export interface Finding {
   evidence: Record<string, unknown>;
 }
 
+export interface FiscalImpactQuarter {
+  period: string;
+  covid: boolean;
+  impact: number;
+  share: number;
+  gain: number;
+  err_staff: number;
+  per_variable: Record<string, number>;
+}
+
+export interface FiscalImpactSummary {
+  n_all: number;
+  n_pre: number;
+  n_post: number;
+  mean_impact_pre: number;
+  mean_impact_post: number;
+  impact_ratio_post_pre: number;
+  mean_share_pre: number;
+  mean_share_post: number;
+  corr_all: number;
+  corr_pre: number;
+  corr_post: number;
+  corr_relative_all: number;
+  corr_relative_post: number;
+  corr_partial_all: number;
+  corr_partial_post: number;
+  corr_by_variable: Record<string, number>;
+}
+
+export interface FiscalImpact {
+  convention: string;
+  fiscal_block: { id: string; label: string; short: string }[];
+  per_quarter: FiscalImpactQuarter[];
+  summary: FiscalImpactSummary;
+}
+
 export interface Dashboard {
   meta: {
     generated_from: string[];
@@ -157,6 +193,7 @@ export interface Dashboard {
     per_quarter: BenchPerQuarter[];
     gdpnow_note: string;
   };
+  fiscal_impact: FiscalImpact;
   findings: Finding[];
 }
 

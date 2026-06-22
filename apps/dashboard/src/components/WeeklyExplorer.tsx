@@ -17,6 +17,8 @@ import { ChartFrame } from "./ChartFrame";
 
 type Mode = Variant | "both";
 
+const MODE_LABEL: Record<Mode, string> = { baseline: "Staff", fiscal: "Fiscal", both: "Both" };
+
 export function WeeklyExplorer() {
   const { periods } = data.meta;
   const [period, setPeriod] = useState("2017q1");
@@ -65,11 +67,11 @@ export function WeeklyExplorer() {
               <button
                 key={m}
                 onClick={() => setMode(m)}
-                className={`px-3 py-1.5 capitalize transition-colors ${
+                className={`px-3 py-1.5 transition-colors ${
                   mode === m ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:text-ink"
                 }`}
               >
-                {m}
+                {MODE_LABEL[m]}
               </button>
             ))}
           </div>
@@ -103,7 +105,7 @@ export function WeeklyExplorer() {
             <Line
               type="monotone"
               dataKey="baseline"
-              name="DFM baseline"
+              name="Staff Nowcast"
               stroke={COLORS.baseline}
               strokeWidth={2}
               dot={{ r: 2 }}
@@ -114,7 +116,7 @@ export function WeeklyExplorer() {
             <Line
               type="monotone"
               dataKey="fiscal"
-              name="DFM fiscal"
+              name="Fiscal-enhanced DFM"
               stroke={COLORS.fiscal}
               strokeWidth={2}
               dot={{ r: 2 }}
@@ -127,8 +129,8 @@ export function WeeklyExplorer() {
 
       <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-slate-600 sm:grid-cols-4">
         <Fact label="BEA advance" value={`${fmt(head.target)} pp`} />
-        <Fact label="Headline baseline" value={`${fmt(head.b.headline_nowcast)} pp`} />
-        <Fact label="Headline fiscal" value={`${fmt(head.f.headline_nowcast)} pp`} />
+        <Fact label="Staff Nowcast" value={`${fmt(head.b.headline_nowcast)} pp`} />
+        <Fact label="Fiscal-enhanced" value={`${fmt(head.f.headline_nowcast)} pp`} />
         <Fact label="Weekly vintages" value={`${rows.length}`} />
       </div>
       {skippedB.length > 0 ? (

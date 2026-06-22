@@ -65,11 +65,11 @@ export function BenchmarkSection() {
             Diebold-Mariano: {sig}/{total} significant
           </Pill>
           <span>
-            Not one of the {total} DFM-vs-benchmark tests (h=1, both losses, both samples) rejects at
-            5% - the models are statistically indistinguishable on this 34-quarter sample.
+            Not one of the {total} factor-model-vs-traditional tests (h=1, both losses, both samples)
+            rejects at 5% - on this 34-quarter sample the Staff Nowcast and the traditional models are
+            statistically indistinguishable. The DFM's edge is robustness, not calm-time precision.
           </span>
         </div>
-        <p className="mt-3 text-xs text-slate-500">{data.benchmarks.gdpnow_note}</p>
       </div>
     </div>
   );

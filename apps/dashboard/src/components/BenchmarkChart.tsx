@@ -5,7 +5,7 @@ import { COLORS, data, fmt } from "@/lib/data";
 import { ChartFrame } from "./ChartFrame";
 
 const ORDER = ["dfm", "mean", "rw", "ar1", "arma11"] as const;
-const SHORT: Record<string, string> = { dfm: "DFM", mean: "Mean", rw: "RW", ar1: "AR(1)", arma11: "ARMA" };
+const SHORT: Record<string, string> = { dfm: "Staff", mean: "Mean", rw: "RW", ar1: "AR(1)", arma11: "ARMA" };
 
 function Panel({ sample, title }: { sample: "ex_2020" | "all"; title: string }) {
   const rows = ORDER.map((m) => ({
@@ -44,8 +44,9 @@ export function BenchmarkChart() {
     <div className="card">
       <h3 className="text-base font-semibold text-ink">RMSE by model</h3>
       <p className="mb-4 text-xs text-muted">
-        DFM (blue) is mid-pack in calm times but does not blow up over the full sample. Note the
-        very different vertical scales.
+        The Staff Nowcast (blue, a macro DFM) is mid-pack in calm times but does not blow up over the
+        full sample, where the traditional univariate models do. Note the very different vertical
+        scales.
       </p>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Panel sample="ex_2020" title="Normal times (ex-2020), 30 quarters" />
