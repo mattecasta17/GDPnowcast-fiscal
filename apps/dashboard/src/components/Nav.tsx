@@ -1,10 +1,10 @@
 const LINKS = [
-  { href: "#fiscal", label: "Fiscal vs macro" },
+  { href: "#variables", label: "Variables" },
+  { href: "#benchmarks-results", label: "Results" },
+  { href: "#results-findings", label: "Two takeaways" },
+  { href: "#charts", label: "Charts" },
   { href: "#deficit", label: "Deficit signal" },
-  { href: "#headline", label: "Accuracy" },
-  { href: "#weekly", label: "Weekly path" },
-  { href: "#benchmarks", label: "Vs traditional" },
-  { href: "#findings", label: "Findings" },
+  { href: "#fiscal", label: "Significance" },
   { href: "#method", label: "Method" },
 ];
 

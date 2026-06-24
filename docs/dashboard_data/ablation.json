@@ -1,0 +1,140 @@
+{
+  "convention": "Headline (advance-1) ex-2020 (n=30). Each model = the shared macro panel plus the listed fiscal series, on the same US_fiscal data with the DFM re-estimated. dm_vs_macro / dm_vs_all are DM-HLN (h=1) loss-differential tests of this model against the macro-only Staff Nowcast and against the all-three model (A=this model, B=ref; dm<0 => this model has lower loss). Source: ablation/run_ablation.py.",
+  "n_ex_2020": 30,
+  "models": [
+    {
+      "id": "macro",
+      "label": "Macro-only",
+      "fiscal": [],
+      "rmse": 2.147,
+      "mae": 1.52,
+      "bias": -0.022,
+      "dm_vs_macro": null,
+      "dm_vs_all": {
+        "squared": {
+          "dm": 1.541,
+          "p": 0.134
+        },
+        "absolute": {
+          "dm": 2.202,
+          "p": 0.036
+        }
+      }
+    },
+    {
+      "id": "deficit",
+      "label": "+ Deficit",
+      "fiscal": [
+        "MTSDS133FMS"
+      ],
+      "rmse": 2.121,
+      "mae": 1.494,
+      "bias": -0.023,
+      "dm_vs_macro": {
+        "squared": {
+          "dm": -0.919,
+          "p": 0.366
+        },
+        "absolute": {
+          "dm": -1.055,
+          "p": 0.3
+        }
+      },
+      "dm_vs_all": {
+        "squared": {
+          "dm": 1.749,
+          "p": 0.091
+        },
+        "absolute": {
+          "dm": 2.329,
+          "p": 0.027
+        }
+      }
+    },
+    {
+      "id": "deficit_income",
+      "label": "+ Deficit + Income",
+      "fiscal": [
+        "MTSDS133FMS",
+        "W875RX1"
+      ],
+      "rmse": 2.059,
+      "mae": 1.45,
+      "bias": 0.008,
+      "dm_vs_macro": {
+        "squared": {
+          "dm": -1.537,
+          "p": 0.135
+        },
+        "absolute": {
+          "dm": -2.202,
+          "p": 0.036
+        }
+      },
+      "dm_vs_all": {
+        "squared": {
+          "dm": 0.863,
+          "p": 0.395
+        },
+        "absolute": {
+          "dm": 0.626,
+          "p": 0.536
+        }
+      }
+    },
+    {
+      "id": "deficit_govt",
+      "label": "+ Deficit + Govt",
+      "fiscal": [
+        "MTSDS133FMS",
+        "GCEC1"
+      ],
+      "rmse": 2.117,
+      "mae": 1.491,
+      "bias": -0.023,
+      "dm_vs_macro": {
+        "squared": {
+          "dm": -1.006,
+          "p": 0.323
+        },
+        "absolute": {
+          "dm": -1.16,
+          "p": 0.255
+        }
+      },
+      "dm_vs_all": {
+        "squared": {
+          "dm": 1.752,
+          "p": 0.09
+        },
+        "absolute": {
+          "dm": 2.295,
+          "p": 0.029
+        }
+      }
+    },
+    {
+      "id": "all",
+      "label": "All three",
+      "fiscal": [
+        "MTSDS133FMS",
+        "W875RX1",
+        "GCEC1"
+      ],
+      "rmse": 2.056,
+      "mae": 1.449,
+      "bias": 0.008,
+      "dm_vs_macro": {
+        "squared": {
+          "dm": -1.541,
+          "p": 0.134
+        },
+        "absolute": {
+          "dm": -2.202,
+          "p": 0.036
+        }
+      },
+      "dm_vs_all": null
+    }
+  ]
+}

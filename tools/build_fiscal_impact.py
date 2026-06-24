@@ -34,6 +34,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from scipy import stats
 
 REPO = Path(__file__).resolve().parents[1]
 DD = REPO / "docs" / "dashboard_data"
@@ -67,6 +68,7 @@ def _quarter_impact(period: str) -> dict | None:
         return None
     xl = pd.ExcelFile(path)
     per = {v: 0.0 for v in BLOCK_IDS}
+    per_signed = {v: 0.0 for v in BLOCK_IDS}
     total_abs = 0.0
     block_abs = 0.0
     block_signed = 0.0
@@ -79,6 +81,7 @@ def _quarter_impact(period: str) -> dict | None:
             if v in imp.index and pd.notna(imp.loc[v]):
                 val = float(imp.loc[v])
                 per[v] += abs(val)
+                per_signed[v] += val
                 block_abs += abs(val)
                 block_signed += val
     return {
@@ -86,6 +89,7 @@ def _quarter_impact(period: str) -> dict | None:
         "signed": block_signed,
         "share": block_abs / total_abs if total_abs else float("nan"),
         "per": per,
+        "per_signed": per_signed,
     }
 
 
@@ -104,11 +108,64 @@ def _partial(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> float:
     return _pearson(resid(x, z), resid(y, z))
 
 
+def _cc(x: np.ndarray, y: np.ndarray) -> dict:
+    """Pearson r + p. (Spearman dropped: on n<=18 the rank test discards the shock-magnitude
+    information that is the economic content of the hypothesis; the short-sample fragility is
+    disclosed in prose instead.)"""
+    r, p = stats.pearsonr(x, y)
+    return {"r": _round(float(r), 3), "p": _round(float(p), 3)}
+
+
+def _fit(x: np.ndarray, y: np.ndarray) -> dict:
+    """OLS slope/intercept (np.polyfit deg 1) for drawing the scatter's fitted line."""
+    slope, intercept = np.polyfit(x, y, 1)
+    return {"slope": _round(float(slope), 4), "intercept": _round(float(intercept), 4)}
+
+
+def _signed_summary(df: pd.DataFrame, pre: pd.DataFrame, post: pd.DataFrame) -> dict:
+    """Signed deficit news vs growth. The featured (non-circular) axis is ``resid`` =
+    realized - macro-only Staff Nowcast; ``growth`` = raw realized growth is kept as context.
+    fit_post is the OLS line over the post-COVID points."""
+
+    def block(ycol: str) -> dict:
+        return {
+            "pre": _cc(pre.signed_def.to_numpy(), pre[ycol].to_numpy()),
+            "post": _cc(post.signed_def.to_numpy(), post[ycol].to_numpy()),
+            "all": _cc(df.signed_def.to_numpy(), df[ycol].to_numpy()),
+            "fit_post": _fit(post.signed_def.to_numpy(), post[ycol].to_numpy()),
+        }
+
+    # Post-COVID decomposition for the "incremental contribution" panel. staff = realized -
+    # resid (the macro-only Staff Nowcast). The point: the deficit signal is near-orthogonal
+    # to the (weak) macro nowcast, so its link to the macro residual is genuinely incremental.
+    sd_post = post.signed_def.to_numpy()
+    gr_post = post.realized.to_numpy()
+    rs_post = post.resid.to_numpy()
+    staff_post = gr_post - rs_post
+    return {
+        "mean_deficit_pre": _round(float(pre.signed_def.mean()), 4),
+        "mean_deficit_post": _round(float(post.signed_def.mean()), 4),
+        "growth": block("realized"),
+        "resid": block("resid"),
+        "decomposition_post": {
+            "deficit_vs_growth": _cc(sd_post, gr_post),
+            "macro_vs_growth": _cc(staff_post, gr_post),
+            "deficit_vs_macro": _cc(sd_post, staff_post),
+            "deficit_vs_resid": _cc(sd_post, rs_post),
+        },
+    }
+
+
 def build() -> dict:
     baseline = _load("baseline")
     fiscal = _load("fiscal")
     b_err = {r["period"]: r["abs_error"] for r in baseline["headline"]}
     f_err = {r["period"]: r["abs_error"] for r in fiscal["headline"]}
+    # Realized BEA advance growth (the common target) and the macro-only Staff Nowcast
+    # headline, for the signed deficit-vs-growth scatter (the non-circular y = realized -
+    # staff, plus the raw realized growth as context).
+    b_adv = {r["period"]: r["gdp_advance"] for r in baseline["headline"]}
+    b_staff = {r["period"]: r["headline_nowcast"] for r in baseline["headline"]}
     periods = [r["period"] for r in baseline["headline"]]
 
     rows: list[dict] = []
@@ -120,6 +177,8 @@ def build() -> dict:
             continue
         err_staff = b_err[p]
         gain = err_staff - f_err[p]
+        realized = b_adv[p]
+        staff = b_staff[p]
         rows.append(
             {
                 "period": p,
@@ -129,6 +188,14 @@ def build() -> dict:
                 "gain": _round(gain, 4),
                 "err_staff": _round(err_staff, 4),
                 "per_variable": {v: _round(qi["per"][v], 4) for v in BLOCK_IDS},
+                # Signed deficit news = the GDP-nowcast revision attributable to the federal
+                # deficit (signed; >0 => larger deficit pushed the nowcast up). realized = BEA
+                # advance growth; staff_nowcast = macro-only headline; resid_vs_staff is the
+                # part of growth the macro-only model misses (the non-circular scatter axis).
+                "signed_deficit": _round(qi["per_signed"]["MTSDS133FMS"], 4),
+                "realized": _round(realized, 4),
+                "staff_nowcast": _round(staff, 4),
+                "resid_vs_staff": _round(realized - staff, 4),
             }
         )
 
@@ -141,6 +208,9 @@ def build() -> dict:
                 "share": r["share"],
                 "gain": r["gain"],
                 "err": r["err_staff"],
+                "signed_def": r["signed_deficit"],
+                "realized": r["realized"],
+                "resid": r["resid_vs_staff"],
                 **{v: r["per_variable"][v] for v in BLOCK_IDS},
             }
             for r in rows
@@ -174,14 +244,20 @@ def build() -> dict:
         "corr_by_variable": {
             v: _round(_pearson(df[v].to_numpy(), df.gain.to_numpy()), 3) for v in BLOCK_IDS
         },
+        "signed": _signed_summary(df, pre, post),
     }
 
     return {
         "convention": (
             "Impact = (Actual - Forecast) * Weight, summed |.| over the weekly vintages of a "
             "quarter for the fiscal-block series. gain = |error_StaffNowcast| - "
-            "|error_FiscalEnhanced| (>0 => fiscal block helps). Pre-COVID <=2019, Post-COVID "
-            ">=2021, 2020 excluded."
+            "|error_FiscalEnhanced| (>0 => fiscal block helps). signed_deficit = signed Impact of "
+            "MTSDS133FMS (the GDP-nowcast revision from deficit news; >0 => bigger deficit pushed "
+            "the nowcast up). resid_vs_staff = realized advance growth - macro-only Staff Nowcast "
+            "(the non-circular axis for the signed scatter). summary.signed reports Pearson r+p of "
+            "signed_deficit vs {growth=realized, resid=realized-staff}, pre/post/all, with the "
+            "post-COVID OLS fit and a decomposition_post block (deficit/macro/residual cross-corrs). "
+            "Pre-COVID <=2019, Post-COVID >=2021, 2020 excluded."
         ),
         "fiscal_block": FISCAL_BLOCK,
         "per_quarter": rows,
@@ -202,6 +278,12 @@ def main() -> None:
     print(f"  fiscal impact post/pre = {s['impact_ratio_post_pre']}x")
     print(
         f"  corr(impact,gain) all={s['corr_all']} post={s['corr_post']} partial_post={s['corr_partial_post']}"
+    )
+    sg = s["signed"]
+    print(
+        f"  signed deficit mean pre={sg['mean_deficit_pre']} post={sg['mean_deficit_post']}; "
+        f"corr(signed,growth) post r={sg['growth']['post']['r']} (p={sg['growth']['post']['p']}); "
+        f"corr(signed,resid) post r={sg['resid']['post']['r']} (p={sg['resid']['post']['p']})"
     )
 
 

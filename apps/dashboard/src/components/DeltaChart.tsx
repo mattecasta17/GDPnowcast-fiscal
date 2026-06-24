@@ -22,7 +22,7 @@ export function DeltaChart() {
     <div className="card">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="text-base font-semibold text-ink">Where the fiscal block helps, quarter by quarter</h3>
+          <h3 className="text-base font-semibold text-ink">Per-quarter error difference</h3>
           <p className="text-xs text-muted">
             |error| Fiscal-enhanced minus |error| Staff Nowcast (pp). Below zero = the fiscal block
             is more accurate that quarter.

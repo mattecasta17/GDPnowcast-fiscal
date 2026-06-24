@@ -127,6 +127,44 @@ export interface FiscalImpactQuarter {
   gain: number;
   err_staff: number;
   per_variable: Record<string, number>;
+  // Signed deficit news (GDP-nowcast revision from MTSDS133FMS; >0 => bigger deficit, up-revision)
+  // and the realized/macro-only quantities for the signed scatter.
+  signed_deficit: number;
+  realized: number;
+  staff_nowcast: number;
+  resid_vs_staff: number;
+}
+
+export interface SignedCorr {
+  r: number; // Pearson
+  p: number;
+}
+
+export interface SignedFit {
+  slope: number;
+  intercept: number;
+}
+
+export interface SignedDeficitGroup {
+  pre: SignedCorr;
+  post: SignedCorr;
+  all: SignedCorr;
+  fit_post: SignedFit;
+}
+
+export interface SignedDecompositionPost {
+  deficit_vs_growth: SignedCorr;
+  macro_vs_growth: SignedCorr;
+  deficit_vs_macro: SignedCorr;
+  deficit_vs_resid: SignedCorr;
+}
+
+export interface SignedSummary {
+  mean_deficit_pre: number;
+  mean_deficit_post: number;
+  growth: SignedDeficitGroup; // signed deficit vs raw realized growth (context)
+  resid: SignedDeficitGroup; // signed deficit vs (realized - Staff Nowcast) -- non-circular
+  decomposition_post: SignedDecompositionPost;
 }
 
 export interface FiscalImpactSummary {
@@ -146,6 +184,7 @@ export interface FiscalImpactSummary {
   corr_partial_all: number;
   corr_partial_post: number;
   corr_by_variable: Record<string, number>;
+  signed: SignedSummary;
 }
 
 export interface FiscalImpact {
@@ -153,6 +192,33 @@ export interface FiscalImpact {
   fiscal_block: { id: string; label: string; short: string }[];
   per_quarter: FiscalImpactQuarter[];
   summary: FiscalImpactSummary;
+}
+
+export interface AblationDMCell {
+  dm: number;
+  p: number;
+}
+
+export interface AblationDMPair {
+  squared: AblationDMCell;
+  absolute: AblationDMCell;
+}
+
+export interface AblationModel {
+  id: string;
+  label: string;
+  fiscal: string[]; // FRED ids of the fiscal series this model carries
+  rmse: number;
+  mae: number;
+  bias: number;
+  dm_vs_macro: AblationDMPair | null; // null for the macro-only row
+  dm_vs_all: AblationDMPair | null; // null for the all-three row
+}
+
+export interface Ablation {
+  convention: string;
+  n_ex_2020: number;
+  models: AblationModel[];
 }
 
 export interface Dashboard {
@@ -180,6 +246,7 @@ export interface Dashboard {
   comparison: {
     convention: string;
     diebold_mariano: DMResult;
+    dm_by_period: { ex_2020: DMSample; pre: DMSample; post: DMSample };
     power_mde: PowerMDE;
     per_quarter: PerQuarterComp[];
     leak_scan: LeakScan;
@@ -194,6 +261,7 @@ export interface Dashboard {
     gdpnow_note: string;
   };
   fiscal_impact: FiscalImpact;
+  ablation: Ablation;
   findings: Finding[];
 }
 

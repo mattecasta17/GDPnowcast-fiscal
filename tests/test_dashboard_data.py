@@ -32,6 +32,7 @@ def test_bundle_shape() -> None:
         "comparison",
         "benchmarks",
         "fiscal_impact",
+        "ablation",
         "findings",
     }
     meta = b["meta"]

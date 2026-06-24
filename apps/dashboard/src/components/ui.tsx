@@ -8,7 +8,7 @@ export function Section({
   children,
 }: {
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   intro?: ReactNode;
   children: ReactNode;
@@ -16,8 +16,8 @@ export function Section({
   return (
     <section id={id} className="scroll-mt-20 border-t border-line py-12">
       <div className="mx-auto max-w-6xl px-5">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 className="section-title mt-1">{title}</h2>
+        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+        <h2 className={`section-title ${eyebrow ? "mt-1" : ""}`}>{title}</h2>
         {intro ? <div className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">{intro}</div> : null}
         <div className="mt-7">{children}</div>
       </div>

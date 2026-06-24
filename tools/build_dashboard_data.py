@@ -30,6 +30,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from gdpnowcast.diebold_mariano import diebold_mariano
+
 REPO = Path(__file__).resolve().parents[1]
 DD = REPO / "docs" / "dashboard_data"
 OUT = REPO / "apps" / "dashboard" / "src" / "data" / "dashboard.json"
@@ -49,6 +51,41 @@ TARGET_DEFINITION = (
 
 def _load(name: str) -> dict:
     return json.loads((DD / f"{name}.json").read_text(encoding="utf-8"))
+
+
+def _dm_by_period(baseline: dict, fiscal: dict) -> dict:
+    """Diebold-Mariano (Fiscal-enhanced vs Staff Nowcast) for the three reporting periods.
+
+    Reuses the canonical DM-HLN test (h=1, which coincides with a paired t-test) on per-quarter
+    squared and absolute losses. Convention d = loss_fiscal - loss_staff, so a negative statistic
+    means the Fiscal-enhanced DFM is the more accurate of the two. The ``ex_2020`` cell reproduces
+    ``comparison.json``'s ex-2020 DM exactly; ``pre`` and ``post`` split that sample.
+    """
+    base = {r["period"]: r["error"] for r in baseline["headline"]}
+    fisc = {r["period"]: r["error"] for r in fiscal["headline"]}
+    periods = [r["period"] for r in baseline["headline"]]
+    covid = set(COVID)
+    samples = {
+        "ex_2020": [p for p in periods if p not in covid],
+        "pre": [p for p in periods if int(p[:4]) <= 2019],
+        "post": [p for p in periods if int(p[:4]) >= 2021],
+    }
+    out: dict = {}
+    for skey, ps in samples.items():
+        out[skey] = {}
+        for loss in ("squared", "absolute"):
+            la = [fisc[p] ** 2 if loss == "squared" else abs(fisc[p]) for p in ps]
+            lb = [base[p] ** 2 if loss == "squared" else abs(base[p]) for p in ps]
+            r = diebold_mariano(la, lb, horizon=1)
+            out[skey][loss] = {
+                "dm_stat": r.dm_stat,
+                "p_value": r.p_value,
+                "df": r.df,
+                "n": r.n,
+                "mean_loss_diff": r.mean_loss_diff,
+                "horizon": r.horizon,
+            }
+    return out
 
 
 def _r(x: float, n: int = 2) -> float:
@@ -250,6 +287,7 @@ def build() -> dict:
     comparison = _load("comparison")
     benchmarks = _load("benchmarks")
     fiscal_impact = _load("fiscal_impact")
+    ablation = _load("ablation")
 
     periods = [r["period"] for r in baseline["headline"]]
 
@@ -261,6 +299,7 @@ def build() -> dict:
                 "docs/dashboard_data/comparison.json",
                 "docs/dashboard_data/benchmarks.json",
                 "docs/dashboard_data/fiscal_impact.json",
+                "docs/dashboard_data/ablation.json",
             ],
             "periods": periods,
             "covid_periods": COVID,
@@ -290,6 +329,7 @@ def build() -> dict:
         "comparison": {
             "convention": comparison["convention"],
             "diebold_mariano": comparison["diebold_mariano"],
+            "dm_by_period": _dm_by_period(baseline, fiscal),
             "power_mde": comparison["power_mde"],
             "per_quarter": comparison["per_quarter"],
             "leak_scan": comparison["leak_scan"],
@@ -304,6 +344,7 @@ def build() -> dict:
             "gdpnow_note": benchmarks["gdpnow_note"],
         },
         "fiscal_impact": fiscal_impact,
+        "ablation": ablation,
         "findings": _build_findings(baseline, fiscal, benchmarks, comparison, fiscal_impact),
     }
 

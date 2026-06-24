@@ -1,168 +1,90 @@
-import { data, FISCAL, fiscalWinCounts, fmt, fmtSigned, STAFF } from "@/lib/data";
-import { DeltaChart } from "./DeltaChart";
-import { SigBadge, Stat } from "./ui";
+import { data, fmt, fmtSigned } from "@/lib/data";
+import { SigBadge } from "./ui";
 
-const LOSS_LABEL: Record<string, string> = { squared: "Squared (MSE)", absolute: "Absolute (MAE)" };
-
-type MetricRow = {
-  label: string;
-  staff: number;
-  fiscal: number;
-  /** "low" => lower is better; "zero" => closer to zero is better. */
-  better: "low" | "zero";
-  signed?: boolean;
+const LOSS_LABEL: Record<string, string> = {
+  squared: "Squared (MSE)",
+  absolute: "Absolute (MAE)",
 };
 
+const PERIODS: { key: "ex_2020" | "pre" | "post"; label: string }[] = [
+  { key: "ex_2020", label: "Full Sample ex Covid" },
+  { key: "pre", label: "Pre-COVID" },
+  { key: "post", label: "Post-COVID" },
+];
+
 export function ComparisonSection() {
-  const dm = data.comparison.diebold_mariano;
+  const dm = data.comparison.dm_by_period;
   const mdeAbs = data.comparison.power_mde.by_sample.ex_2020.absolute;
-  const staff = data.metrics.baseline;
-  const fisc = data.metrics.fiscal;
-  const { wins, n, winsPost, nPost } = fiscalWinCounts();
 
-  const metricRows: MetricRow[] = [
-    { label: "RMSE ex-2020", staff: staff.ex_2020.rmse, fiscal: fisc.ex_2020.rmse, better: "low" },
-    { label: "MAE ex-2020", staff: staff.ex_2020.mae, fiscal: fisc.ex_2020.mae, better: "low" },
-    { label: "Bias ex-2020", staff: staff.ex_2020.bias, fiscal: fisc.ex_2020.bias, better: "zero", signed: true },
-    { label: "RMSE all 34", staff: staff.all.rmse, fiscal: fisc.all.rmse, better: "low" },
-    { label: "MAE all 34", staff: staff.all.mae, fiscal: fisc.all.mae, better: "low" },
-  ];
-
-  const dmRows: { sample: "all" | "ex_2020"; loss: "squared" | "absolute" }[] = [
-    { sample: "ex_2020", loss: "squared" },
-    { sample: "ex_2020", loss: "absolute" },
-    { sample: "all", loss: "squared" },
-    { sample: "all", loss: "absolute" },
-  ];
+  const rows: { period: (typeof PERIODS)[number]; loss: "squared" | "absolute" }[] = [];
+  for (const period of PERIODS) {
+    for (const loss of ["squared", "absolute"] as const) rows.push({ period, loss });
+  }
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="card overflow-x-auto lg:col-span-3">
-          <h3 className="mb-1 text-base font-semibold text-ink">
-            Head to head: <span className="text-fiscal">Fiscal-enhanced</span> vs{" "}
-            <span className="text-baseline">Staff Nowcast</span>
-          </h3>
-          <p className="mb-3 text-xs text-muted">
-            Same target, same calendar - the only difference is the fiscal block. Lower RMSE/MAE and
-            smaller |bias| are better.
-          </p>
-          <table className="w-full min-w-[460px] text-sm">
-            <thead>
-              <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-muted">
-                <th className="py-2 pr-3 font-medium">Metric (pp)</th>
-                <th className="px-3 py-2 text-right font-medium">{STAFF}</th>
-                <th className="px-3 py-2 text-right font-medium">{FISCAL}</th>
-                <th className="px-3 py-2 text-center font-medium">Better</th>
-              </tr>
-            </thead>
-            <tbody className="tabular-nums">
-              {metricRows.map((r) => {
-                const fiscalWins =
-                  r.better === "low" ? r.fiscal < r.staff : Math.abs(r.fiscal) < Math.abs(r.staff);
-                const f = r.signed ? fmtSigned : (x: number) => fmt(x);
-                return (
-                  <tr key={r.label} className="border-b border-line/70 text-slate-700">
-                    <td className="py-2 pr-3 font-sans">{r.label}</td>
-                    <td className={`px-3 py-2 text-right font-mono ${fiscalWins ? "" : "font-semibold text-ink"}`}>
-                      {f(r.staff)}
-                    </td>
-                    <td className={`px-3 py-2 text-right font-mono ${fiscalWins ? "font-semibold text-fiscal" : ""}`}>
-                      {f(r.fiscal)}
-                    </td>
-                    <td className="px-3 py-2 text-center text-xs font-medium">
-                      {fiscalWins ? (
-                        <span className="text-fiscal">Fiscal</span>
-                      ) : (
-                        <span className="text-baseline">Staff</span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <p className="mt-3 text-xs text-slate-500">
-            The fiscal block lowers both error metrics ex-2020 and leaves the model essentially
-            unbiased - a modest but consistent aggregate edge.
-          </p>
-        </div>
-
-        <div className="card lg:col-span-2">
-          <Stat
-            label="Quarters won by the fiscal block"
-            value={`${wins}/${n}`}
-            accent="fiscal"
-            sub={`non-COVID quarters where Fiscal-enhanced is more accurate`}
-          />
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            The edge is a <strong>majority, not a clean sweep</strong>: {wins} of {n} non-COVID
-            quarters, and {winsPost} of {nPost} after 2020 - where the fiscal signal is strongest.
-            (In v1, before the look-ahead and deficit-seasonality fixes, the fiscal block appeared to
-            win every quarter; that was an artifact.)
-          </p>
-        </div>
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+      <div className="card overflow-x-auto lg:col-span-3">
+        <h3 className="mb-1 text-base font-semibold text-ink">
+          Diebold-Mariano: <span className="text-fiscal">Fiscal-enhanced</span> vs{" "}
+          <span className="text-baseline">Staff Nowcast</span>
+        </h3>
+        <p className="mb-3 text-xs text-muted">
+          A negative statistic means the Fiscal-enhanced DFM is the more accurate of the two. The
+          test uses quarterly losses at h=1, where the Harvey-Leybourne-Newbold small-sample
+          statistic coincides with a paired t-test.
+        </p>
+        <table className="w-full min-w-[540px] text-sm">
+          <thead>
+            <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-muted">
+              <th className="py-2 pr-3 font-medium">Sample</th>
+              <th className="px-3 py-2 font-medium">Loss</th>
+              <th className="px-3 py-2 text-right font-medium">DM stat</th>
+              <th className="px-3 py-2 text-right font-medium">p-value</th>
+              <th className="px-3 py-2 text-right font-medium">mean &Delta;loss</th>
+              <th className="px-3 py-2 text-center font-medium">5%</th>
+            </tr>
+          </thead>
+          <tbody className="tabular-nums">
+            {rows.map(({ period, loss }) => {
+              const c = dm[period.key][loss];
+              return (
+                <tr
+                  key={`${period.key}-${loss}`}
+                  className="border-b border-line/70 text-slate-700"
+                >
+                  <td className="py-2 pr-3 font-sans">{period.label}</td>
+                  <td className="px-3 py-2 font-sans text-xs">{LOSS_LABEL[loss]}</td>
+                  <td className="px-3 py-2 text-right font-mono">{fmt(c.dm_stat)}</td>
+                  <td className="px-3 py-2 text-right font-mono">{fmt(c.p_value, 3)}</td>
+                  <td className="px-3 py-2 text-right font-mono">{fmtSigned(c.mean_loss_diff, 3)}</td>
+                  <td className="px-3 py-2 text-center">
+                    <SigBadge p={c.p_value} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
 
-      <DeltaChart />
-
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
-        <div className="card overflow-x-auto lg:col-span-3">
-          <h3 className="mb-1 text-base font-semibold text-ink">
-            Diebold-Mariano: Fiscal-enhanced vs Staff Nowcast
-          </h3>
-          <p className="mb-3 text-xs text-muted">
-            Negative stat = the fiscal block is more accurate. h=1; the HLN small-sample stat equals a
-            paired t-test here.
-          </p>
-          <table className="w-full min-w-[520px] text-sm">
-            <thead>
-              <tr className="border-b border-line text-left text-xs uppercase tracking-wide text-muted">
-                <th className="py-2 pr-3 font-medium">Sample</th>
-                <th className="px-3 py-2 font-medium">Loss</th>
-                <th className="px-3 py-2 text-right font-medium">DM stat</th>
-                <th className="px-3 py-2 text-right font-medium">p-value</th>
-                <th className="px-3 py-2 text-right font-medium">mean &Delta;loss</th>
-                <th className="px-3 py-2 text-center font-medium">5%</th>
-              </tr>
-            </thead>
-            <tbody className="tabular-nums">
-              {dmRows.map(({ sample, loss }) => {
-                const c = dm[sample][loss];
-                return (
-                  <tr key={`${sample}-${loss}`} className="border-b border-line/70 text-slate-700">
-                    <td className="py-2 pr-3 font-sans">{sample === "ex_2020" ? "ex-2020" : "all 34"}</td>
-                    <td className="px-3 py-2 font-sans text-xs">{LOSS_LABEL[loss]}</td>
-                    <td className="px-3 py-2 text-right font-mono">{fmt(c.dm_stat)}</td>
-                    <td className="px-3 py-2 text-right font-mono">{fmt(c.p_value, 3)}</td>
-                    <td className="px-3 py-2 text-right font-mono">{fmtSigned(c.mean_loss_diff, 3)}</td>
-                    <td className="px-3 py-2 text-center">
-                      <SigBadge p={c.p_value} />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="card lg:col-span-2">
-          <h3 className="text-base font-semibold text-ink">Is the sample big enough?</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            The one significant cell (ex-2020 MAE, p={fmt(dm.ex_2020.absolute.p_value, 3)}) is still{" "}
-            <strong>underpowered</strong>: the observed effect is smaller than the minimum this
-            34-quarter sample can reliably detect at 80% power.
-          </p>
-          <dl className="mt-4 space-y-2 text-sm">
-            <Row k="Observed |effect| (MAE)" v={`${fmt(Math.abs(mdeAbs.mean_loss_diff), 3)} pp`} />
-            <Row k="Min. detectable effect" v={`${fmt(mdeAbs.mde, 3)} pp`} />
-            <Row k="Powered?" v={mdeAbs.powered ? "yes" : "no"} bad={!mdeAbs.powered} />
-          </dl>
-          <p className="mt-4 text-xs text-slate-500">
-            One p=0.036 across four tests also fails a Bonferroni correction (~0.14). The fiscal edge
-            is real-looking but <strong>suggestive, not established</strong>.
-          </p>
-        </div>
+      <div className="card lg:col-span-2">
+        <h3 className="text-base font-semibold text-ink">Power and sample size</h3>
+        <p className="mt-2 hyphens-auto text-justify text-sm leading-relaxed text-slate-600">
+          With thirty non-COVID quarters the test can reliably detect, at 80% power, only effects
+          larger than about {fmt(mdeAbs.mde, 2)} pp, while the measured gain is about{" "}
+          {fmt(Math.abs(mdeAbs.mean_loss_diff), 2)} pp. The sample is therefore too short to certify
+          an effect of this size, even though every test points in the model&apos;s favour.
+        </p>
+        <dl className="mt-4 space-y-2 text-sm">
+          <Row k="Observed |effect| (MAE)" v={`${fmt(Math.abs(mdeAbs.mean_loss_diff), 3)} pp`} />
+          <Row k="Min. detectable effect" v={`${fmt(mdeAbs.mde, 3)} pp`} />
+          <Row k="Powered?" v={mdeAbs.powered ? "yes" : "no"} bad={!mdeAbs.powered} />
+        </dl>
+        <p className="mt-4 hyphens-auto text-justify text-xs text-slate-500">
+          With one significant cell among the six tests, the result does not survive a
+          multiple-testing correction. It is best read as consistent, economically coherent evidence
+          awaiting a longer sample, rather than an established effect.
+        </p>
       </div>
     </div>
   );

@@ -5,7 +5,8 @@
       "docs/dashboard_data/fiscal.json",
       "docs/dashboard_data/comparison.json",
       "docs/dashboard_data/benchmarks.json",
-      "docs/dashboard_data/fiscal_impact.json"
+      "docs/dashboard_data/fiscal_impact.json",
+      "docs/dashboard_data/ablation.json"
     ],
     "periods": [
       "2017q1",
@@ -11543,6 +11544,62 @@
         }
       }
     },
+    "dm_by_period": {
+      "ex_2020": {
+        "squared": {
+          "dm_stat": -1.5413049960344332,
+          "p_value": 0.13408495316842448,
+          "df": 29,
+          "n": 30,
+          "mean_loss_diff": -0.3830812191251073,
+          "horizon": 1
+        },
+        "absolute": {
+          "dm_stat": -2.2023289795899346,
+          "p_value": 0.03574525314921603,
+          "df": 29,
+          "n": 30,
+          "mean_loss_diff": -0.07108555357615229,
+          "horizon": 1
+        }
+      },
+      "pre": {
+        "squared": {
+          "dm_stat": -1.6989601142527244,
+          "p_value": 0.11739665508071553,
+          "df": 11,
+          "n": 12,
+          "mean_loss_diff": -0.05497370155114214,
+          "horizon": 1
+        },
+        "absolute": {
+          "dm_stat": -1.7787919966411427,
+          "p_value": 0.10288753775049551,
+          "df": 11,
+          "n": 12,
+          "mean_loss_diff": -0.03365818387767716,
+          "horizon": 1
+        }
+      },
+      "post": {
+        "squared": {
+          "dm_stat": -1.4676622859601312,
+          "p_value": 0.16045396444722457,
+          "df": 17,
+          "n": 18,
+          "mean_loss_diff": -0.6018195641744173,
+          "horizon": 1
+        },
+        "absolute": {
+          "dm_stat": -1.842759346205118,
+          "p_value": 0.08287323704166456,
+          "df": 17,
+          "n": 18,
+          "mean_loss_diff": -0.0960371333751357,
+          "horizon": 1
+        }
+      }
+    },
     "power_mde": {
       "method": "For h=1 the DM-HLN statistic equals the ordinary paired t-test, so MDE = (t_{1-alpha/2,df} + t_{power,df}) * SE(d), df=n-1, SE(d)=sd(d)/sqrt(n) with sd(d) the unbiased sample SD. This central-t formula is the standard approximation to the exact noncentral-t MDE (here within ~0.02%, and if anything slightly conservative). Squared-loss effects are in MSE units; the RMSE-scale equivalent is RMSE_base - sqrt(MSE_base - effect).",
       "alpha": 0.05,
@@ -12629,7 +12686,7 @@
     "gdpnow_note": "GDPNow excluded: no clean ALFRED point-in-time vintage history exists for the Atlanta Fed GDPNow series, so a faithful pseudo-real-time (advance-1) replay is infeasible; a non-real-time splice would leak future revisions and is not honest."
   },
   "fiscal_impact": {
-    "convention": "Impact = (Actual - Forecast) * Weight, summed |.| over the weekly vintages of a quarter for the fiscal-block series. gain = |error_StaffNowcast| - |error_FiscalEnhanced| (>0 => fiscal block helps). Pre-COVID <=2019, Post-COVID >=2021, 2020 excluded.",
+    "convention": "Impact = (Actual - Forecast) * Weight, summed |.| over the weekly vintages of a quarter for the fiscal-block series. gain = |error_StaffNowcast| - |error_FiscalEnhanced| (>0 => fiscal block helps). signed_deficit = signed Impact of MTSDS133FMS (the GDP-nowcast revision from deficit news; >0 => bigger deficit pushed the nowcast up). resid_vs_staff = realized advance growth - macro-only Staff Nowcast (the non-circular axis for the signed scatter). summary.signed reports Pearson r+p of signed_deficit vs {growth=realized, resid=realized-staff}, pre/post/all, with the post-COVID OLS fit and a decomposition_post block (deficit/macro/residual cross-corrs). Pre-COVID <=2019, Post-COVID >=2021, 2020 excluded.",
     "fiscal_block": [
       {
         "id": "MTSDS133FMS",
@@ -12659,7 +12716,11 @@
           "MTSDS133FMS": 0.0203,
           "W875RX1": 0.0634,
           "GCEC1": 0.0002
-        }
+        },
+        "signed_deficit": -0.0021,
+        "realized": 0.7,
+        "staff_nowcast": 2.2461,
+        "resid_vs_staff": -1.5461
       },
       {
         "period": "2017q2",
@@ -12672,7 +12733,11 @@
           "MTSDS133FMS": 0.0211,
           "W875RX1": 0.078,
           "GCEC1": 0.0075
-        }
+        },
+        "signed_deficit": -0.0189,
+        "realized": 2.6,
+        "staff_nowcast": 1.6954,
+        "resid_vs_staff": 0.9046
       },
       {
         "period": "2017q3",
@@ -12685,7 +12750,11 @@
           "MTSDS133FMS": 0.0054,
           "W875RX1": 0.0861,
           "GCEC1": 0.0
-        }
+        },
+        "signed_deficit": 0.0004,
+        "realized": 3.0,
+        "staff_nowcast": 2.0668,
+        "resid_vs_staff": 0.9332
       },
       {
         "period": "2017q4",
@@ -12698,7 +12767,11 @@
           "MTSDS133FMS": 0.0146,
           "W875RX1": 0.0485,
           "GCEC1": 0.0026
-        }
+        },
+        "signed_deficit": 0.0045,
+        "realized": 2.6,
+        "staff_nowcast": 3.5649,
+        "resid_vs_staff": -0.9649
       },
       {
         "period": "2018q1",
@@ -12711,7 +12784,11 @@
           "MTSDS133FMS": 0.0371,
           "W875RX1": 0.0656,
           "GCEC1": 0.0097
-        }
+        },
+        "signed_deficit": 0.0091,
+        "realized": 2.3,
+        "staff_nowcast": 2.475,
+        "resid_vs_staff": -0.175
       },
       {
         "period": "2018q2",
@@ -12724,7 +12801,11 @@
           "MTSDS133FMS": 0.0665,
           "W875RX1": 0.0262,
           "GCEC1": 0.0015
-        }
+        },
+        "signed_deficit": -0.0216,
+        "realized": 4.1,
+        "staff_nowcast": 2.5001,
+        "resid_vs_staff": 1.5999
       },
       {
         "period": "2018q3",
@@ -12737,7 +12818,11 @@
           "MTSDS133FMS": 0.0459,
           "W875RX1": 0.0374,
           "GCEC1": 0.0052
-        }
+        },
+        "signed_deficit": 0.0293,
+        "realized": 3.5,
+        "staff_nowcast": 2.3391,
+        "resid_vs_staff": 1.1609
       },
       {
         "period": "2018q4",
@@ -12750,7 +12835,11 @@
           "MTSDS133FMS": 0.0295,
           "W875RX1": 0.0169,
           "GCEC1": 0.012
-        }
+        },
+        "signed_deficit": 0.02,
+        "realized": 2.6,
+        "staff_nowcast": 2.0731,
+        "resid_vs_staff": 0.5269
       },
       {
         "period": "2019q1",
@@ -12763,7 +12852,11 @@
           "MTSDS133FMS": 0.0567,
           "W875RX1": 0.1853,
           "GCEC1": 0.004
-        }
+        },
+        "signed_deficit": 0.0195,
+        "realized": 3.2,
+        "staff_nowcast": 1.4282,
+        "resid_vs_staff": 1.7718
       },
       {
         "period": "2019q2",
@@ -12776,7 +12869,11 @@
           "MTSDS133FMS": 0.1068,
           "W875RX1": 0.0691,
           "GCEC1": 0.009
-        }
+        },
+        "signed_deficit": -0.0195,
+        "realized": 2.1,
+        "staff_nowcast": 2.1973,
+        "resid_vs_staff": -0.0973
       },
       {
         "period": "2019q3",
@@ -12789,7 +12886,11 @@
           "MTSDS133FMS": 0.051,
           "W875RX1": 0.0624,
           "GCEC1": 0.0189
-        }
+        },
+        "signed_deficit": 0.0271,
+        "realized": 1.9,
+        "staff_nowcast": 2.0354,
+        "resid_vs_staff": -0.1354
       },
       {
         "period": "2019q4",
@@ -12802,7 +12903,11 @@
           "MTSDS133FMS": 0.0523,
           "W875RX1": 0.0906,
           "GCEC1": 0.0009
-        }
+        },
+        "signed_deficit": 0.0394,
+        "realized": 2.1,
+        "staff_nowcast": 1.8049,
+        "resid_vs_staff": 0.2951
       },
       {
         "period": "2021q1",
@@ -12815,7 +12920,11 @@
           "MTSDS133FMS": 0.425,
           "W875RX1": 0.2742,
           "GCEC1": 0.0008
-        }
+        },
+        "signed_deficit": 0.425,
+        "realized": 6.4,
+        "staff_nowcast": 6.255,
+        "resid_vs_staff": 0.145
       },
       {
         "period": "2021q2",
@@ -12828,7 +12937,11 @@
           "MTSDS133FMS": 0.7365,
           "W875RX1": 0.0599,
           "GCEC1": 0.0059
-        }
+        },
+        "signed_deficit": 0.7365,
+        "realized": 6.5,
+        "staff_nowcast": 5.0162,
+        "resid_vs_staff": 1.4838
       },
       {
         "period": "2021q3",
@@ -12841,7 +12954,11 @@
           "MTSDS133FMS": 0.4719,
           "W875RX1": 0.0961,
           "GCEC1": 0.0022
-        }
+        },
+        "signed_deficit": 0.4719,
+        "realized": 2.0,
+        "staff_nowcast": 4.0207,
+        "resid_vs_staff": -2.0207
       },
       {
         "period": "2021q4",
@@ -12854,7 +12971,11 @@
           "MTSDS133FMS": 0.2695,
           "W875RX1": 0.175,
           "GCEC1": 0.0017
-        }
+        },
+        "signed_deficit": 0.2474,
+        "realized": 6.9,
+        "staff_nowcast": 4.2743,
+        "resid_vs_staff": 2.6257
       },
       {
         "period": "2022q1",
@@ -12867,7 +12988,11 @@
           "MTSDS133FMS": 0.4553,
           "W875RX1": 0.2037,
           "GCEC1": 0.0028
-        }
+        },
+        "signed_deficit": 0.0299,
+        "realized": -1.4,
+        "staff_nowcast": 4.6279,
+        "resid_vs_staff": -6.0279
       },
       {
         "period": "2022q2",
@@ -12880,7 +13005,11 @@
           "MTSDS133FMS": 0.6835,
           "W875RX1": 0.1346,
           "GCEC1": 0.0012
-        }
+        },
+        "signed_deficit": -0.1787,
+        "realized": -0.9,
+        "staff_nowcast": 4.7402,
+        "resid_vs_staff": -5.6402
       },
       {
         "period": "2022q3",
@@ -12893,7 +13022,11 @@
           "MTSDS133FMS": 0.3631,
           "W875RX1": 0.083,
           "GCEC1": 0.0012
-        }
+        },
+        "signed_deficit": 0.3631,
+        "realized": 2.6,
+        "staff_nowcast": 0.9666,
+        "resid_vs_staff": 1.6334
       },
       {
         "period": "2022q4",
@@ -12906,7 +13039,11 @@
           "MTSDS133FMS": 0.3485,
           "W875RX1": 0.0368,
           "GCEC1": 0.0003
-        }
+        },
+        "signed_deficit": 0.2812,
+        "realized": 2.9,
+        "staff_nowcast": 0.3104,
+        "resid_vs_staff": 2.5896
       },
       {
         "period": "2023q1",
@@ -12919,7 +13056,11 @@
           "MTSDS133FMS": 0.3088,
           "W875RX1": 0.0841,
           "GCEC1": 0.0008
-        }
+        },
+        "signed_deficit": 0.2287,
+        "realized": 1.1,
+        "staff_nowcast": 2.5296,
+        "resid_vs_staff": -1.4296
       },
       {
         "period": "2023q2",
@@ -12932,7 +13073,11 @@
           "MTSDS133FMS": 0.8022,
           "W875RX1": 0.0451,
           "GCEC1": 0.0018
-        }
+        },
+        "signed_deficit": 0.0796,
+        "realized": 2.4,
+        "staff_nowcast": 1.856,
+        "resid_vs_staff": 0.544
       },
       {
         "period": "2023q3",
@@ -12945,7 +13090,11 @@
           "MTSDS133FMS": 0.4491,
           "W875RX1": 0.077,
           "GCEC1": 0.0002
-        }
+        },
+        "signed_deficit": 0.3185,
+        "realized": 4.9,
+        "staff_nowcast": 2.7248,
+        "resid_vs_staff": 2.1752
       },
       {
         "period": "2023q4",
@@ -12958,7 +13107,11 @@
           "MTSDS133FMS": 0.2237,
           "W875RX1": 0.117,
           "GCEC1": 0.002
-        }
+        },
+        "signed_deficit": 0.0777,
+        "realized": 3.3,
+        "staff_nowcast": 1.0412,
+        "resid_vs_staff": 2.2588
       },
       {
         "period": "2024q1",
@@ -12971,7 +13124,11 @@
           "MTSDS133FMS": 0.2767,
           "W875RX1": 0.1006,
           "GCEC1": 0.0003
-        }
+        },
+        "signed_deficit": 0.218,
+        "realized": 1.6,
+        "staff_nowcast": 1.658,
+        "resid_vs_staff": -0.058
       },
       {
         "period": "2024q2",
@@ -12984,7 +13141,11 @@
           "MTSDS133FMS": 0.8269,
           "W875RX1": 0.0749,
           "GCEC1": 0.0003
-        }
+        },
+        "signed_deficit": 0.1077,
+        "realized": 2.8,
+        "staff_nowcast": 3.2049,
+        "resid_vs_staff": -0.4049
       },
       {
         "period": "2024q3",
@@ -12997,7 +13158,11 @@
           "MTSDS133FMS": 0.5756,
           "W875RX1": 0.0852,
           "GCEC1": 0.0012
-        }
+        },
+        "signed_deficit": 0.4537,
+        "realized": 2.8,
+        "staff_nowcast": 2.1189,
+        "resid_vs_staff": 0.6811
       },
       {
         "period": "2024q4",
@@ -13010,7 +13175,11 @@
           "MTSDS133FMS": 0.5684,
           "W875RX1": 0.0572,
           "GCEC1": 0.009
-        }
+        },
+        "signed_deficit": 0.4274,
+        "realized": 2.3,
+        "staff_nowcast": 2.029,
+        "resid_vs_staff": 0.271
       },
       {
         "period": "2025q1",
@@ -13023,7 +13192,11 @@
           "MTSDS133FMS": 0.4062,
           "W875RX1": 0.0673,
           "GCEC1": 0.0
-        }
+        },
+        "signed_deficit": 0.3916,
+        "realized": -0.3,
+        "staff_nowcast": 4.3336,
+        "resid_vs_staff": -4.6336
       },
       {
         "period": "2025q2",
@@ -13036,7 +13209,11 @@
           "MTSDS133FMS": 0.5612,
           "W875RX1": 0.1156,
           "GCEC1": 0.006
-        }
+        },
+        "signed_deficit": 0.196,
+        "realized": 3.0,
+        "staff_nowcast": 2.1274,
+        "resid_vs_staff": 0.8726
       }
     ],
     "summary": {
@@ -13059,8 +13236,206 @@
         "MTSDS133FMS": 0.382,
         "W875RX1": 0.018,
         "GCEC1": -0.042
+      },
+      "signed": {
+        "mean_deficit_pre": 0.0073,
+        "mean_deficit_post": 0.2708,
+        "growth": {
+          "pre": {
+            "r": -0.093,
+            "p": 0.773
+          },
+          "post": {
+            "r": 0.531,
+            "p": 0.023
+          },
+          "all": {
+            "r": 0.417,
+            "p": 0.022
+          },
+          "fit_post": {
+            "slope": 6.0156,
+            "intercept": 1.0874
+          }
+        },
+        "resid": {
+          "pre": {
+            "r": 0.018,
+            "p": 0.957
+          },
+          "post": {
+            "r": 0.381,
+            "p": 0.119
+          },
+          "all": {
+            "r": 0.187,
+            "p": 0.322
+          },
+          "fit_post": {
+            "slope": 4.9548,
+            "intercept": -1.6161
+          }
+        },
+        "decomposition_post": {
+          "deficit_vs_growth": {
+            "r": 0.531,
+            "p": 0.023
+          },
+          "macro_vs_growth": {
+            "r": 0.12,
+            "p": 0.634
+          },
+          "deficit_vs_macro": {
+            "r": 0.134,
+            "p": 0.595
+          },
+          "deficit_vs_resid": {
+            "r": 0.381,
+            "p": 0.119
+          }
+        }
       }
     }
+  },
+  "ablation": {
+    "convention": "Headline (advance-1) ex-2020 (n=30). Each model = the shared macro panel plus the listed fiscal series, on the same US_fiscal data with the DFM re-estimated. dm_vs_macro / dm_vs_all are DM-HLN (h=1) loss-differential tests of this model against the macro-only Staff Nowcast and against the all-three model (A=this model, B=ref; dm<0 => this model has lower loss). Source: ablation/run_ablation.py.",
+    "n_ex_2020": 30,
+    "models": [
+      {
+        "id": "macro",
+        "label": "Macro-only",
+        "fiscal": [],
+        "rmse": 2.147,
+        "mae": 1.52,
+        "bias": -0.022,
+        "dm_vs_macro": null,
+        "dm_vs_all": {
+          "squared": {
+            "dm": 1.541,
+            "p": 0.134
+          },
+          "absolute": {
+            "dm": 2.202,
+            "p": 0.036
+          }
+        }
+      },
+      {
+        "id": "deficit",
+        "label": "+ Deficit",
+        "fiscal": [
+          "MTSDS133FMS"
+        ],
+        "rmse": 2.121,
+        "mae": 1.494,
+        "bias": -0.023,
+        "dm_vs_macro": {
+          "squared": {
+            "dm": -0.919,
+            "p": 0.366
+          },
+          "absolute": {
+            "dm": -1.055,
+            "p": 0.3
+          }
+        },
+        "dm_vs_all": {
+          "squared": {
+            "dm": 1.749,
+            "p": 0.091
+          },
+          "absolute": {
+            "dm": 2.329,
+            "p": 0.027
+          }
+        }
+      },
+      {
+        "id": "deficit_income",
+        "label": "+ Deficit + Income",
+        "fiscal": [
+          "MTSDS133FMS",
+          "W875RX1"
+        ],
+        "rmse": 2.059,
+        "mae": 1.45,
+        "bias": 0.008,
+        "dm_vs_macro": {
+          "squared": {
+            "dm": -1.537,
+            "p": 0.135
+          },
+          "absolute": {
+            "dm": -2.202,
+            "p": 0.036
+          }
+        },
+        "dm_vs_all": {
+          "squared": {
+            "dm": 0.863,
+            "p": 0.395
+          },
+          "absolute": {
+            "dm": 0.626,
+            "p": 0.536
+          }
+        }
+      },
+      {
+        "id": "deficit_govt",
+        "label": "+ Deficit + Govt",
+        "fiscal": [
+          "MTSDS133FMS",
+          "GCEC1"
+        ],
+        "rmse": 2.117,
+        "mae": 1.491,
+        "bias": -0.023,
+        "dm_vs_macro": {
+          "squared": {
+            "dm": -1.006,
+            "p": 0.323
+          },
+          "absolute": {
+            "dm": -1.16,
+            "p": 0.255
+          }
+        },
+        "dm_vs_all": {
+          "squared": {
+            "dm": 1.752,
+            "p": 0.09
+          },
+          "absolute": {
+            "dm": 2.295,
+            "p": 0.029
+          }
+        }
+      },
+      {
+        "id": "all",
+        "label": "All three",
+        "fiscal": [
+          "MTSDS133FMS",
+          "W875RX1",
+          "GCEC1"
+        ],
+        "rmse": 2.056,
+        "mae": 1.449,
+        "bias": 0.008,
+        "dm_vs_macro": {
+          "squared": {
+            "dm": -1.541,
+            "p": 0.134
+          },
+          "absolute": {
+            "dm": -2.202,
+            "p": 0.036
+          }
+        },
+        "dm_vs_all": null
+      }
+    ]
   },
   "findings": [
     {

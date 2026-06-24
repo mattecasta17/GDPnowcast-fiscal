@@ -39,8 +39,6 @@ export function WeeklyExplorer() {
     return [...map.values()].sort((a, b) => a.vintage.localeCompare(b.vintage));
   }, [period]);
 
-  const skippedB = data.skipped.baseline[period] ?? [];
-
   return (
     <div className="card">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -133,12 +131,6 @@ export function WeeklyExplorer() {
         <Fact label="Fiscal-enhanced" value={`${fmt(head.f.headline_nowcast)} pp`} />
         <Fact label="Weekly vintages" value={`${rows.length}`} />
       </div>
-      {skippedB.length > 0 ? (
-        <p className="mt-3 text-xs text-slate-500">
-          Skipped vintages (no-news / release-week crash cases, faithfully reproduced from v1):{" "}
-          <span className="font-mono">{skippedB.join(", ")}</span>
-        </p>
-      ) : null}
     </div>
   );
 }
