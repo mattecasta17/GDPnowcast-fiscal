@@ -1,6 +1,7 @@
 import { AblationSection } from "@/components/AblationSection";
 import { BenchmarkNotes } from "@/components/BenchmarkNotes";
 import { ComparisonSection } from "@/components/ComparisonSection";
+import { CoreFindings } from "@/components/CoreFindings";
 import { CumulativeImpactChart } from "@/components/CumulativeImpactChart";
 import { DeficitGainBars } from "@/components/DeficitGainBars";
 import { DeltaChart } from "@/components/DeltaChart";
@@ -77,9 +78,10 @@ export default function Home() {
         id="deficit"
         eyebrow="Core Findings"
         title="Most of the fiscal accuracy gain is the deficit's"
-        intro="This section traces where the accuracy gain comes from. The fiscal block enters the model as news: the part of each release the dynamic factor model did not anticipate. The federal deficit's news is the largest of the three fiscal series; it concentrates in the second quarter and after 2020, and it tracks the growth the macro-only panel leaves unexplained. The gain over the Staff Nowcast scales with the size of this news. The deficit supplies most of the gain, though the improvement becomes statistically robust only with the full fiscal block, not the deficit alone."
+        intro="The fiscal block enters the model as news: the part of each fiscal release the dynamic factor model did not anticipate. This section traces the accuracy gain to its source. Four findings summarize the evidence; the charts that follow document each in turn."
       >
         <div className="space-y-6">
+          <CoreFindings />
           <FiscalNewsInfographic />
           <FiscalSignalSection />
           <Q2GainChart />
@@ -102,7 +104,7 @@ export default function Home() {
         id="method"
         eyebrow="Method"
         title="How this is measured"
-        intro="A pseudo-real-time backtest is only as honest as its data discipline. Here is the target, the cutoff, and the point-in-time data rules that keep it look-ahead-safe."
+        intro="The evaluation is a pseudo-real-time backtest: every nowcast is computed from the data vintage available at the time. This section documents the target, the evaluation cutoff, and the point-in-time data rules that prevent look-ahead bias."
       >
         <MethodologyFooter />
       </Section>
@@ -110,7 +112,7 @@ export default function Home() {
       <footer className="border-t border-line bg-white py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 px-5 text-xs text-slate-500 sm:flex-row sm:items-center">
           <p>
-            GDP Nowcast - fiscal &middot; pseudo-real-time DFM backtest, 2017 - 2025. All figures
+            GDPnowcast-fiscal &middot; pseudo-real-time DFM backtest, 2017-2025. All figures
             generated from committed point-in-time backtest artifacts.
           </p>
           <a

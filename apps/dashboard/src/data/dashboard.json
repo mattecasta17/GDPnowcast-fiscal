@@ -52,7 +52,7 @@
     ],
     "n_quarters": 34,
     "n_ex_2020": 30,
-    "target_definition": "Each nowcast is the model's forecast of the BEA advance estimate of annualized real-GDP growth, evaluated at the (advance_date - 1 day) pre-advance cutoff. At that cutoff the target quarter's GDP is still unobserved and BEA same-day co-releases (real PCE, income, PCE prices, durable goods) are excluded, so the score is a genuine pseudo-real-time forecast error with no look-ahead leakage. The macro-only dynamic factor model is the 'Staff Nowcast' (a standard central-bank-staff DFM); the 'Fiscal-enhanced DFM' adds a fiscal block (federal deficit, government spending, transfer-cleaned income).",
+    "target_definition": "Each nowcast is the model's forecast of the BEA advance estimate of annualized real-GDP growth, evaluated the day before the advance release (the pre-advance cutoff). At that cutoff the target quarter's GDP is still unobserved and BEA same-day co-releases (real PCE, income, PCE prices, durable goods) are excluded, so the score is a genuine pseudo-real-time forecast error with no look-ahead leakage. The macro-only dynamic factor model is the 'Staff Nowcast' (a standard central-bank-staff DFM); the 'Fiscal-enhanced DFM' adds a fiscal block (federal deficit, government spending, income excluding transfers).",
     "clean_quarters": [
       "2017q1",
       "2018q1",
@@ -13456,7 +13456,7 @@
     {
       "id": "fiscal-deficit-signal",
       "title": "The signal is the deficit, and it switches on post-COVID",
-      "body": "The fiscal block's news (Impact = actual - forecast, weighted) is 5.0x larger post-COVID than before, and where it is larger the Fiscal-enhanced DFM gains more accuracy over the Staff Nowcast (correlation 0.45 post-COVID, 0.51 after controlling for error size). The effect is carried almost entirely by the federal deficit (corr 0.38); government spending and transfer-cleaned income add essentially nothing. Pre-COVID the fiscal news was tiny and unrelated to accuracy (corr 0.04).",
+      "body": "The fiscal block's news (Impact = actual - forecast, weighted) is 5.0x larger post-COVID than before, and where it is larger the Fiscal-enhanced DFM gains more accuracy over the Staff Nowcast (correlation 0.45 post-COVID, 0.51 after controlling for error size). The effect is carried almost entirely by the federal deficit (corr 0.38); government spending and income excluding transfers add essentially nothing. Pre-COVID the fiscal news was tiny and unrelated to accuracy (corr 0.04).",
       "evidence": {
         "impact_ratio_post_pre": 5.05,
         "corr_post": 0.453,

@@ -40,12 +40,13 @@ COVID = ["2020q1", "2020q2", "2020q3", "2020q4"]
 
 TARGET_DEFINITION = (
     "Each nowcast is the model's forecast of the BEA advance estimate of annualized real-GDP "
-    "growth, evaluated at the (advance_date - 1 day) pre-advance cutoff. At that cutoff the "
-    "target quarter's GDP is still unobserved and BEA same-day co-releases (real PCE, income, "
-    "PCE prices, durable goods) are excluded, so the score is a genuine pseudo-real-time "
-    "forecast error with no look-ahead leakage. The macro-only dynamic factor model is the "
-    "'Staff Nowcast' (a standard central-bank-staff DFM); the 'Fiscal-enhanced DFM' adds a "
-    "fiscal block (federal deficit, government spending, transfer-cleaned income)."
+    "growth, evaluated the day before the advance release (the pre-advance cutoff). At that "
+    "cutoff the target quarter's GDP is still unobserved and BEA same-day co-releases (real "
+    "PCE, income, PCE prices, durable goods) are excluded, so the score is a genuine "
+    "pseudo-real-time forecast error with no look-ahead leakage. The macro-only dynamic factor "
+    "model is the 'Staff Nowcast' (a standard central-bank-staff DFM); the 'Fiscal-enhanced "
+    "DFM' adds a fiscal block (federal deficit, government spending, income excluding "
+    "transfers)."
 )
 
 
@@ -171,8 +172,8 @@ def _build_findings(
                 f"it is larger the Fiscal-enhanced DFM gains more accuracy over the Staff Nowcast "
                 f"(correlation {_r(summ['corr_post'])} post-COVID, {_r(summ['corr_partial_post'])} "
                 "after controlling for error size). The effect is carried almost entirely by the "
-                f"federal deficit (corr {_r(mtsds_corr)}); government spending and transfer-cleaned "
-                "income add essentially nothing. Pre-COVID the fiscal news was tiny and unrelated "
+                f"federal deficit (corr {_r(mtsds_corr)}); government spending and income excluding "
+                "transfers add essentially nothing. Pre-COVID the fiscal news was tiny and unrelated "
                 f"to accuracy (corr {_r(summ['corr_pre'])})."
             ),
             "evidence": {

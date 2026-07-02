@@ -78,7 +78,7 @@ export function ComparisonSection() {
         <dl className="mt-4 space-y-2 text-sm">
           <Row k="Observed |effect| (MAE)" v={`${fmt(Math.abs(mdeAbs.mean_loss_diff), 3)} pp`} />
           <Row k="Min. detectable effect" v={`${fmt(mdeAbs.mde, 3)} pp`} />
-          <Row k="Powered?" v={mdeAbs.powered ? "yes" : "no"} bad={!mdeAbs.powered} />
+          <Row k="Adequately powered" v={mdeAbs.powered ? "yes" : "no"} bad={!mdeAbs.powered} />
         </dl>
         <p className="mt-4 hyphens-auto text-justify text-xs text-slate-500">
           With one significant cell among the six tests, the result does not survive a

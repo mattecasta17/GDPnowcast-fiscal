@@ -15,7 +15,7 @@ export function MethodologyFooter() {
           <p className="mt-1.5">
             On the GDP advance day the BEA also publishes co-releases (real PCE ~68% of GDP, income,
             PCE prices, durable goods). Masking only the GDP cell would leak these into the
-            release-week nowcast in most quarters - only {leak.clean_quarters.length} of{" "}
+            release-week nowcast in most quarters: only {leak.clean_quarters.length} of{" "}
             {leak.quarters} past quarters stay fully clean across the whole release week. Scoring one
             day before the advance removes target and co-release leakage alike.
           </p>
@@ -27,19 +27,17 @@ export function MethodologyFooter() {
           <h3 className="font-semibold text-ink">Data &amp; panels</h3>
           <p className="mt-1.5">
             Point-in-time vintages from ALFRED/FRED, reconstructed as-of each Friday with{" "}
-            <code className="rounded bg-slate-100 px-1 text-xs">realtime_start = realtime_end</code>{" "}
-            - no revisions, no fills, observations truncated to the vintage date. The Staff Nowcast
-            panel (<span className="font-mono">{meta.panel_baseline}</span>) and the Fiscal-enhanced
-            panel (<span className="font-mono">{meta.panel_fiscal}</span>) share the same calendar and
-            target; estimation starts in 2000.
+            <code className="rounded bg-slate-100 px-1 text-xs">realtime_start = realtime_end</code>:
+            no revisions, no fills, observations truncated to the vintage date. The macro-only panel
+            and the fiscal panel share the same calendar and target; estimation starts in 2000.
           </p>
         </div>
         <div>
-          <h3 className="font-semibold text-ink">Honest research</h3>
+          <h3 className="font-semibold text-ink">Reporting standards</h3>
           <p className="mt-1.5">
-            Every number here is what the corrected, leak-free pipeline actually produces - no
-            favourable subsample, no inflated narrative. Where the model has no edge, or the evidence
-            is too thin to call, the dashboard says so.
+            All figures are produced by the corrected, leak-free pipeline; no subsample was selected
+            for favourable results. Where the model shows no advantage, or the evidence is
+            insufficient to support a claim, the dashboard reports it as such.
           </p>
         </div>
       </div>

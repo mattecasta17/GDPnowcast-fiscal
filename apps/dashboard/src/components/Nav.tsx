@@ -3,7 +3,7 @@ const LINKS = [
   { href: "#benchmarks-results", label: "Results" },
   { href: "#results-findings", label: "Two takeaways" },
   { href: "#charts", label: "Charts" },
-  { href: "#deficit", label: "Deficit signal" },
+  { href: "#deficit", label: "Core findings" },
   { href: "#fiscal", label: "Significance" },
   { href: "#method", label: "Method" },
 ];
