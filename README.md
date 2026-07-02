@@ -74,7 +74,7 @@ npm run build --prefix apps/dashboard    # static export -> apps/dashboard/out
 The bundle is regenerated from the committed backtest artifacts with
 `uv run python -m tools.build_dashboard_data`; details in [`apps/dashboard/README.md`](apps/dashboard/README.md).
 
-<!-- live demo: add the deployed URL here once published -->
+**Live:** [gdpnowcast-fiscal.vercel.app](https://gdpnowcast-fiscal.vercel.app)
 
 ---
 

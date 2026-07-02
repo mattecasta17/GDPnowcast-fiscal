@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const TITLE = "Fiscal-enhanced GDP nowcast | Does fiscal data help?";
+const TITLE = "Improving GDP Nowcasting Using Fiscal Variables";
 const DESCRIPTION =
-  "A fiscal-enhanced dynamic factor model vs a macro-only Staff Nowcast for US GDP growth: does adding a fiscal block sharpen the real-time nowcast? Honest, look-ahead-safe pseudo-real-time backtest, 2017-2025.";
+  "A fiscal-enhanced dynamic factor model against a macro-only Staff Nowcast for US GDP growth. Look-ahead-safe pseudo-real-time backtest, 2017-2025: the fiscal block improves accuracy outside 2020, and most of the gain traces to federal-deficit news.";
 
 export const metadata: Metadata = {
   title: TITLE,
