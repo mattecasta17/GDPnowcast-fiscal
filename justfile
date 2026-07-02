@@ -44,20 +44,13 @@ sync:
 fetch variant="fiscal":
     uv run gdpnowcast fetch --variant {{variant}}
 
-# Phase 5 deliverable — placeholder.
-run:
-    @echo "gdpnowcast run is not implemented yet (Phase 5)."
-    @exit 1
+# Full 2017-2025 backtest for one variant; writes docs/dashboard_data/{variant}.json.
+run variant="fiscal":
+    uv run python -m tools.run_backtest --variant {{variant}}
 
-# Phase 5 deliverable — placeholder.
+# Next.js dashboard dev server (http://localhost:3000).
 dashboard:
-    @echo "streamlit dashboard is not implemented yet (Phase 5)."
-    @exit 1
-
-# Phase 8 deliverable — placeholder.
-paper:
-    @echo "paper LaTeX build is not implemented yet (Phase 8)."
-    @exit 1
+    npm run dev --prefix apps/dashboard
 
 # Composite — what CI runs.
 ci: lint typecheck test

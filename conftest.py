@@ -1,9 +1,8 @@
 """Pytest configuration for the repo root.
 
-Puts the repository root on sys.path so the Phase-3 parity/golden tests can
-`import Functions` (the A0-shimmed v1 pipeline) alongside the installed
-src-layout `gdpnowcast` package. The v1 tree is not packaged/installed; it is
-imported only by tests that pin the port against v1's exact behaviour.
+Puts the repository root on sys.path so tests can import the `tools.*`
+modules (e.g. tests/test_dashboard_data.py), which are not packaged with the
+installed src-layout `gdpnowcast` package.
 """
 
 import sys

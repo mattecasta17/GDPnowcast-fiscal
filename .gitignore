@@ -56,3 +56,10 @@ nowcast_Q_fiscal/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Ablation scratch outputs (results json is committed)
+ablation/run.log
+ablation/ablation_smoke.json
+
+# Local Claude Code working notes
+.claude/

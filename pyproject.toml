@@ -60,19 +60,7 @@ link-mode = "copy"
 [tool.ruff]
 line-length = 100
 target-version = "py313"
-# force-exclude so the excludes below also apply when pre-commit passes files
-# explicitly on the CLI (otherwise ruff lints/formats explicitly-named legacy
-# files regardless of exclude). Keeps the v1 Functions/ + root scripts untouched.
 force-exclude = true
-extend-exclude = [
-    "Functions/",
-    "DFM_new.py",
-    "DFM_fiscal.py",
-    "dashboard_nowcast_new.py",
-    "dashboard_nowcast_fiscal.py",
-    "nowcast_*.py",
-    "variables_creation.py",
-]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "N", "RUF"]
@@ -104,24 +92,6 @@ disallow_untyped_defs = true
 warn_redundant_casts = true
 warn_unused_ignores = true
 ignore_missing_imports = true
-exclude = [
-    "Functions/",
-    "DFM_new\\.py",
-    "DFM_fiscal\\.py",
-    "dashboard_nowcast_.*\\.py",
-    "nowcast_.*\\.py",
-    "variables_creation\\.py",
-]
-
-# The legacy v1 `Functions/` tree is intentionally untyped (slated for Phase-5b
-# deletion). `exclude` above keeps it off the discovery list, but the Phase-3
-# golden/parity tests `import Functions` for v1-equivalence checks and mypy
-# follows those imports. Skip-following treats the module as `Any` so the
-# untyped legacy defs do not trip `disallow_untyped_defs`.
-[[tool.mypy.overrides]]
-module = "Functions.*"
-follow_imports = "skip"
-ignore_errors = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

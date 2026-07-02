@@ -6,7 +6,7 @@
 
 > **Developed with AI-assisted tooling.** Every methodology choice and the full v1 bug-fix audit are documented in [`docs/audit/`](docs/audit/) and reproduced by the test suite — run `just ci` to verify lint, types, and tests in one command.
 
-**Status:** v2 refactor in progress on branch `refactor/v2`. The v1 implementation lives at root (`DFM_new.py`, `Functions/`, `nowcast_YYYY*.py`, ...) and remains runnable. v2 lives in `src/gdpnowcast/` and is being built phase by phase — see `docs/plans/2026-05-11-v2-design.md` for the roadmap.
+**Status:** v2 complete on branch `refactor/v2`. The implementation lives in `src/gdpnowcast/`; the v1 code was decommissioned in the Phase 5b cleanup (its behaviour is pinned by the committed golden tests, and git history preserves the files). See `docs/plans/2026-05-11-v2-design.md` for the design and phase roadmap.
 
 The v1 README is preserved at [`docs/README_v1.md`](docs/README_v1.md).
 
@@ -33,25 +33,30 @@ just lint                          # ruff is happy
 
 ## Fetch
 
-> **Not yet implemented — coming in Phase 2.**
-
-In v2, the data layer rebuilds all FRED/ALFRED weekly vintages from scratch:
+The data layer rebuilds all point-in-time ALFRED weekly vintages from the committed manifests
+(`configs/vintages_{baseline,fiscal}.csv`):
 
 ```bash
-just fetch                         # or: uv run gdpnowcast fetch
+just fetch baseline                # or: uv run gdpnowcast fetch --variant baseline
+just fetch fiscal
 ```
 
-This re-creates `data/vintages/{baseline,fiscal}/` from the FRED ALFRED API. The v1 vintage files in `data/` (gitignored) will eventually be regenerable and not committed.
+This re-creates `data/US_new/` and `data/US_fiscal/` (gitignored) from the FRED ALFRED API, with
+strict as-of reconstruction (no revisions, no fills). The pre-advance cutoff vintages are built by
+`uv run python -m tools.build_headline_vintages`.
 
 ## Run
 
-> **Not yet implemented — coming in Phase 5.**
+The full 2017-2025 pseudo-real-time backtest (per-quarter weekly paths + the pre-advance headline
+nowcast) writes the committed artifacts in `docs/dashboard_data/`:
 
 ```bash
-just run                           # or: uv run gdpnowcast run --year 2024 --variant fiscal
+just run fiscal                    # or: uv run python -m tools.run_backtest --variant fiscal
+just run baseline
 ```
 
-Until Phase 5 ships, use the v1 scripts directly (e.g. `python nowcast_2024_fiscal.py`). `Functions/update_Nowcast.py` is committed (recovered from git `729b40b`), so the v1 pipeline imports cleanly on a fresh clone — a full backtest still needs the FRED data fetched locally.
+Variant comparison (Diebold-Mariano, power/MDE) and benchmarks are regenerated with
+`uv run python -m tools.compare_variants` and `uv run python -m tools.run_benchmarks`.
 
 ## Dashboard
 
@@ -71,8 +76,6 @@ The bundle is regenerated from the committed backtest artifacts with
 
 <!-- live demo: add the deployed URL here once published -->
 
-v1 dashboards (`dashboard_nowcast_new.py`, `dashboard_nowcast_fiscal.py`) still exist at root for reference (removed in the Phase 5b cleanup).
-
 ---
 
 ## Repository layout
@@ -90,7 +93,7 @@ docs/                  # design docs, audits, plans, paper sources
   └── README_v1.md     # original v1 README (historical)
 ```
 
-v1 files (`DFM_new.py`, `dashboard_nowcast_*.py`, `nowcast_YYYY*.py`, `Functions/`, `Spec_US_*.xlsx`, `variables_creation.py`) stay at the repo root for now: their logic is migrated into `src/` across Phases 2-3, and the redundant root files are removed in the **Phase 5b cleanup** — only after the unified CLI/dashboard reproduce v1 (git history preserves them regardless).
+The v1 implementation (`DFM_new.py`, `dashboard_nowcast_*.py`, `nowcast_YYYY*.py`, `Functions/`, `variables_creation.py`) was removed in the **Phase 5b cleanup** after the v2 port reproduced it exactly (pinned by the committed golden tests in `tests/golden/`); git history preserves the files. `Spec_US_*.xlsx` remain at root: they are the live model specifications read by the v2 pipeline.
 
 ---
 

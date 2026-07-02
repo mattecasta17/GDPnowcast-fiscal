@@ -54,9 +54,9 @@ def test_current_quarter_is_unreleased_at_advance_minus_1(period: str) -> None:
     qend = _quarter_end_month(period)
     rows = [k for k, t in enumerate(time) if t == qend]
     assert rows, f"{period}: quarter-end {qend.date()} not on the monthly grid"
-    assert math.isnan(
-        x[rows[0], i_gdp]
-    ), f"{period}: current-quarter GDP leaked into advance-1 vintage"
+    assert math.isnan(x[rows[0], i_gdp]), (
+        f"{period}: current-quarter GDP leaked into advance-1 vintage"
+    )
 
 
 @pytest.mark.parametrize("period", _QUARTERS)
