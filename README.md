@@ -6,7 +6,7 @@
 
 > **Developed with AI-assisted tooling.** Every methodology choice and the full v1 bug-fix audit are documented in [`docs/audit/`](docs/audit/) and reproduced by the test suite — run `just ci` to verify lint, types, and tests in one command.
 
-**Status:** v2 complete on branch `refactor/v2`. The implementation lives in `src/gdpnowcast/`; the v1 code was decommissioned in the Phase 5b cleanup (its behaviour is pinned by the committed golden tests, and git history preserves the files). See `docs/plans/2026-05-11-v2-design.md` for the design and phase roadmap.
+**Status:** v2 complete. The implementation lives in `src/gdpnowcast/`; the v1 code was decommissioned after the v2 port reproduced it exactly (pinned by the committed golden tests, and git history preserves the files).
 
 The v1 README is preserved at [`docs/README_v1.md`](docs/README_v1.md).
 
@@ -86,10 +86,12 @@ tests/                 # pytest suite
 configs/               # spec_us_*.xlsx + runtime.toml (Phase 2+)
 apps/dashboard/        # Next.js static dashboard (Phase 5)
 data/                  # gitignored, built by `gdpnowcast fetch`
-docs/                  # design docs, audits, plans, paper sources
-  ├── plans/           # v2 design + per-phase implementation plans
-  ├── audit/v1/        # 2026-05-11 audit reports
-  ├── audit/v1-verified/  # 2026-05-11 verification reports
+docs/                  # results, methodology, audits
+  ├── dashboard_data/  # committed backtest artifacts (source of the dashboard bundle)
+  ├── results.md, comparison.md, benchmarks.md, data_sources.md
+  ├── plans/           # methodology decision record (headline cutoff)
+  ├── audit/v1/        # audit reports on the original v1 code
+  ├── audit/v1-verified/  # verification of the audit findings
   └── README_v1.md     # original v1 README (historical)
 ```
 
@@ -99,10 +101,13 @@ The v1 implementation (`DFM_new.py`, `dashboard_nowcast_*.py`, `nowcast_YYYY*.py
 
 ## Documentation
 
-- `docs/plans/2026-05-11-v2-design.md` — full v2 design doc, phase roadmap, methodology decisions
-- `docs/audit/v1/00_synthesis.md` — original 3-agent audit of v1
+- `docs/results.md` — headline backtest results (baseline and fiscal)
+- `docs/comparison.md` — fiscal vs baseline: Diebold-Mariano tests, power/MDE
+- `docs/benchmarks.md` — DFM vs naive univariate benchmarks
+- `docs/data_sources.md` — series list, transformations, vintage reconstruction rules
+- `docs/plans/2026-06-04-phase4.0-release-day-cutoff-decision.md` — why the headline nowcast is scored the day before the BEA advance
+- `docs/audit/v1/00_synthesis.md` — original audit of v1
 - `docs/audit/v1-verified/00_synthesis.md` — verification of audit findings (some refuted, some confirmed)
-- `RESUME.md` — current state of the refactor; read this first when resuming work
 
 ---
 
